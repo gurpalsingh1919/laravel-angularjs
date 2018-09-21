@@ -1,0 +1,115 @@
+<div class="wrapper right-side">
+<div class="template-section">
+      <div class="navbar-header">
+	      <a href="javascript:void(0)" onclick="toggleDisplay();" class="nav-toggle toggledisplays"><i class="fa fa-bars"></i></a>
+	  </div>
+<div class="main-wrapper" id="takescreenshot">					
+	<div ng-if="Header==1" class="top_header" ng-style="{'background-color' : styleArr[1]['default_value']}">
+    		
+            <div class="top_video" ng-if="text_1==1 || text_2==1 || logo_2==1">
+            	<a ng-if="text_1==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video1_title' , 'text_1')" ng-model ="video1_title"  ng-bind-html="video1_title"></a>
+                <a ng-if="text_2==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video1_subtitle' , 'text_2')" ng-model ="video1_subtitle"  ng-bind-html="video1_subtitle"></a>
+                 <a ng-if="logo_2==1" href="javascript:void(0)" ng-click ="checkWindowData('video1_link' , 'tab_1', 'video1_tab_value')" target="_self">
+                <img src="public/assets/template/videofunnel/images/{{video1_image}}" alt="" />
+                </a>
+                <a ng-if="logo_2==1" class="cog_icon_videofunnel" ng-click ="checkImageData('video1_image' , 'logo_8',video1_image)"><i class="fa fa-cog"></i></a>
+            </div>
+            
+            <div class="top_video" ng-if="text_3==1 || text_4==1 || logo_3==1">
+            	<a ng-if="text_3==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video2_title' , 'text_3')" ng-model ="video2_title"  ng-bind-html="video2_title"></a>
+                <a ng-if="text_4==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video2_subtitle' , 'text_4')" ng-model ="video2_subtitle"  ng-bind-html="video2_subtitle"></a>
+                <a ng-if="logo_3==1" href="javascript:void(0)" ng-click ="checkWindowData('video2_link' , 'tab_2','video2_tab_value')" target="_self">
+                <img src="public/assets/template/videofunnel/images/{{video2_image}}" alt="" />
+                </a>
+                <a ng-if="logo_3==1" class="cog_icon_videofunnel" ng-click ="checkImageData('video2_image' , 'logo_9',video2_image)"><i class="fa fa-cog"></i></a>
+            </div>
+            
+            <div class="logo" ng-if="logo_1==1">
+            <a href="javascript:void(0)" target="_self" ng-click ="checkImageData('header_image' , 'logo_1',header_image)">
+                <img src="public/assets/template/videofunnel/images/{{header_image}}" alt="" /> 
+                </a> 
+            </div>
+            
+            <div class="top_video" ng-if="text_5==1 || text_6==1 || logo_4==1">
+            	<a ng-if="text_5==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video3_title' , 'text_5')" ng-model ="video3_title"  ng-bind-html="video3_title"></a>
+                <a ng-if="text_6==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video3_subtitle' , 'text_6')" ng-model ="video3_subtitle"  ng-bind-html="video3_subtitle"></a>
+                <a ng-if="logo_4==1" href="javascript:void(0)" ng-click ="checkWindowData('video3_link' , 'tab_3', 'video3_tab_value')" target="_self">
+                <img src="public/assets/template/videofunnel/images/{{video3_image}}" alt="" />
+                </a>
+                <a ng-if="logo_4==1" class="cog_icon_videofunnel" ng-click="checkImageData('video3_image' , 'logo_10',video3_image)"><i class="fa fa-cog"></i></a>
+            </div>
+            
+            <div class="top_video" ng-if="text_7==1 || text_8==1 || logo_5==1">
+            	<a ng-if="text_7==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video4_title' , 'text_7')" ng-model ="video4_title"  ng-bind-html="video4_title"></a>
+                <a ng-if="text_8==1" href="javascript:void(0)" target="_self" ng-click ="checkData('video4_subtitle' , 'text_8')" ng-model ="video4_subtitle"  ng-bind-html="video4_subtitle"></a>
+                <a ng-if="logo_5==1" href="javascript:void(0)" ng-click ="checkWindowData('video4_link' , 'tab_4', 'video4_tab_value')" target="_self">
+                <img src="public/assets/template/videofunnel/images/{{video4_image}}" alt="" />
+                </a>
+                <a ng-if="logo_5==1" class="cog_icon_videofunnel" ng-click ="checkImageData('video4_image' , 'logo_11',video4_image)"><i class="fa fa-cog"></i></a>
+            </div>
+	</div>
+ 
+	<div class="main_part" ng-style="{'background-color': styleArr[2]['default_value']}" set-height>
+    	<div class="container">
+            <div class="center_part" ng-class="{'center-part-hide':Video == 0 && Details == 0 }"  ng-style="{'background-color': styleArr[3]['default_value']}">
+                <div class="video" ng-if="Video==1">
+                	<div class="elVideoSkin1">
+	                	<div class="fluid-width-video-wrapper video-iframe">
+		                    <a href="javascript:void(0)" ng-model="vid_url" ng-bind-html="vid_url" ng-click ="checkData('vid_url' , 'video_1')" target="_self">
+		           				<!--<img src="public/assets/template/facebook-tab/images/video.gif" alt="Video" />-->
+		            		</a>
+		            		<a class="cog_icon video-icon" ng-click ="checkData('vid_url' , 'video_1')"><i class="fa fa-cog"></i></a>
+	                    </div>
+                    </div>
+                    <span ng-click ="checkData('video_below_text' , 'text_9')" ng-model="video_below_text" ng-bind-html="video_below_text"></span>
+                
+                </div>
+  				
+                <div class="powerful" ng-if="Details==1" ng-class="{'powerful-hide':logo_6 == 0 && logo_7 == 0 && text_14 == 0 && tab_5 == 0 }">
+                	<div class="powerful_text">
+                    	<a ng-if="text_10==1" href="javascript:void(0)" target="_self" ng-click ="checkData('details_title' , 'text_10')" ng-model="details_title" ng-bind-html="details_title"></a>
+						<a ng-if="text_11==1" href="javascript:void(0)" target="_self" ng-click ="checkData('details_text1' , 'text_11')" ng-model="details_text1" ng-bind-html="details_text1"></a>
+						<a ng-if="text_12==1" href="javascript:void(0)" target="_self" ng-click ="checkData('details_subtitle' , 'text_12')" ng-model="details_subtitle" ng-bind-html="details_subtitle"></a>
+                     	<a ng-if="text_13==1" href="javascript:void(0)" target="_self" ng-click ="checkData('details_text2' , 'text_13')" ng-model="details_text2" ng-bind-html="details_text2"></a>
+                    </div>
+                    
+                    <div class="powerful_img" ng-class="{'powerful-img-hide':text_10 == 0 && text_11 == 0 && text_12 == 0 && text_13 == 0}">
+                   		<a ng-if="logo_6==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('detail_rightsidebar1_image' , 'logo_6',detail_rightsidebar1_image)">
+                    		<img src="public/assets/template/videofunnel/images/{{detail_rightsidebar1_image}}" alt="" />
+                    	</a>
+                    	<a ng-if="logo_7==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('detail_rightsidebar2_image' , 'logo_7',detail_rightsidebar2_image)">
+                        	<img src="public/assets/template/videofunnel/images/{{detail_rightsidebar2_image}}" alt="" />
+                        </a>
+                        <a ng-if="text_14==1" href="javascript:void(0)" target="_self" ng-click ="checkData('detail_rightsidebar_title' , 'text_14')" ng-model="detail_rightsidebar_title" ng-bind-html="detail_rightsidebar_title"></a>
+                        <div ng-if="tab_5==1" class="button" style="position:relative" ng-style="{'background-color' : styleArr[29]['default_value']}"><a href="javascript:void(0)" target="_self" class="action-btn" ng-click ="checkWindowData('details_link' , 'tab_4', 'details_link_value')" ng-model="details_call_to_action" ng-bind-html="details_call_to_action"> </a>
+            				<a class="cog_icon_download_videofunnel" ng-click="checkData('details_call_to_action' , 'text_15')"><i class="fa fa-cog"></i></a>
+						</div>
+                    </div>
+                </div>
+            </div>
+            <div class="commemts" ng-class="{'center-part-hide':text_16 == 0 && text_17 == 0 && text_18 ==0 }">
+            	<a ng-if="text_16==1" href="javascript:void(0)" target="_self" ng-click ="checkData('detail_fb_title' , 'text_16')" ng-model="detail_fb_title" ng-bind-html="detail_fb_title"></a> 
+            	 <a ng-if="text_16==1" href="javascript:void(0)" ng-click ="checkData('fb_like_widget' , 'video_2')" target="_self">
+		           				<img src="public/assets/admin/images/FB_BUTTON_-_Like_large.png" ng-model="fb_like_widget" alt="Like" />
+		           </a>
+            
+                
+                <a ng-if="text_17==1" href="javascript:void(0)" target="_self" ng-click ="checkData('detail_comment_title' , 'text_17')" ng-model="detail_comment_title" ng-bind-html="detail_comment_title"></a>
+                <a ng-if="text_17==1" href="javascript:void(0)" ng-click ="checkData('fb_comment_widget' , 'video_2')" target="_self">
+                <img src="public/assets/admin/images/comment.png" alt="Comments" ng-model="fb_comment_widget" />
+                </a>
+                <a ng-if="text_18==1" href="javascript:void(0)" target="_self" ng-click ="checkData('detail_comment_text' , 'text_18')" ng-model="detail_comment_text" ng-bind-html="detail_comment_text"></a>
+               
+            </div>
+            <!---footer start----->
+            <div class="footer-videofunnel" ng-if="Copyrights==1" ng-class="{'footer-hide':text_19==0 && text_20==0 && text_21==0 && text_22==0}">
+            	<span class="footer-menu" ng-class="{'footer-menu-hide':text_19 == 0 || text_20 == 0 }"><a ng-if="text_19==1" href="javascript:void(0)" target="_self" ng-click ="checkWindowData('copyright_menu1_link' , 'tab_6', 'copyright_menu1_tab_value')" ng-model="copyright_menu1" ng-bind-html="copyright_menu1"></a>  <a ng-if="text_20==1" href="javascript:void(0)" target="_self" ng-click ="checkWindowData('copyright_menu2_link' , 'tab_7', 'copyright_menu2_tab_value')" ng-model="copyright_menu2" ng-bind-html="copyright_menu2"></a> <br />
+				<a ng-if="text_21==1" href="javascript:void(0)" target="_self" ng-click ="checkData('copyright_title' , 'text_21')" ng-model="copyright_title" ng-bind-html="copyright_title"></a></span>
+                <a ng-if="text_22==1" href="javascript:void(0)" target="_self" ng-click ="checkData('copyright_text' , 'text_22')" ng-model="copyright_text" ng-bind-html="copyright_text"></a>
+            </div>   
+            </div>
+            <!---footer end-----> 
+        </div>
+    </div>
+</div>
+</div>

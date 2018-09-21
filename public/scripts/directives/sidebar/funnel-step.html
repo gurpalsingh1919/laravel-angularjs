@@ -1,0 +1,11 @@
+ <div class="setp-panel clearfix">
+<h2><i class="fa fa-bars"></i> Funnel Steps</h2>
+<ul  ui-sortable="sortableOptions" ng-model="list"  class="list">
+	<li ng-repeat="item in list" class="item" ng-class="{'active':item.id == stepId}" ng-model="template_id" ng-init="template_id=item.template_id" ng-click="checkStepTemplate(item.template_id,item.name,item.id,item.slug,item.contacts,item.visitors,item.temp_code)">
+		<span class="step-name">{{item.name}}</span>
+		<!-- span class="step-count">10%</span> -->
+	</li>
+   
+</ul>
+<a href="javascript:void(0)" target="_self" ng-click="showFunneltype(3)"  class="add-step-btn"><i class="fa fa-plus"></i> Add New Step</a>
+</div>

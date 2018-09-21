@@ -1,0 +1,71 @@
+     <div class="wrapper bg-container right-side" spellcheck=false>
+      <div class="template-section">
+      <div class="navbar-header">
+				   <a href="javascript:void(0)" onclick="toggleDisplay();" class="nav-toggle toggledisplays"><i class="fa fa-bars"></i></a>
+				</div>
+<div id="takescreenshot">	
+			
+<div ng-if="Header==1" class="header" ng-style="{'background-color': styleArr[1]['default_value']}">
+    	<a ng-if="logo_1==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('header_image' , 'logo_1',header_image)"><img src="public/assets/template/thank-you/images/{{header_image}}" alt="Logo" /></a>
+    </div>
+    
+    <div ng-if="Banner==1" class="banner" ng-style="{'background-color': styleArr[2]['default_value']}">
+    	<div class="container">
+
+        <a ng-if="logo_2==1" class="banner-images" href="javascript:void(0)" target="_self" ng-click ="checkImageData('banner_image' , 'logo_2',banner_image)"><img src="public/assets/template/thank-you/images/{{banner_image}}" alt="Thank you" /></a>
+          <a ng-if="text_1==1" href="javascript:void(0)" target="_self" ng-model="banner_text1" ng-bind-html="banner_text1" ng-click="checkData('banner_text1','text_1')"></a>
+            <a ng-if="text_2==1" href="javascript:void(0)" target="_self" ng-mode="banner_text2" ng-bind-html="banner_text2" ng-click="checkData('banner_text2','text_2')"></a>
+            <div class="social" ng-class="{'social-hide': url_1==0 && url_2==0 && url_3==0 && url_4==0}">
+                 <a ng-if="text_3==1" href="javascript:void(0)" target="_self" ng-model="banner_text3" ng-bind-html="banner_text3" ng-click="checkData('banner_text3','text_3')"></a>
+                <ul>
+                    <li ng-if="url_1==1"><a href="javascript:void(0)" target="_self" ng-click="checkData('social_icon_link1','url_1')"><img src="public/assets/template/thank-you/images/{{social_icon1}}" alt="Facebook" /></a></li>
+                    <li ng-if="url_2==1"><a href="javascript:void(0)" target="_self" ng-click="checkData('social_icon_link2','url_2')"><img src="public/assets/template/thank-you/images/{{social_icon2}}" alt="Twitter" /></a></li>
+                    <li ng-if="url_3==1"><a href="javascript:void(0)" target="_self" ng-click="checkData('social_icon_link3','url_3')"><img src="public/assets/template/thank-you/images/{{social_icon3}}" alt="Linkedin" /></a></li>
+                    <li ng-if="url_4==1"><a href="javascript:void(0)" target="_self" ng-click="checkData('social_icon_link4','url_4')"><img src="public/assets/template/thank-you/images/{{social_icon4}}" alt="Google plus" /></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div ng-if="Testimonial==1" class="testimonials" ng-style="{'background-color': styleArr[8]['default_value']}">
+    	<div class="thanksyou container">
+            <div class="media"> 
+                <div class="media-body"> 
+                   <a ng-if="text_4==1" href="javascript:void(0)" target="_self" ng-model="testimonial1_content" ng-bind-html="testimonial1_content" ng-click="checkData('testimonial1_content','text_4')"></a>
+					<h4 ng-if="text_5==1" class="media-heading"><a href="javascript:void(0)" target="_self" ng-model="testimonial1_author_name" ng-bind-html="testimonial1_author_name" ng-click="checkData('testimonial1_author_name','text_5')"></a></h4>
+                    <a ng-if="text_6==1" href="javascript:void(0)" target="_self" ng-model="testimonial1_author_designation" ng-bind-html="testimonial1_author_designation" ng-click="checkData('testimonial1_author_designation','text_6')"></a>
+                </div> 
+                <div ng-if="logo_3==1" class="media-right" ng-class="{'media-right-hide': text_4==0 && text_5==0 && text_6==0 }"> 
+                    <a href="javascript:void(0)" target="_self" ng-click="checkImageData('testimonial1_image','logo_3',testimonial1_image)"><img class="media-object" src="public/assets/template/thank-you/images/{{testimonial1_image}}" ></a> 
+                </div> 
+            </div>
+            <div class="hr" ng-class="{'testimonial-hr-hide': text_7==0 && text_8==0 && text_9==0 && logo_4==0 || text_4==0 && text_5==0 && text_6==0 && logo_3==0}" ><img src="public/assets/template/thank-you/images/hr.png" alt="Hr" /></div>
+            <div class="media" ng-class="{'media-hide': logo_4==0 }"> 
+                <div class="media-left" ng-class="{'media-left-hide': text_7==0 && text_8==0 && text_9==0 }">
+                    <a ng-if="logo_4==1" href="javascript:void(0)" target="_self" ng-click="checkImageData('testimonial2_image','logo_4',testimonial2_image)"><img class="media-object" src="public/assets/template/thank-you/images/{{testimonial2_image}}" ></a> 
+                </div> 
+                <div class="media-body" ng-class="{'media-body-hide': logo_4==0 }"> 
+                   <a ng-if="text_7==1" href="javascript:void(0)" target="_self" ng-model="testimonial2_content" ng-bind-html="testimonial2_content" ng-click="checkData('testimonial2_content','text_7')"></a>
+                    <h4 ng-if="text_8==1" class="media-heading"><a href="javascript:void(0)" target="_self" ng-model="testimonial2_author_name" ng-bind-html="testimonial2_author_name" ng-click="checkData('testimonial2_author_name','text_8')"></a></h4> 
+                   <a ng-if="text_9==1" href="javascript:void(0)" target="_self" ng-model="testimonial2_author_designation" ng-bind-html="testimonial2_author_designation" ng-click="checkData('testimonial2_author_designation','text_9')"></a>
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+    <div ng-if="link_1==1" class="action-thankyou" ng-style="{'background-color': styleArr[9]['default_value']}">
+        <div class="container">
+        <div class="action-btn">
+    	<a class="detail-call-button" href="javascript:void(0)" ng-style="{'background-color' : styleArr[29]['default_value']}" target="_self" ng-click ="customSettingPopUp(1)" ng-model="details_call_to_action" ng-bind-html="details_call_to_action"></a>
+        <a class="cog_icon2" ng-click="checkData('details_call_to_action' , 'text_7')"><i class="fa fa-cog"></i></a>
+		</div>
+		</div>
+    </div>
+  
+    <div ng-if="Copyrights==1" class="footer-thankyou" ng-style="{'background-color': styleArr[27]['default_value']}">
+    	<a ng-if="text_11==1" href="javascript:void(0)" target="_self" ng-click ="checkData('copyright_title' , 'text_1')"
+        contenteditable="true" ng-model ="copyright_title"  ng-bind-html="copyright_title"></a>
+    </div> 
+</div>
+</div>
+</div>

@@ -1,0 +1,302 @@
+ <div>
+    
+	  <!-- Modal Box For Create New Funnel -->
+    <div class="modal fade create-funnel" id="selectFunnelType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Select Funnel Type</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+            	<div class="col-md-4">
+                	<div class="cat-bx">
+                    	<img src="public/assets/admin/images/cat-sale.png" alt="Sales" />
+                        <p>Sales</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                	<div class="cat-bx">
+                        <img src="public/assets/admin/images/cat-webinar.png" alt="Webinar" />
+                        <p>Webinar</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                	<div class="cat-bx">
+                        <img src="public/assets/admin/images/cat-optin.png" alt="Optin" />
+                        <p>Optin</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a  class="btn btn-primary" ng-click="showFunneltype(2)"  >Create Custom Funnel</a>
+            <a href="javascript:void(0)"  target="_self" class="btn btn-default" data-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+	  <!--  Add New Funnel  Name-->
+    <div class="modal fade create-funnel" id="createNewFunnel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div ng-show="loadingModel" class="loadingModel" style="background:transparent;"></div>
+      <div class="modal-dialog settings-modal" role="document">
+        <div class="modal-content">
+        <div ng-show="loadingModel" class="loadingModel"><img src="public/assets/admin/loader-img.gif"></div>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus"></i>
+            Add New Funnel</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+	            <label>Name: </label>
+	            	<input type="text"  class="form-control" value="" ng-model="funnelName" placeholder="Give Funnel a name"/>
+	           
+             </div><span class="margin-tp"></span>
+              <!-- div class="row" >
+	            <label>Select Group Tag: </label>
+	            
+	            	<input type="text"  class="form-control" value="" ng-model="funnelGroupName" placeholder="Group tag"/>
+	            
+             </div> -->
+          
+          
+          </div>
+          <div class="modal-footer">
+            <a  class="btn btn-primary" ng-click="overviewView(); $event.preventDefault();" target="_self">Build Funnel</a>
+            <a href="javascript:void(0)"  target="_self" ng-click="dataDismiss('funnel')" class="btn btn-default" data-dismiss="modal" >Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+     
+       <!--  Add New Funnel  Steps-->
+    <div class="modal fade create-funnel" id="createNewFunnelStep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus"></i>
+            New Step In Funnel</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+	            <label>Name of Funnel Step: </label>
+	            	<input type="text"  class="form-control" value="" ng-model="funnelStepName" placeholder="Give Funnel step name"/>
+	           
+             </div><span class="margin-tp"></span>
+              <div class="row">
+	            <label>Path: </label>
+	            	<input type="text"  class="form-control" ng-model="funnelStepPath1" placeholder="Give the path for this funnel step"/>
+	           
+             </div><span class="margin-tp"></span>
+              <!-- div class="row" >
+	            <label>Select Group Tag: </label>
+	            
+	            	<input type="text"  class="form-control" value="" ng-model="funnelGroupName" placeholder="Group tag"/>
+	            
+             </div> -->
+          
+          
+          </div>
+          <div class="modal-footer">
+            <a  class="btn btn-primary" ng-click="saveNewFunnelStep()" target="_self">Create Funnel Step</a>
+            <a href="#" class="btn btn-default" ng-click="dataDismiss('funnelstep')" data-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+       <!--  Edit funnel step Url -->
+    <div class="modal fade create-funnel" id="editFunnelStepPath" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+       
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i>
+            Edit Template url</h4>
+          </div>
+          <div class="modal-body">
+           <div class="alert alert-danger" ng-if="errormessage">             
+                  <strong>{{errormessage}}</strong>
+           </div>
+           
+            <span class="margin-tp"></span>
+              <div class="row">
+	            <label>Path: </label>
+	            	<input type="text"  class="form-control" ng-keyup="checkStepPath(editsteppath)" name="editsteppath" ng-model="editsteppath" placeholder="Give the path for this funnel step" required>
+	           <input type="hidden"  class="form-control" ng-model="editsteppathid" />
+             </div><span class="margin-tp"></span>
+                       
+          </div>
+          <div class="modal-footer">
+            <a  class="btn btn-primary" ng-click="saveFunnelStepPath()" target="_self">Save</a>
+            <a href="#" class="btn btn-default" ng-click="dataDismiss('funnelstep')" data-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+       <!----------------------------  Cancel Payment form ----------------------------------------->
+    <div class="modal fade create-funnel" id="cancelpaymentform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+     
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+      
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i>
+           Cancellation Request</h4>
+          </div>
+          <div class="modal-body">
+           <div class="alert alert-danger" ng-if="errormessage">             
+                  <strong>{{errormessage}}</strong>
+                    </div>
+            <div class="alert alert-success" ng-if="pass_success_message">	
+				<strong>{{pass_success_message}}</strong>
+			</div>
+               <div class="row" >
+	            <label>Name: </label>
+	            
+	            	<input type="text"  class="form-control" value="" ng-model="user_name" ng-bind-html="user_name" placeholder="Enter your name" required>
+	            
+             </div>
+             <div class="row" >
+	            <label>Email: </label>
+	            
+	            	<input type="email"  class="form-control" value="" ng-model="email" ng-bind-html="email" placeholder="Enter your email" required>
+	            
+             </div>
+          
+              <div class="row">
+	            <label>Reason for Cancellation </label>
+	            
+	            	<input type="text"  class="form-control" name="paymentcancel" ng-model="paymentcancel" placeholder="Give any reason for cancellation" required>
+	         		 <input type="hidden"  class="form-control"  ng-model="user_plan_id" />
+	         		 <input type="hidden"  class="form-control" ng-model="payment_type" />
+	         		
+             </div>
+             <span class="margin-tp"></span>
+                       
+          </div>
+          <div class="modal-footer">
+            <a  class="btn btn-primary" id="cancel-btn"  ng-click="saveUserCancelRequest(alert('cancel'))" target="_self">Save</a>
+            <a href="#" class="btn btn-default" ng-click="dataDismiss('funnelstep')" data-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+       <!----------------------------  Refund Payment form ----------------------------------------->
+    <div class="modal fade create-funnel" id="refundpaymentform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+       
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+            <i class="fa fa-edit"></i>
+            Refund Request</h4>
+          </div>
+          <div class="modal-body">
+           <div class="alert alert-danger" ng-if="errormessage">             
+                  <strong>{{errormessage}}</strong>
+                    </div>
+            <div class="alert alert-success" ng-if="pass_success_message">	
+				<strong>{{pass_success_message}}</strong>
+			</div>
+            <div class="row" >
+	            <label>Name: </label>
+	            
+	            	<input type="text"  class="form-control" value="" ng-model="user_name" ng-bind-html="user_name" placeholder="Enter your name" required>
+	            
+             </div>
+             <div class="row" >
+	            <label>Email: </label>
+	            
+	            	<input type="email"  class="form-control" value="" ng-model="email" ng-bind-html="email" placeholder="Enter your email" required>
+	            
+             </div>
+              <div class="row">
+	            <label>Reason for refund </label>
+	            	<input type="text"  class="form-control" name="paymentrefund" ng-model="paymentrefund" placeholder="Give any reason for refund" required>
+	         		<input type="hidden" ng-model="user_plan_id">
+	         		<input type="hidden" ng-model="payment_type">
+             </div><span class="margin-tp"></span>
+                       
+          </div>
+          <div class="modal-footer">
+            <a  class="btn btn-primary" id="refund-btn" ng-click="saveRefundUserRequest()" target="_self">Save</a>
+            <a href="#" class="btn btn-default" ng-click="dataDismiss('funnelstep')" data-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+       
+    
+       <!----------------------------  Change  Payment Plan ----------------------------------------->
+    <div class="modal fade create-funnel" id="updatepaymentform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+       
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+            <i class="fa fa-edit"></i>
+            Refund Request</h4>
+          </div>
+          <div class="modal-body">
+           <div class="alert alert-danger" ng-if="errormessage">             
+                  <strong>{{errormessage}}</strong>
+                    </div>
+            <div class="alert alert-success" ng-if="pass_success_message">	
+				<strong>{{pass_success_message}}</strong>
+			</div>
+            <div class="row" >
+	            <label>Name: </label>
+	            
+	            	<input type="text"  class="form-control" value="" ng-model="user_name" ng-bind-html="user_name" placeholder="Enter your name" required>
+	            
+             </div>
+             <div class="row" >
+	            <label>Email: </label>
+	            
+	            	<input type="email"  class="form-control" value="" ng-model="email" ng-bind-html="email" placeholder="Enter your email" required>
+	            
+             </div>
+              <div class="row">
+	            <label>Select Payment Plan </label></br>
+	            	<select class="form-control"  data-required="true" data-trigger="change" ng-model="payment_plan" >
+                           
+                                <option value="">Select Payment Plan</option>
+                                <option ng-repeat="plan in paymentplans" ng-if="plan.status==1" value="{{plan.id}}">{{plan.validity}} months : {{plan.price}} USD - {{plan.name}}</option>
+                               
+                            </select>
+	         		<input type="hidden" ng-model="user_plan_id">
+	         		<input type="hidden" ng-model="payment_type">
+             </div><span class="margin-tp"></span>
+                       
+          </div>
+          <div class="modal-footer">
+            <a  class="btn btn-primary" id="changePlan-btn" ng-click="changeUserPaymentPlan()" target="_self">Update</a>
+            <a href="#" class="btn btn-default" ng-click="dataDismiss('funnelstep')" data-dismiss="modal">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+     </div>
+    
+    

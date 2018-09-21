@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="keyword" content="{{seo_page_keywords}}">
+    <meta name="description" content="{{seo_page_description}}">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title ng-model="seo_page_title" ng-bind-html="seo_page_title"></title>
+
+    
+    <!-- Custom -->
+    <link href="public/assets/preview-template/facebook-tab/custom_fb_preview.css" rel="stylesheet">
+      <link href="public/assets/preview-template/common/optin-form.css" rel="stylesheet">
+    <!-- fonts icon -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+ 
+  <div ng-controller="previewController">
+  <div set-height> 
+   <stateloadingindicator></stateloadingindicator>
+     
+    <div class="header">
+    	<div ng-if="Header==1" class="top-bar" ng-style="{'background-color' : styleArr[1]['default_value']}">
+    	
+    	 <div ng-if="text_1==1" class="col-md-5  col-md-offset-2" ng-class="{'top-bar-hide': logo_1==0 }">
+        <span ng-model ="header_title"  ng-bind-html="header_title"></span>
+        </a>
+        </div>
+        <div ng-if="logo_1==1" class="col-md-1" ng-class="{'header-logo-hide': text_1==0 }">
+        <a href="javascript:void(0)" target="_self" ng-click ="checkImageData('header_image' , 'logo_2',header_image)" >
+        <img src="public/assets/template/facebook-tab/images/{{header_image}}" alt="Liked" /></a>
+        </div>     
+        </div>
+    </div>
+  
+  <div class="main_part" ng-class="{'main-part-hide': text_2==0 && text_3==0 && logo_2==0 && link_1==0}">
+    <div class="banner">
+    	<div class="overlay" ng-style="{'background-color' : styleArr[2]['default_value']}">
+            <div class="container">
+                <div class="row" ng-class="{'container-row-hide': text_2==0 && text_3==0}">
+                    <div class="col-md-9" ng-class="{'banner-text1-hide': text_2==0}">
+                        <p ng-if="text_2==1" class="banner_text1" ng-model ="banner_text1"  ng-bind-html="banner_text1"></p>
+                        <p ng-class="{'banner-text1-hide': text_2==0}" ng-if="text_3==1" ng-model ="banner_text2"  ng-bind-html="banner_text2"></p>
+                    </div>
+                    <div ng-if="logo_2==1" class="col-md-3  banner_2img" ng-class="{'banner-image-hide': text_2==0 && text_3==0}">
+                        <img src="public/assets/template/facebook-tab/images/{{ banner_image }}" alt="Logo" />
+                    </div>
+                    <div ng-if="link_1==1" class="col-md-12">
+                        <a ng-style="{'background-color' : styleArr[29]['default_value']}" href="javascript:void(0);" target="_self" ng-click="callbtn()" ng-model="banner_call_to_action" ng-bind-html="banner_call_to_action" class="action-btn"></a>
+                    </div>
+                    <div ng-if="text_4==1" class="col-md-12 text-center" ng-class="{'text-center-hide': link_1==1==0}">
+                        <p  ng-model ="banner_text3"  ng-bind-html="banner_text3"></p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    <div class="pos-div" ng-style="{'background-color' : styleArr[32]['default_value']}" ng-class="{'pos-div-hide': logo_2==0 && text_4==0 && link_1==0 || video_1==0 }">
+        <div class="video" ng-class="{'video-div-hide': video_1==0 && text_6==0 && text_7==0 && link_2==0 }">
+            <div class="container">
+            <div ng-if="video_1==1">
+               <div class="fb-video" ng-model="vid_url" ng-bind-html="vid_url"></div>
+               </div>
+                <h3 ng-if="text_6==1" ng-model ="vid_title"  ng-bind-html="vid_title"></h3>
+                <p ng-if="text_7==1" ng-model ="vid_subtitle"  ng-bind-html="vid_subtitle"></p>
+                <a ng-if="link_2==1"  ng-style="{'background-color' : styleArr[30]['default_value']}" href="javascript:void(0)" target="_self" ng-click="callbtn()" ng-model="video_call_to_action" ng-bind-html="video_call_to_action" class="action-btn"></a>
+            </div>
+        </div>
+        
+        <div class="section-fb" ng-style="{'background-color' : styleArr[3]['default_value']}" ng-class="{'section-fb-hide': text_9==0 && text_10==0 && text_11==0 && link_3==0}">
+            <div class="container">
+            	<div class="row">
+                    <div class="col-md-12">
+                        <h2 ng-if="text_9==1" ng-model ="details_title"  ng-bind-html="details_title"></h2>
+                        <p ng-if="text_10==1" ng-model ="details_subtitle"  ng-bind-html="details_subtitle"></p>
+                       <p ng-if="text_11==1" ng-model ="details_text"  ng-bind-html="details_text"></p> 
+                        <a ng-if="link_3==1" ng-style="{'background-color' : styleArr[31]['default_value']}" href="javascript:void(0)" target="_self" ng-click="callbtn()" ng-model="details_call_to_action" ng-bind-html="details_call_to_action" class="action-btn"></a>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        
+  </div>  
+  </div>
+  </div>     
+        <div class="footer" ng-class="{'footer-hide': text_13==0}" ng-style="{'background-color' : styleArr[4]['default_value']}">
+            <p ng-if="text_13==1" ng-model ="copyright_title"  ng-bind-html="copyright_title"></p>
+        </div>
+   
+   <previewpopups></previewpopups>
+    
+      </div>
+   
+  </body>
+</html>

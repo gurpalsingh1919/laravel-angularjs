@@ -1,0 +1,162 @@
+<script>
+//Download CSV Data Functionality
+
+$(document).ready(function(){
+$("#download-csv").click(function(){
+var data = $('#txt').val();
+if(data == '')
+return;
+JSONToCSVConvertor(data, "Contacts", true);
+});
+});
+function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+//If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+var CSV = '';    
+//Set Report title in first row or line
+
+CSV += ReportTitle + '\r\n\n';
+
+//This condition will generate the Label/Header
+if (ShowLabel) {
+var row = "";
+
+//This loop will extract the label from 1st index of on array
+for (var index in arrData[0]) {
+
+//Now convert each value to string and comma-seprated
+row += index + ',';
+}
+row = row.slice(0, -1);
+
+//append Label row with line break
+CSV += row + '\r\n';
+}
+
+//1st loop is to extract each row
+for (var i = 0; i < arrData.length; i++) {
+var row = "";
+
+//2nd loop will extract each column and convert it in string comma-seprated
+for (var index in arrData[i]) {
+row += '"' + arrData[i][index] + '",';
+}
+row.slice(0, row.length - 1);
+
+//add a line break after each row
+CSV += row + '\r\n';
+}
+if (CSV == '') {        
+alert("Invalid data");
+return;
+}   
+
+//Generate a file name
+var fileName = "Registered_";
+//this will remove the blank-spaces from the title and replace it with an underscore
+fileName += ReportTitle.replace(/ /g,"_");   
+
+//Initialize file format you want csv or xls
+var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+// Now the little tricky part.
+// you can use either>> window.open(uri);
+// but this will not work in some browsers
+// or you will not get the correct file extension    
+
+//this trick will generate a temp <a /> tag
+var link = document.createElement("a");    
+link.href = uri;
+
+//set the visibility hidden so it will not effect on your web-layout
+link.style = "visibility:hidden";
+link.download = fileName + ".csv";
+
+//this part will append the anchor tag and remove it after automatic click
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+}
+</script>
+<div ng-show="loading" class="loading"><img src="public/assets/admin/loader-img.gif"></div>
+<loginafterheader></loginafterheader>
+<adminpopups></adminpopups>
+<div class="page-content">
+	<div class="container">
+		<div class="templates">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading col-md-12">
+						<div class="col-md-8">
+						<img src="public/assets/admin/images/panel-head-icon.png" alt="Panel heading" /> Funnel Contacts</div>
+						<div class="col-md-4">
+								<button class="back-btn" ng-click="backToMyEditedFunnel()"><i class="fa fa-backward"></i> Back</button>
+						</div>
+						
+						</div>
+						
+						<!-- /.panel-heading -->
+
+						<div class="panel-body">
+						<div>   
+							<div class="panel-search clearfix">
+							<label class="heading">Filter By Date</label>
+								<div id="startenddate">
+									 <span>From</span> <input type="text" id="startdate" ng-model="startDate" name="startDate" placeholder="Choose Start Date" datepickers /> 
+									 <span>: To</span> <input type="text" id="enddate" ng-model="endDate" name="endDate" placeholder="Choose End Date"datepickers  ng-change="getFunnelsContacts()"/>
+								</div>
+								<div class="right">
+									<form class="form-inline">
+									<input type="text" ng-model="search" class="form-control" placeholder="Search Contacts..">
+									</form>
+									<textarea id="txt" class='txtarea' style="display:none;">{{contactsArr}}</textarea>
+									<button id="download-csv" ng-disabled="contactsArr.length == 0" class='green-btn green-btn2n'><i class="fa fa-download"></i> Download</button>
+								</div>
+							</div> 
+
+							<div class="listing">
+								<div class="panel-group" >
+									<div class="panel panel-default">
+										<div class="panel-body" ng-class="{'tabelshow':contactsArr.length == 0}">
+									<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+												<th class="name">Name </th>
+												<th class="email">Email </th>
+												<th class="number">Contact Number </th>
+												<th class="step_name">Funnel Step </th>
+												<th class="step_name">Date </th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr dir-paginate="item in contactsArr|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+												<td>{{item.Name}}</td>
+												<td>{{item.Email}}</td>
+												<td>{{item.ContactNumber}}</td>
+												<td>{{item.StepName}}</td>
+												<td>{{item.Date}}</td>
+
+										</tr>
+									</tbody>
+								    </table> 
+										<!-- /.panel-body -->
+										</div>
+									 
+										<div class="pull-right">
+										<dir-pagination-controls
+										max-size="5"
+										direction-links="true"
+										boundary-links="true" >
+										</dir-pagination-controls>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>	
+						<div class="nofunnel" ng-if="contactsArr.length <= 0">
+							<h2>No Contacts Found!</h2>
+						</div>
+						</div>
+					</div>			

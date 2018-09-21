@@ -1,0 +1,16 @@
+<div class="edit-action-bar">
+    	<div class="container-fluid">
+        	<div class="page-name">
+            	<span ng-bind-html="PageName"></span>
+
+            	<a href="{{pagePath}}" class="page-path" target="_blank" ng-bind-html="pagePath"></a>
+                <!-- <input type="text" ng-model="pagePath" value="" placeholder="index"  disabled="disabled" /> -->
+
+            </div>
+            <div class="action">
+            	<a href="javascript:void(0)" target="_self" ng-click="publishTemplate();$event.preventDefault();" class="btn publish">Publish</a>
+                <a href="javascript:void(0)" target="_self"  ng-click="save_template();$event.preventDefault();" id="save_template" class="btn save">Save</a>
+                <a href="javascript:void(0)" target="_self" class="close" ng-click="close_template();$event.preventDefault();">x</a>        
+            </div>
+    </div>
+</div>

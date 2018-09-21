@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keyword" content="{{seo_page_keywords}}">
+		<meta name="description" content="{{seo_page_description}}">
+		<title ng-model="seo_page_title" ng-bind-html="seo_page_title"></title>
+
+		<!-- Custom -->
+		<link href="public/assets/preview-template/launching-soon/custom_ls_preview.css" rel="stylesheet">
+		<link href="public/assets/preview-template/common/optin-form.css" rel="stylesheet">
+		<!-- fonts icon -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!-- fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div ng-controller="previewController">
+			<stateloadingindicator></stateloadingindicator>
+			<div class="bg-container" ng-style="{'background-image':'url('+domain_path.name+'public/assets/template/launching-soon/images/'+top_background_image+')'}">
+			<div set-height>
+				<div ng-if="Header==1" class="header launch">
+					<div class="container">
+						<div ng-if="logo_1==1" class="col-xs-12 col-sm-4 col-md-4 launch-image">
+							<img src="public/assets/template/launching-soon/images/{{header_image}}" alt="Logo" />
+						</div>
+						<div ng-if="text_1==1" class="col-xs-12 col-sm-8 col-md-8 header-title">
+							<span ng-model ="header_title"  ng-bind-html="header_title"></span>
+						</div>
+					</div>
+				</div>
+				<div ng-if="Header==1" class="container">
+					<div class="separator">&nbsp;</div>
+				</div>
+				<div class="banner" ng-class="{'banner-hide': Header==0}">
+					<div class="container">
+						<a ng-if="text_2==1" href="javascript:void(0)" target="_self" ng-model="timer_heading" ng-bind-html="timer_heading" ng-click="checkData('timer_heading','text_1')"></a>
+						<div ng-if="Banner==1" class="countdown" ng-model="time_counter" ng-init="timecount=time_counter">
+							<div class="time" data-toggle="modal" data-target="#CountdownModal" ng-click="countdown('time_counter',time_counter)">
+								<div id="example">
+									<span  class="dsp_inline">
+										<span class="days bg">00</span>
+										<span class="days_text dd">Days</span>
+									</span>
+									<span class="dot">:</span>
+									<span  class="dsp_inline">
+										<span class="hours bg">00</span><span class="hours_text dd">Hours</span>
+									</span>
+									<span class="dot">:</span>
+									<span  class="dsp_inline">
+										<span class="minutes bg">00</span>
+										<span class="minutes_text dd">Minutes</span>
+									</span>
+									<span class="dot">:</span>
+									<span  class="dsp_inline">
+										<span class="seconds bg">00</span>
+										<span class="seconds_text dd">Seconds</span>
+									</span>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div>
+				<div class="content">
+					<div class="container">
+						<div ng-if="Video==1" class="video" id="video">
+							<p ng-model="vid_url" ng-bind-html="vid_url"></p>
+						</div>
+						<h2 ng-if="text_3==1" ng-model="details_title" ng-bind-html="details_title"></h2>
+						<p ng-if="text_4==1" ng-model="details_subtitle" ng-bind-html="details_subtitle"></p>
+						<div ng-if="link_1==1" class="action-lc launching">
+							<div class="action calltoaction-button"  ng-style="{'background-color' : styleArr[31]['default_value']}">
+								<a href="javascript:void(0);" class="action-btn" ng-click="callbtn()" ng-model="details_call_to_action" ng-bind-html="details_call_to_action"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-if="Copyrights==1" class="footer" ng-style="{'background-color': styleArr[4]['default_value']}">
+				<a ng-if="text_6==1" ng-model ="copyright_title"  ng-bind-html="copyright_title"></a>
+			</div>
+			</div>
+			<previewpopups></previewpopups>
+		</div>
+	</body>
+</html>

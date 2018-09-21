@@ -1,0 +1,36 @@
+ <loginbeforeheader></loginbeforeheader>
+ <div class="user-log">
+     	<div class="container">
+        	<div class="bg">
+            	<div class="header-section">
+                	Admin Login
+                </div>
+                <div class="user-body" ng-controller="AdminController">
+                
+					<form role="form"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="adminlogin_form" ng-submit="adminlogin_form.$valid && adminlogin()" name="adminlogin_form" >
+					<div class="alert alert-danger" ng-if="error">
+					{{error}}
+					
+					</div>
+					 <div class="form">
+                	<div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/user.png" alt="User" /></label>
+                        <input type="email" value="" name="adminemail" ng-model="adminemail" class="form-control" placeholder="E-mail" required>
+                    </div>
+                    <div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/lock.png" alt="Password" /></label>
+                        <input type="password" value="" name="adminpassword" ng-model="adminpassword" class="form-control" placeholder="Password" required>
+                    </div>
+					
+                    <div class="user-row clearfix">
+                    	<button type="submit" id="adminlogin_btn"  class="btn blue-btn">Login</button>
+                    </div>
+					</div>
+                    </form>
+                    <div class="links">
+                        <a href="/forgotpassword" class="pull-right admin">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>

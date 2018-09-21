@@ -1,0 +1,77 @@
+<div class="wrapper right-side">
+<div class="template-section"> 
+   <div class="navbar-header">
+       <a href="javascript:void(0)" onclick="toggleDisplay();" class="nav-toggle toggledisplays"><i class="fa fa-bars"></i></a>
+  </div>	
+<div  id="takescreenshot" class="bg-container" spellcheck=false  ng-style="{'background-image':'url('+domain_path.name+'public/assets/template/launching-soon/images/'+top_background_image+')'}">
+ <div set-height>
+  <a class="cog_icon background-cog-icon"  ng-click="backgorundImage('top_background_image' , 'logo_1', top_background_image)"><i class="fa fa-cog"></i></a>
+  <div ng-if="Header==1" class="header launch">
+      <div class="container">
+          <div ng-if="logo_1==1" class="col-xs-12 col-sm-4 col-md-6 launch-image">
+             <a href="javascript:void(0)" target="_self" ng-click ="checkImageData('header_image' , 'logo_2',header_image)" > <img src="public/assets/template/launching-soon/images/{{header_image}}" alt="Logo" /></a>
+          </div>
+          <div ng-if="text_1==1" class="col-xs-12 col-sm-6 col-md-6 header-title">
+    			<span class="header_title" ng-model ="header_title"  ng-bind-html="header_title" ng-click="checkData('header_title','text_1')"></span>
+          </div>
+      </div>
+  </div>
+  <div ng-if="Header==1" class="container">
+  	<div class="separator">&nbsp;</div>
+  </div>
+     <div class="banner" ng-class="{'banner-hide': Header==0}">
+         <div class="container">
+	            <a ng-if="text_2==1" href="javascript:void(0)" target="_self" ng-model="timer_heading" ng-bind-html="timer_heading" ng-click="checkData('timer_heading','text_2')"></a>
+	         <div ng-if="Banner==1" class="countdown" ng-model="time_counter" ng-init="timecount=time_counter">
+				 <div class="time" data-toggle="modal" data-target="#CountdownModal" ng-click="countdown('time_counter',time_counter)">
+					<div id="example">
+					    <span  class="dsp_inline">
+					    <span class="days bg">00</span>
+					    <span class="days_text dd">Days</span>
+					    </span>
+						<span class="dot">:</span>
+						<span  class="dsp_inline">
+						<span class="hours bg">00</span><span class="hours_text dd">Hours</span>
+						</span>
+						<span class="dot">:</span>
+						<span  class="dsp_inline">
+						<span class="minutes bg">00</span>
+						<span class="minutes_text dd">Minutes</span>
+						</span>
+						<span class="dot">:</span>
+						<span  class="dsp_inline">
+						<span class="seconds bg">00</span>
+						<span class="seconds_text dd">Seconds</span>
+						</span>
+					</div>
+				</div>		     
+	        </div> 
+      </div>
+  </div>
+       <div class="content">
+           <div class="container">
+               <div ng-if="Video==1" class="video video-iframe">
+               	<a href="javascript:void(0)" class="video_url" ng-model="vid_url" ng-bind-html="vid_url" ng-click ="checkData('vid_url' , 'video_1')" target="_self">        	 
+                </a>
+                 <a ng-if="Video==1" class="cog_icon video-icon" ng-click ="checkData('vid_url' , 'video_1')"><i class="fa fa-cog"></i></a>	
+               </div>
+               <a ng-if="text_3==1"  href="javascript:void(0)" target="_self" ng-model="details_title" ng-bind-html="details_title" ng-click="checkData('details_title','text_3')"></a>
+               <a ng-if="text_4==1"  href="javascript:void(0)" target="_self" ng-model="details_subtitle" ng-bind-html="details_subtitle" ng-click="checkData('details_subtitle','text_4')"></a>
+
+               <div ng-if="link_1==1" class="action-lc launching">         
+			   <div class="calltoaction-button" ng-style="{'background-color' : styleArr[31]['default_value']}">
+				    <a  href="javascript:void(0)" target="_self" class="action-btn" ng-click ="customSettingPopUp(1)" ng-model="details_call_to_action" ng-bind-html="details_call_to_action"> </a>
+				    <a class="cog_icon" ng-click="checkData('details_call_to_action' , 'text_5')"><i class="fa fa-cog"></i>
+					</a>
+			   </div>
+               </div>
+           </div>
+       </div>
+       </div>
+       <div ng-if="Copyrights==1"  class="footer-launching" ng-style="{'background-color': styleArr[4]['default_value']}">
+      	    <a ng-if="text_6==1"  href="javascript:void(0)" target="_self" ng-click ="checkData('copyright_title' , 'text_6')"
+              contenteditable="true" ng-model ="copyright_title"  ng-bind-html="copyright_title"></a>
+       </div>  
+</div>
+</div>
+</div>

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         <a href="/" class="navbar-brand"><img src="public/assets/admin/images/launchafunnel_logo.png" alt="logo" /></a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right" id="navbar">
+          <ul class="nav navbar-nav">
+          <!--  <li ><a href="javascript:void(0)"  target="_self">Benefits</a></li>
+            <li><a href="javascript:void(0)"  target="_self">Tutorial</a></li>
+            <li><a href="javascript:void(0)"  target="_self">Clients</a></li>
+            <li><a href="javascript:void(0)"  target="_self">Prices</a></li>-->
+
+            <li ng-class="{activelink: activeclass ==='usersignup'}"><a ng-click="signup()" href="javascript:void(0)"  target="_self" class="btn">Get Started</a></li>
+            <li ng-class="{activelink: activeclass ==='login'}"><a ng-click="loginuser()" href="javascript:void(0)" target="_self" class="btn" >Login</a></li>
+			<!-- li ng-class="{activelink: activeclass ==='adminlogin'}"><a ng-click="adminlog()" href="javascript:void(0)" target="_self" class="btn" >Admin</a></li> -->
+          </ul>
+         <!-- <ul class="nav navbar-nav">
+            <li><a href="#login" class="btn login-btn">Login</a></li>
+          </ul>-->
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>

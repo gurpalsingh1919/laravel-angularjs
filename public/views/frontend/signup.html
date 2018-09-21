@@ -1,0 +1,87 @@
+ <div ng-show="loadingModel" class="loadingModel"><img src="public/assets/admin/loader-img.gif"><br/>
+ <p>Please wait....</p></div>
+ <loginbeforeheader></loginbeforeheader>
+  <div class="user-log sign-up">
+     	<div class="container">
+     	 <form role="form"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="register_form" ng-submit="register_form.$valid && register()" name="register_form" >
+					<div class="alert alert-danger" ng-if="errormessage">
+					<strong>{{errormessage}}</strong> 
+					</div>
+					 <div class="form">
+        	<div class="bg pull-left">
+            	<div class="header-section">
+                	Personal Info
+                </div>
+                <div class="user-body">
+               
+					
+                	<div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/user.png" alt="User" /></label>
+                        <input type="text" value="" ng-model="first_name" placeholder="First Name" class="form-control" required>
+				          
+                    </div>
+                    <div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/user.png" alt="User" /></label>
+                        <input type="text" value="Last Name" ng-model="last_name" placeholder="Last Name" class="form-control" required>
+                    </div>
+                     <div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/email.png" alt="Email" /></label>
+                        <input type="email" value="" ng-model="email" placeholder="Email" class="form-control" required>
+                   
+                    </div>
+                    <div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/lock.png" alt="Password" /></label>
+                        <input type="password" id="password"   value="" ng-model="password" placeholder="Password" class="form-control" required>
+                    </div>
+                    <div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/lock.png" alt="Password" /></label>
+                        <input type="password"  id="confirm_paswd" value="" data-equalto="#password" ng-model="confirm_paswd" placeholder="Confirm Password" class="form-control" required>
+                    </div>
+                     <div class="user-row clearfix">
+                    	<label><img src="public/assets/frontend/images/phone.png" alt="Phone" /></label>
+
+                        <input type="number" value="" name="mobile" ng-model="phone_no" placeholder="Phone Number"data-trigger="keyup" minlength=10 data-rangelength="[10,14]" class="form-control">
+                        <span  class="signup-error" ng-show="register_form.mobile.$invalid">Please enter valid phone number.</span>
+                   </div>
+                   
+                  
+                   
+                </div>
+                
+            </div>
+    		<div class="bg bg-sml pull-right">
+            	<div class="header-section">
+                	Billing Information
+                </div>
+                <div class="user-body">
+                <div class="user-row  clearfix">
+                        <img alt="Payment Method" src="public/assets/frontend/images/payment-method.png">
+                    </div>
+                	 <div class="user-row clearfix">
+                        <div class="select-style" >
+                            <select data-required="true" data-trigger="change" ng-model="payment_plan" >
+                           
+                                <option value="">Select Payment Plan</option>
+                                <option ng-repeat="plan in planArr" ng-if="plan.status==1" value="{{plan.id}}">{{plan.validity}} months : {{plan.price}} USD - {{plan.name}}</option>
+                                <!-- option value="1">planArr.validity month : $100.00 USD - Monthly</option>
+                                <option value="2">3 month : $250.00 USD - Quaterly</option>
+                                <option value="3">12 month : $1000.00 USD - Yearly</option> -->
+                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="user-row text-right" style="margin-top:137px;">
+                        	<img alt="Checkout" src="public/assets/frontend/images/secure-checkout.png">
+                        </div>
+                     <div class="user-row clearfix">
+                    	<button type="submit" id="login_btn"  class="btn blue-btn">CREATE AN ACCOUNT</button>
+                    	<!-- a ng-click="auth.login()" class="btn blue-btn">Login</a> -->
+                    </div>
+                </div>
+            </div>
+        </div> 
+         <div class="form">
+         </form>
+     </div>
+     
+     

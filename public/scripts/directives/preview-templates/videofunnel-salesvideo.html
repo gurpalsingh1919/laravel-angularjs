@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+ 
+<html> 
+<head>
+  <meta name="keyword" content="{{seo_page_keywords}}">
+    <meta name="description" content="{{seo_page_description}}">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title ng-model="seo_page_title" ng-bind-html="seo_page_title"></title>
+<meta class="metaTagTop" name="author" content="Your Name"><meta class="metaTagTop" property="og:image" content="" id="social-image">
+
+<link rel="stylesheet" media="screen" href="public/assets/preview-template/videofunnel-salesvideo/custom_vfsv_preview.css"/>
+<link href="public/assets/preview-template/common/optin-form.css" rel="stylesheet">
+</head>
+<body>
+<div ng-controller="previewController">
+<stateloadingindicator></stateloadingindicator>
+<div class="wrapper">
+	<div ng-if="Header==1" class="top_header"  ng-style="{'background-color' : styleArr[1]['default_value']}">
+		<img ng-if="logo_1==1" src="public/assets/template/videofunnel-salesvideo/images/{{header_image}}" alt="" />  
+	</div>
+    
+    
+	<div class="main_part" ng-style="{'background-color' : styleArr[3]['default_value']}" set-height>
+    	<div class="container">
+        	<div class="center_part" ng-class="{'center-part-hide': text_1==0 && text_2==0 && video_1==0 && text_3==0 && text_4==0 && tab_1==0 && text_6==0}" ng-style="{'background-color' : styleArr[2]['default_value']}">
+        		<p ng-if="text_1==1" ng-model ="vid_title"  ng-bind-html="vid_title"></p>
+        		<span ng-if="text_2==1" class="vid_subtitle" ng-model ="vid_subtitle"  ng-bind-html="vid_subtitle"></span>
+            	
+                <div class="video">
+                	<div class="elVideoSkin1" ng-if="video_1==1">
+                	<div class="fluid-width-video-wrapper" ng-bind-html="vid_url">
+                	<!-- iframe src="https://www.youtube.com/embed/t1skBY5JJZg?autoplay=1&amp;modestbranding=1&amp;controls=0&amp;showinfo=0&amp;rel=0&amp;hd=1&amp;wmode=transparent" frameborder="0" allowfullscreen="" wmode="opaque" id="fitvid890893"></iframe> -->
+                    </div>
+                    </div>
+                    
+                    <span ng-if="text_3==1" ng-bind-html="video_text"></span>
+                    <p ng-if="text_4==1" ng-bind-html="details_title"></p>
+                <button ng-if="tab_1==1" class="button" ng-click="Checklinked('details_link', 'details_link_value')" ng-style="{'background-color' : styleArr[29]['default_value']}" ng-model="details_call_to_action" ng-bind-html="details_call_to_action"></button>
+                <p ng-if="text_6==1" ng-bind-html="detail_text1"></p>
+                </div>
+  
+            </div>
+            
+            
+            <div class="footer" ng-class="{'footer-videofunnel-hide': text_7==0 && text_8==0 }">
+            	<span ng-if="text_7==1" ng-bind-html="copyright_title"></span>
+                <p ng-if="text_8==1" ng-bind-html="copyright_text"></p>
+            </div>    
+        </div>
+    </div>
+</div>
+
+ <previewpopups></previewpopups>
+
+</div>
+
+  
+</body>
+</html> 

@@ -1,0 +1,168 @@
+ <loginafterheader></loginafterheader>
+   <adminpopups></adminpopups>
+     <div class="page-content editpage">
+     	<div class="container">
+            <div class="templates analytics">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <img src="public/assets/admin/images/panel-head-icon.png" alt="Panel heading" />  {{funnel_name}}
+                                    <ul class="heading-settings">
+                                        <li> <!-- ui-sref="funnelscontacts"-->
+                                            <a ng-click="getFunnelsContacts();" href="javascript:void(0)"  target="_self"><i class="fa fa-users"></i> Contacts</a>
+                                        </li>
+                                        <!-- <li>
+                                            <a href="#"><i class="fa fa-money"></i> Sales</a>
+                                        </li> -->
+                                        <li>
+                                            <a ng-click="getFunnelSettings();" href="javascript:void(0)" target="_self"><i class="fa fa-cog"></i> Settings</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                   <funnelsteps></funnelsteps>
+                                     <div class="content-panel" ng-repeat="item in list" ng-if="stepId==item.id">
+                                        <div class="header">
+                                            <span class="title">{{item.name}}</span>
+                                           <!-- <ul class="over-tb">
+                                                <li class="active">
+                                                    <a href="javascript:void(0)" target="_self" ng-click="createdFunnel();" ><i class="fa fa-area-chart"></i> Preview</a>
+                                                </li>
+                                                <li><a href="javascript:void(0)" target="_self" ng-click="deleteStepFromFunnel();" ng-class="{'disable':item.is_default == 1}">
+                                                  <i class="fa fa-trash"></i> Delete</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" target="_self"><i class="fa fa-download"></i> Download</a>
+                                                </li>
+                                            </ul> -->
+                                        </div>
+                                        <div class="content-panel-body"  ng-if="template_id !='0'" >
+                                        <div>
+	                                            <div class="clearfix" >
+	                                            	<div class="link-bar">
+	                                            		
+	                                            			<input type="text" ng-bind-html="funnelStepPath" ng-model="funnelStepPath" placeholder="https://cszinc.clickfunnels.com/squeeze-pageibwndryk">
+	                                            			
+	                                            			<a href="{{funnelStepPath}}" target="_blank"  >	
+	                                            				<i class="fa fa-external-link"></i>
+	                                            			</a>
+	                                            			<a href="javascript:void(0)" target="_self" ng-click="editStepPath(item.id,item.slug)"  >	
+	                                            				<i class="fa fa-cog"></i>
+	                                            			</a>
+	                                            				
+	                                            	</div>
+	                                            	</div>
+	                                            	 <div class="clearfix" ng-if="funnel_cname !='0'" >
+	                                            	<div class="link-bar">
+	                                            		
+	                                            			<input type="text" ng-bind-html="funnelcnamepath" ng-model="funnelcnamepath" placeholder="https://cszinc.clickfunnels.com/squeeze-pageibwndryk">
+	                                            			<a href="{{funnelcnamepath}}" target="_blank"  >	
+	                                            				<i class="fa fa-external-link"></i>
+	                                            			</a>
+	                                            	</div>
+	                                            	</div>
+                                            <div class="widget">
+	                                            <div class="visitors">
+	                                            	<span>Visitors</span>
+	                                            	<strong>{{item.visitors}}</strong>
+	                                            </div>
+	                                             <div ng-hide="item.template_id =='14' || item.template_id =='15' || item.template_id =='12'" ng-click="getFunnelsContacts();" class="visitors user123">
+	                                            	<span>Contacts</span>
+	                                            	<strong>{{item.contacts}}</strong>
+	                                            </div>
+	                                             <div ng-hide="item.template_id =='14' || item.template_id =='15' || item.template_id =='12'" class="visitors useravg123">
+	                                            	<span>CONTACTS CONV RATE </span>
+	                                            	<strong ng-if="item.visitors !='0'">{{(item.contacts/item.visitors)*100 | number:2 | number}} %</strong>
+	                                            	<strong ng-if="item.visitors =='0'">0 %</strong>
+	                                            </div>
+                                            </div>
+                                            <div class="visitor-temp-container"> 
+                                            <div class="visitor-temp" >
+                                               <div class="view_img_size"><img src="public/assets/admin/images/thumbnail-images/{{item.image}}" alt="Template" /></div>
+                                                <div class="clearfix">
+                                                      <div class="button-group">
+                                                      
+                                                      	 <button class="preview" ng-click="createdFunnel();"><i class="fa fa-external-link" ></i> Preview</button>
+                                                      	 <button class="edit" ng-click="select(item.temp_code , item.temp_slug);"><i class="fa fa-pencil-square-o"></i> Edit</button>
+                                                      	 <!--<button class="download"><i class="fa fa-download"></i> Download</button>-->
+                                                     <button  ng-if="item.is_default != 1" class="delete_b" ng-click="deleteStepFromFunnel();"><i class="fa fa-trash"></i> Delete</button>                                                       
+                                                      </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    
+                                    
+                                    
+                                    
+                                    <!-- All Templates if no template selected -->
+                                     <div class="content-panel" ng-if ="template_id =='0'" ng-init="stepId=0"  ng-controller="categorycontroller">
+                                	<div class="header">
+                                    	<!--span class="title"><strong>Page Type:</strong> Webinar Thank You</span>
+                                        <span class="search">
+                                        	<input type="text" placeholder="Webinar Confirmation" />
+                                            <i class="fa fa-pencil"></i>
+                                        </span> -->
+                                    </div>
+                                    <div class="content-panel-body">
+                                    	<div class="tab-head" style="visibility: hidden;">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active" ng-click="checkCategory(0)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >All Pages</a></li>
+                                                <li ng-click="checkCategory(1)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Opt-in  Pages</a></li>
+                                                <li ng-click="checkCategory(2)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Thank You Pages</a></li>
+                                                <li ng-click="checkCategory(3)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Launch Pages</a></li>
+                                                <li ng-click="checkCategory(4)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Video Pages</a></li>
+                                                <li ng-click="checkCategory(5)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Offer Pages</a></li>
+                                            </ul>
+                                            <div class="template-search">
+                                            	<input type="text" ng-model="searchtemplate" placeholder="Search Templates" /> 
+                                                <i class="fa fa-search"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tab-content" style="margin-top: -60px;">
+                                        	<div id="tabs1-pane1" class="tab-pane active">
+                                                <div class="template-container">
+                                                	<div class="row">
+                                                	<div ng-repeat="Arr in catArr | filter:searchtemplate">
+                                                    	<div class="col-md-4">
+                                                            <a href="javascript:void(0)" target="_self" >
+                                                                <div class="temp-case">
+                                                                    <div class="img-case">
+                                                                        <img src="public/assets/admin/images/thumbnail-images/{{Arr.image}}" alt="Template" />
+                                                                        <div class="img-case-over" >
+                                                                            
+                                                                            <a target="_self"   href="javascript:void(0)" class="preview-btn"  ng-click="addTemplateIntoStep(Arr.id,Arr.temp_code,Arr.image,Arr.slug);"><i class="fa fa-eye"></i> Select</a>
+                                                                             <a href="javascript:void(0)" target="_self"  class="select-btn" ng-click="preview(Arr.temp_code ,Arr.slug,stepId);"><i class="fa fa-check"></i> Preview</a>
+                                                                            </div>
+                                                                    </div>
+                                                                    <p>{{Arr.name}}</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        </div>
+                                                   
+                                                         
+                                                        </div>
+                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                     
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- ---------- End templates body  ----------------->
+                                    
+                                    </div>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                     </div>
+                </div>
+            </div>
+         </div>
+     </div>
+    

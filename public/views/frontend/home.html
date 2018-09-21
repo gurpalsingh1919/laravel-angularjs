@@ -1,0 +1,113 @@
+  <loginbeforeheader></loginbeforeheader>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron banner-home">
+      	<div class="container">
+        	<h5>The Best Start</h5>
+            <h1>For Your Business</h1>
+            <p class="para">No fluff. Nothing should lead the visitor away from the main essence of website. There must be just important information.</p>
+            <p>
+              <a role="button" href="/usersignup" class="btn view-btn">View more</a>
+              <a role="button" href="/usersignup" class="btn create-btn">Create your Theme</a>
+            </p>
+            <img src="public/assets/frontend/images/show-case.png" alt="Show Case" />
+        </div>
+      </div>
+      
+      <div class="feature">
+          <div class="container">
+          <!-- Three columns of text below the carousel -->
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="public/assets/frontend/images/feature-responsive.png" />
+              <h2>Fully responsive</h2>
+              <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img src="public/assets/frontend/images/feature-pure.png" />
+              <h2>Pure & Simple</h2>
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img src="public/assets/frontend/images/feature-color.png" />
+              <h2>Color Schemes</h2>
+              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img src="public/assets/frontend/images/feature-psd.png" />
+              <h2>PSD Is Included</h2>
+              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img src="public/assets/frontend/images/feature-document.png" />
+              <h2>Documentation</h2>
+              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img src="public/assets/frontend/images/feature-multiplatform.png" />
+              <h2>Multiplatform</h2>
+              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div><!-- /.col-lg-4 -->
+          </div><!-- /.row -->
+        </div>
+    </div>
+     
+     <div class="tool">
+     	<div class="container">
+        	<h3>Great tool for All</h3>
+            <i>Modern solution</i>
+            <p>In our work we try to use only the most modern, convenient and interesting<br>solutions. We want the template you downloaded look unique and new for<br>such a long time as it is possible. </p>
+            <img src="public/assets/frontend/images/tool-banner.png" alt="Tools" />
+        </div>
+     </div>
+     
+     <div class="video">
+     	<div class="container">
+        	<h3>A page builder for the next generation.</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,<br>totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi. </p>
+            <img src="public/assets/frontend/images/video.png" alt="Video" />
+        </div>
+     </div>
+     
+     <div class="pricing">
+     	<div class="container">
+        	<h3 class="text-center">Pricing? That's easy.</h3>
+        	
+            <div class="pricing-row">
+            <div class="pricingrate" ng-repeat="plan in planArr" >
+             <div ng-show="$index % 2 == 0" class="pricing-bx blue-bx">
+                	<p class="user-type">{{plan.name}}</p>
+					<p class="price">{{plan.price}}</p>
+                    <p class="duration">{{plan.validity}} Months</p>
+                    <a href="/usersignup"  target="_self" class="btn">Get Started</a>
+                    <!-- <p class="requirement">30 Day Free Trial<br>No Credit Card Required </p> -->
+                </div>
+            	 <div ng-show="$index % 2 != 0"  class="pricing-bx gray-bx" >
+                	<p class="user-type">{{plan.name}}</p>
+                    <p class="price">{{plan.price}}</p>
+                    <p class="duration">{{plan.validity}} Months</p>
+                    <a href="/usersignup"  target="_self" class="btn">Get Started</a>
+                    <!-- <p class="requirement">30 Day Free Trial<br>No Credit Card Required </p> -->
+                </div>
+                </div>
+               
+            </div>
+            
+            
+        </div>
+     </div>
+  
+  <div class="newsletter">
+     	<div class="container">
+        	<h3>Start building more beautiful pages today.</h3>
+			<!-- <div class="row">
+       			<div class="col-md-6">
+	            	<input type="text" placeholder="Email Address" />
+                </div>
+                <div class="col-md-6">
+                	<button>Start Free</button>
+                </div>
+            </div>
+            <p>Free 30 day trial - No credit card required.</p> -->
+        </div>
+     </div>
+   

@@ -1,0 +1,52 @@
+ <div ng-controller="previewController">
+ <div class="main-modal modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="linkModalLabel">
+    <div ng-show="loadingModel" class="loadingModel" style="background:transparent;"></div>
+       <div class="settings-modal">
+        <div class="container">
+              <div class="modal-bx" style="position:relative">
+            	<div ng-show="loadingModel" class="loadingModel"><img src="public/assets/admin/loader-img.gif"></div>
+                <div class="close-btn"><a href="javascript:void(0)" target="_self" data-dismiss="modal"><img src="public/assets/admin/images/close.png" alt="Close" /></a></div>
+               
+                <div class="header">
+                    <a href="javascript:void(0)" target="_self" ><img src="public/assets/admin/images/progress-bar.png" alt="progress" /></a>
+                   	<div ng-style="{'font-size':styleArr[33]['default_value']+'px','font-family':styleArr[34]['default_value']}" ng-model ="call_to_action_title"   ng-bind-html="call_to_action_title"></div>
+                   
+                </div>
+                <div class="content-body row clearfix">
+                    <div class="col-md-4 left">
+                        <a href="javascript:void(0)" target="_self" ><img src="public/assets/admin/images/ebook-img/{{call_to_action_popup_image}}" alt="Watch" /></a>
+                    </div>
+                    <div class="col-md-8">
+                     
+                        <div ng-style="{'font-size': styleArr[35]['default_value']+'px','font-family': styleArr[36]['default_value']}" class="ebookheader" ng-model ="call_to_action_subtitle"   ng-bind-html="call_to_action_subtitle"></div>
+                       
+                      
+                       <form name="frmRegister" ng-submit="CallToActionformSubmit()" novalidate>
+                            <input type="text" name="username" ng-model="username" class="form-control" placeholder="{{call_to_action_input_name1}}" required />
+                            <span class="error" ng-show="submitted && frmRegister.username.$error.username" ng-bind-html="calltoaction_field1_invalid_value_mess"></span>
+                            <span class="error" ng-show="submitted && frmRegister.username.$error.required" ng-bind-html="calltoaction_field1_required_mess"></span>
+                            
+                            <input type="email" ng-model="email" name="email" class="form-control" placeholder="{{call_to_action_input_name2}}" required />
+                            <span  class="error" ng-show="submitted && frmRegister.email.$error.email" ng-bind-html="calltoaction_field2_invalid_value_mess"></span>
+                             <span  class="error" ng-show="submitted && frmRegister.email.$error.required"  ng-bind-html="calltoaction_field2_required_mess"></span>
+                            
+                            <input type="number" ng-model="phoneno" name="phoneno" class="form-control" placeholder="{{call_to_action_input_name3}}" required />
+                             <span  class="error" ng-show="submitted && frmRegister.phoneno.$error.number" ng-bind-html="calltoaction_field3_invalid_value_mess"></span>
+                              <span  class="error" ng-show="submitted && frmRegister.phoneno.$error.required"  ng-bind-html="calltoaction_field3_required_mess"></span>
+                             
+                            <button type="submit" id="addcontact" class="btn btn-default blue-btn-custom getStarted" ng-style="{'background-color' : styleArr[0]['default_value'], 'color': styleArr[37]['default_value']}" ng-bind-html="call_to_action_button_title"></button>
+                             <div class="button-below-text">
+                            	<div class="lockImageEbook"><img src="public/assets/admin/images/lock.png" classs alt="Lock"  /></div>
+                            	<div class="lockImageEbooktext" ng-bind-html="call_to_action_button_below_text"> </div>
+                            </div>	
+                            <input type="hidden" ng-model="autoResponder_selected" name="autoResponder_selected" /> 
+                             <input type="hidden" ng-model="autoresponder_list_val" name="autoresponder_list_val" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+   

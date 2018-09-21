@@ -1,0 +1,70 @@
+<loginafterheader></loginafterheader>
+<div class="page-content">
+	<div class="container">
+		<div class="templates">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading col-md-12">
+						<div class="col-md-8">
+						<img src="public/assets/admin/images/panel-head-icon.png" alt="Panel heading" /> Funnel Settings</div>
+						<div class="col-md-4">
+								<button class="back-btn" ng-click="backToMyEditedFunnel()"><i class="fa fa-backward"></i> Back</button>
+						</div>
+						
+						</div>
+						
+						<!-- /.panel-heading -->
+
+						<div class="panel-body user-account">
+						  <div class="left-tab col-">
+								<ul class="nav nav-tabs nav-stacked span2">
+                        			<li class="active"><a href="javascript:void(0)" target="_self" >
+                        			<i class="fa fa-user"></i> My funnel</a></li>
+                       			 </ul>
+						</div>
+						  <div class="right-tab-content tab-content">
+							 <div class="tab-pane">
+                				 <div class="alert alert-danger" ng-if="error_message">							
+							<strong>{{error_message}}</strong>
+							</div>
+							 <div class="alert alert-success" ng-if="success_message">	
+								<strong>{{success_message}}</strong>
+							</div>
+		                       
+				                      
+						                 <form role="form" class="form password-change"   novalidate="novalidate"  id="funnel_setting" ng-submit="funnel_setting.$valid && updatefunnelDetail()" name="funnel_setting" >
+				                        	   <div class="content">
+				                        	 <div class="user-row">
+				                            	<label>Funnel name</label>
+				                              
+				                                <input type="text" value="" ng-model="funnel_name" placeholder="Please enter funnel name"  required>
+				                             </div> 
+				                            <div class="user-row">
+				                            	<label>CNAME </label>
+				                              
+				                                <input type="url" data-parsley-type="url" name="cname" ng-model="cname" placeholder="Please enter CNAME" required>
+				                           		 <span  class="error" ng-show="funnel_setting.cname.$error.url">Please enter valid Url</span>
+				                           		<p style="margin-left: 221px;">Example:- http://www.abc.com</p>
+				                           		<p style="margin-left: 221px; line-height: 0px;">Please add this domian to CNAME</p>
+				                           		
+				                           </div>
+				                           
+				                             <div class="tab-footer">
+				                            	<button  class="btn-blue" id="change_password_btn">Save</button>
+				         						<button class="btn-cancel" ng-click="backToMyEditedFunnel()">Cancel</button>
+				                            </div>
+				                             </div>
+				                            </form>
+				                       
+                    			</div>
+                    		</div>
+						</div>
+					</div>	
+				</div>	
+			</div>	
+		</div>	
+	</div>	
+</div>		
+					
+						

@@ -1,0 +1,519 @@
+<div ng-show="custom_setting_status" class="int-settings">
+ <div class="overlay">
+   
+    <div class="col-md-2">
+    
+    <!-------------------------Start Home Sidebar----------------------->
+	        <div class="settings-bar"  ng-show="home_sidebar">
+			<h2>Form</h2>
+	        <div class="settings-body">
+	        	<div class="row-group">
+	            	
+	                <div class="form-group clearfix">
+						<ul class="side_ul">
+						<li>
+							<a class="btn-block local" data-target="integration" ng-click="ebook_editor_integration=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-envelope"></i> Integration settings
+							</a>
+						</li>
+						<li>
+							<a class="btn-block local" ng-show="not_optin" data-target="form-header-text" ng-click="header_text=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-picture-o"></i> Header Text
+							</a>
+						</li>
+						<li>
+							<a class="btn-block local" ng-show="not_optin" data-target="form-image" ng-click="form_image=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-picture-o"></i> Form Image
+							</a>
+						</li>
+						<li>
+							<a class="btn-block local" ng-show="not_optin" data-target="form-title" ng-click="headertitle=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-bars"></i> Heading style
+							</a>
+						</li>
+						<!-- <li>
+							<a class="btn-block local" data-target="form" ng-click="ebook_editor_integration=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-text-height"></i>Form style
+							</a>
+						</li>-->
+						<li>
+							<a class="btn-block local" data-target="submit-button" ng-click="button_title=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-check"></i> Submit button
+							</a>
+						</li>
+						<li>
+							<a class="btn-block local" ng-show="not_optin" data-target="privacy-policy" ng-click="button_below_text=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-eye"></i> Privacy policy
+							</a>
+						</li>
+						<!--  <li>
+							<a class="btn-block local" data-target="advanced-features" ng-click="ebook_editor_integration=true" href="javascript:void(0)" target="_self">
+							<i class="editico ic-jsvariables"></i>Tracking code
+							</a>
+						</li>-->
+						<li>
+							<a class="btn-block local" data-target="redirect-url" ng-click="thank_you=true" href="javascript:void(0)" target="_self">
+							<i class="fa fa-thumbs-up"></i> Thank you page
+							</a>
+						</li>
+						</ul class="side_ul">
+						<ul>
+						Form fields<!--   <button class="refresh btn btn-mini btn-warning pull-right">Reload</button>-->
+						<li><a class="btn-block local" ng-show="not_optin" data-target="redirect-url" ng-click="input_name1=true" href="javascript:void(0)" target="_self">Name</a></li>
+						<li><a class="btn-block local" data-target="redirect-url" ng-click="input_name2=true" href="javascript:void(0)" target="_self">Email</a></li>
+						<li><a class="btn-block local" ng-show="not_optin" data-target="redirect-url" ng-click="input_name3=true" href="javascript:void(0)" target="_self">Phone Number</a></li>					
+						</ul>
+	                  </div>
+	            </div>
+	         </div>
+	                <button class="btn-cancel" ng-click="customSettingPopUp(0)">Done</button>
+	         </div>
+	    
+    <!------------------------Start Home Sidebar--------------------------->
+    
+   
+    <!--------------------------Integration Setting ----------------------------->
+		    <div class="settings-bar" ng-show="ebook_editor_integration">
+		    	<h2>Integration Settings</h2>
+		        <div class="settings-body">
+		        	<div class="row-group">
+		            	<label>Integrate form with:</label>
+		            	    <select class="form-control" ng-model="autoResponder_selected">
+		            	    <option value=""> Please Select</option>
+                              <option  ng-repeat="response in autoResponder" value="{{response.name}}" ng-selected="autoResponder_selected == response.name"> {{ response.name }} </option>
+                            </select>
+		            </div>
+		            <div class="row-group"  ng-repeat="response in autoResponder" ng-init="selectval=response.name">
+
+		           
+			               <div ng-if="autoResponder_selected == selectval">
+							<div class="autoresponderreload">
+  	                        <label class="using">Select list:</label>
+  	                        <div class="autoresponder-right">
+			                <div id="reloading-div"></div> 
+			               <a href="javascript:void(0)" target="_self" id="Reload" ng-click="reloadList(autoResponder_selected)">Reload</a>
+			                </div></div>
+			                <select class="form-control" ng-model="mySelect" ng-change="showSelectValue(mySelect)">
+			                       <option value="">Please Select</option>
+			                       <option  ng-repeat="apilist in response.api_list" ng-selected="{{apilist.id == autoresponder_list_val}}" value="{{apilist.id}}" >{{ apilist.name }}</option>
+			                 </select> 
+		                 </div>
+		              </div>
+		              
+		              
+		              
+		         </div>
+		         <button type="submit" class="btn-green" ng-click="customPopUpSave(1)">Customize this form</button>
+		    </div>  
+	
+	<!--------------------------Header Text ---------------------------->
+   			<div class="settings-bar"  ng-show="header_text">
+				<h2>Header Text</h2>
+        		<div class="settings-body">
+        		<div class="row-group">
+            	 <div class="form-group clearfix"> 
+
+               <textarea  ckeditor="editorOptions" name="editor" ng-model="call_to_action_title" ng-style="{'font-family' : text_font_family,'font-size':text_font_size+'px'}"></textarea>
+                  </div>
+            </div>
+            <div class="row-group">
+            	<label>Font</label>
+                <select class="form-control" ng-model="text_font_family">
+                	<option value="">Default font</option>
+                    <option value="Times-New-Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Comic-Sans-MS">Comic Sans MS</option>
+                    <option value="WildWest">WildWest</option>
+                    <option value="Bedrock">Bedrock</option>
+                </select>
+            </div>
+            <div class="row-group">
+            	<label>Font Size</label>
+                <select class="form-control" ng-model="text_font_size">
+                	<option value="">Default font size </option>
+                	<option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+         </div>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+    <!-----------------------------Header Text End-------------------------------------->
+    
+        <!-----------------------------Header Title Start---------------------------------->
+        <div class="settings-bar"  ng-show="headertitle">
+		<h2>Header Title</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+            	
+                <div class="form-group clearfix">
+                    <textarea  ckeditor="editorOptions" name="editor2" ng-model="call_to_action_subtitle"></textarea> 
+  
+                  </div>
+            </div>
+            <div class="row-group">
+            	<label>Font</label>
+                <select class="form-control" ng-model="title_font_family">
+                	<option value="">Default font</option>
+                    <option value="Times-New-Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Comic-Sans-MS">Comic Sans MS</option>
+                    <option value="WildWest">WildWest</option>
+                    <option value="Bedrock">Bedrock</option>
+                </select>
+            </div>
+            <div class="row-group">
+            	<label>Font Size</label>
+                <select class="form-control" ng-model="title_font_size">
+                	<option value="">Default font size </option>
+                	<option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+         </div>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+        <!-----------------------------Header Title End---------------------------------->
+        
+        <!-----------------------------Form Image ---------------------------------->
+        <div class="settings-bar" ng-show="form_image" ng-controller="eBooksController">
+    	<h2>Form Image</h2>
+        <div class="settings-body" style="min-height:inherit">
+        	<div class="row-group">
+            	<h3>1) Choose image</h3> 
+            	<div class="content-scroll" style="max-height:310px">
+            	<ul class="upload-img clearfix" >
+            	<div class="custompopimgload"></div>
+                	<li ng-repeat="img in ebook_image"> 
+                        <a href="javascript:void(0)" target="_self">                      
+                        <img src="public/assets/admin/images/ebook-img/{{img.img_name}}" 
+							 ng-if="checkDefault(img.isDefault,1)"  ng-click="changeHeaderImage(img.img_name,img.isDefault,UserId,'form_img')" alt="Upload Image" />
+							   <img src="public/assets/admin/images/ebook-img/{{img.img_name}}" 
+							 ng-if="checkDefault(img.isDefault,0)"  ng-click="changeHeaderImage(img.img_name,img.isDefault,UserId,img.id,'form_img')" alt="Upload Image" /> 
+                        </a>
+	                   <span ng-if="img.img_name != call_to_action_popup_image && ebook_image.length > 1" class="delete">
+	                    <img ng-click="deleteEbookImage(img.id)" src="public/assets/admin/images/trash.png" alt="Trash" />
+	                   </span>
+                    </li>
+                </ul>
+				</div>
+            </div>
+         </div>
+                    <div class="upload" >
+                    <div class="file_upload"> 
+                    <i class="fa fa-upload"></i>upload new image
+                        <input type="file" name="upload" ng-file-select ng-file-max-size="5MB"> 
+               			<input type="file"  ng-file-select> <input type="file"  ng-file-select>
+                     </div>
+                    </div>
+                <p>Maximum image size is 5 MB.<br>Recommended maximum dimensions 850x80</p>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+    </div>  
+         <!-----------------------------Form Image End---------------------------------->
+         
+        <!-----------------------------Input field1 Text Start---------------------------------->
+        <div class="settings-bar"  ng-show="input_name1">
+		<h2>Input Field First</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+            	
+                <div class="clearfix">
+                 <div class="form-group">
+                 <label>Placeholder Text</label> 
+                 <input type="text" class="form-control"  name="editor5" ng-model="call_to_action_input_name1">
+                 </div>
+                 <div class="form-group">
+                  <label>Invalid value message</label>
+                   <textarea name="editor6" class="form-control" ng-model="calltoaction_field1_invalid_value_mess"></textarea>
+                   </div>
+
+                  <div class="form-group">
+                  <label>Field required message</label>
+                   <textarea name="editor7" class="form-control" ng-model="calltoaction_field1_required_mess"></textarea>
+                   </div>
+          
+
+                  </div>
+            </div>
+
+         </div>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+        <!-----------------------------Input Field1 Text End---------------------------------->
+        
+        <!-----------------------------Input field2 Text Start---------------------------------->
+        <div class="settings-bar"  ng-show="input_name2">
+		<h2>Input field Second</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+            	
+               <div class="clearfix">
+                <div class="control-group"> 
+                <label>Placeholder Text</label> 
+                <input type="text" class="form-control" name="editor10" ng-model="call_to_action_input_name2">
+                </div>
+                <div class="form-group">
+                  <label>Invalid value message</label> 
+                  <textarea name="editor11" class="form-control" ng-model="calltoaction_field2_invalid_value_mess" ></textarea>
+                  </div>
+                  <!-- div class="form-group">
+                  <input type="checkbox" name="required" ng-model="calltoaction_field2_is_required">Field is required
+                  </div> -->
+                  <div class="form-group">
+                  <label>Field required message</label> 
+                  <textarea name="editor12" class="form-control" ng-model="calltoaction_field2_required_mess"></textarea>
+                  </div>
+              
+
+                  </div>
+            </div>
+ 
+         </div>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+        <!-----------------------------Input Field2 Text End---------------------------------->
+        
+        <!-----------------------------Input field3 Text Start---------------------------------->
+        <div class="settings-bar"  ng-show="input_name3">
+		<h2>Input Field Third</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+              <div class="clearfix">
+              	 <div class="form-group">
+                 <label>Placeholder Text</label> 
+                 <input type="text" class="form-control" name="editor14" ng-model="call_to_action_input_name3">
+                 </div>
+                 <div class="form-group">
+                  <label>Invalid value message</label> 
+                  <textarea name="editor15" class="form-control" ng-model="calltoaction_field3_invalid_value_mess"></textarea>
+                  </div>
+                  <!-- div class="form-group">
+                  <input type="checkbox" name="required" ng-model="calltoaction_field3_is_required">Field is required
+                  </div> -->
+                  <div class="form-group">
+                  <label>Field required message</label> 
+                  <textarea name="editor16" class="form-control" ng-model="calltoaction_field3_required_mess"></textarea>
+                  </div>
+              
+
+                  </div>
+            </div>
+                     
+         </div>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+        <!-----------------------------Input Field3 Text End---------------------------------->
+        
+        <!-----------------------------Button Title Start---------------------------------->
+        <div class="settings-bar"  ng-show="button_title">
+		<h2>Button Title</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+                <div class="form-group clearfix">
+                    <textarea  ckeditor="editorOptions" name="editor3" ng-model="call_to_action_button_title"></textarea> 
+                  </div>
+            </div>
+            <div class="row-group">
+			<div class="color_block">
+				<label>Button color</label>
+				<div class="custom-picker">	
+				  <div ng-repeat="style in styleArr">
+	               <a href="javascript:void(0)" ng-if="style.scopval == 'call_to_action_button_color'" >
+				<color-picker ng-model="style.default_value" color-picker-format="'hex'" ng-style="{'background-color':style.default_value}"></color-picker>
+				 </a>
+				</div>
+				</div>
+			</div>
+			</div>
+            <div class="row-group">
+			<div class="color_block">
+				<label>Button Text Color</label>
+				<div class="custom-picker">	
+				  <div ng-repeat="style in styleArr">
+	               <a href="javascript:void(0)" ng-if="style.scopval == 'call_to_action_button_text_color'" >
+				<color-picker ng-model="style.default_value" color-picker-format="'hex'" ng-style="{'color':style.default_value}"></color-picker>
+				 </a>
+				</div>
+				</div>
+			</div>
+			</div>
+
+            <!-- div class="row-group">
+            	<label>Font</label>
+                <select class="form-control" ng-model="title_font_family">
+                	<option value="">Default font</option>
+                    <option value="Times-New-Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Comic-Sans-MS">Comic Sans MS</option>
+                    <option value="WildWest">WildWest</option>
+                    <option value="Bedrock">Bedrock</option>
+                </select>
+            </div>
+            <div class="row-group">
+            	<label>Font Size</label>
+                <select class="form-control" ng-model="title_font_size">
+                	<option value="">Default font size </option>
+                	<option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div> -->
+           
+         </div>
+                     
+
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+        <!-----------------------------Button Title End---------------------------------->
+         
+         
+      
+       <!-----------------------------Button Below Text Start---------------------------------->
+        <div class="settings-bar"  ng-show="button_below_text">
+		<h2>Button Below Text</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+            	
+                <div class="form-group clearfix">
+                    <textarea  ckeditor="editorOptions" name="editor4" ng-model="call_to_action_button_below_text"></textarea> 
+
+                  </div>
+            </div>
+            <!-- div class="row-group">
+            	<label>Font</label>
+                <select class="form-control" ng-model="title_font_family">
+                	<option value="">Default font</option>
+                    <option value="Times-New-Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Comic-Sans-MS">Comic Sans MS</option>
+                    <option value="WildWest">WildWest</option>
+                    <option value="Bedrock">Bedrock</option>
+                </select>
+            </div>
+            <div class="row-group">
+            	<label>Font Size</label>
+                <select class="form-control" ng-model="title_font_size">
+                	<option value="">Default font size </option>
+                	<option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div> -->
+         </div>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+       <!-----------------------------Button Below Text End---------------------------------->
+        
+       <!-----------------------------Thank You Start---------------------------------->
+        <div class="settings-bar"  ng-show="thank_you">
+		<h2>Enter thank you page URL</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+                <div class="form-group clearfix">
+               <!--  <input type="checkbox">Use default thank you page. --> 
+                <input type="text" class="form-control" ng-model="thank_you_link">
+                </div>
+            </div>
+  
+         </div>
+         <button class="btn-blue" ng-click="customPopUpSave(1)">Save</button>
+         <button class="btn-cancel" ng-click="customPopUpSave(1)">Cancel</button>
+                </div>
+
+       <!-----------------------------Thank You End---------------------------------->
+        
+  
+  </div>
+   
+  <!-- ---------------------------- Form Data start --------------------------------------->
+   <div class="settings-modal col-md-10" id="form-preview" ng-show="show_popup_form">
+        <div class="container">
+            <div class="modal-bx">
+                <div class="close-btn"><a href="javascript:void(0)" target="_self" ng-click="customSettingPopUp(0)"><img src="public/assets/admin/images/close.png" alt="Close" /></a></div>
+                <div class="header">
+                    <a href="javascript:void(0)" target="_self" ng-click="get_setting('form_image')"><img src="public/assets/admin/images/progress-bar.png" alt="progress" /> 
+                  <!-- <img src="public/assets/admin/images/ebook-img/{{ call_to_action_popup_header_image }}" alt="progress" />--></a>
+                   
+                    <a href="javascript:void(0)" target="_self" >
+                    <p ng-click="get_setting('header_text')" ng-bind-html="call_to_action_title" ng-model="call_to_action_title"
+                    ng-style="{'font-family' : text_font_family,'font-size':text_font_size+'px'}" ></p>
+                    
+                    </a>
+                </div>
+                <div class="content-body row clearfix">
+                    <div class="col-md-4 left">
+                        <a href="javascript:void(0)" target="_self" ng-click="get_setting('form_image')" >
+                        	<img src="public/assets/admin/images/ebook-img/{{ call_to_action_popup_image }}" alt="Watch" />
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <a href="javascript:void(0)" target="_self">
+                       <h2 ng-click="get_setting('headertitle')" class="ebookheader" ng-bind-html="call_to_action_subtitle"  
+                         ng-style="{'font-family' : title_font_family,'font-size':title_font_size + 'px'}" ></h2>
+                        </a>
+                       
+                        <form>
+                            <a href="javascript:void(0)" target="_self" ><input type="text" class="form-control" ng-click="get_setting('input_name1')" placeholder="{{call_to_action_input_name1}}"></a>
+                            <a href="javascript:void(0)" target="_self" ><input type="email" class="form-control" ng-click="get_setting('input_name2')" placeholder="{{call_to_action_input_name2}}">
+                            <a href="javascript:void(0)" target="_self" ><input type="text" class="form-control" ng-click="get_setting('input_name3')" placeholder="{{call_to_action_input_name3}}">
+                          <!-- <a href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-default blue-btn" ng-bind-html="call_to_action_button_title"></a>--> 
+                           <p class="btn btn-default blue-btn-custom custom-button-title" ng-bind-html="call_to_action_button_title" ng-style="{'background-color' : styleArr[0]['default_value'],'color': styleArr[37]['default_value']}" ng-click="get_setting('button_title')" class="btn btn-default blue-btn"></p>
+                            <a href="javascript:void(0)" target="_self" >
+                            	<div class="button-below-text">
+                            	<div class="lockImageEbook"><img src="public/assets/admin/images/lock.png" classs alt="Lock"  /></div>
+                            	<div class="lockImageEbooktext" ng-click="get_setting('button_below_text')" ng-bind-html="call_to_action_button_below_text"> </div>
+                            </div>	
+                            	</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- --------------------------Form Data end --------------------------------------->
+    
+    </div>
+    <!-- --------------------------Controller End ------------------------------->
+    </div>

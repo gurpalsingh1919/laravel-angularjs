@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ public/$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+	
+	
+    # redirect www to none-www
+    #RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    #RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [QSA,R=301,L]
+
+    # redirect http to https
+    # comment out if there is not SSL certificate
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [QSA,R=301,L]
+</IfModule>

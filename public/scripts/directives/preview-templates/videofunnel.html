@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="keyword" content="{{seo_page_keywords}}">
+		<meta name="description" content="{{seo_page_description}}">
+		<title ng-model="seo_page_title" ng-bind-html="seo_page_title"></title>
+		<meta class="metaTagTop" name="author" content="Your Name"><meta class="metaTagTop" property="og:image" content="" id="social-image">
+		<link rel="stylesheet" media="screen" href="public/assets/preview-template/videofunnel/custom_videofunnel_preview.css"/>
+		<link href="public/assets/preview-template/common/optin-form.css" rel="stylesheet">
+	</head>
+	<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6&appId=133540293717831";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+		<div class="wrapper" ng-controller="previewController">
+			<stateloadingindicator></stateloadingindicator>
+			<div ng-if="Header==1" class="top_header" ng-class="{'top-header-hide': logo_1==0}" ng-style="{'background-color' : styleArr[1]['default_value']}">
+				
+					<div class="top_video" ng-if="text_1==1 || text_2==1 || logo_2==1">
+						<p ng-if="text_1==1" ng-bind-html="video1_title"></p>
+						<p ng-if="text_2==1" ng-bind-html="video1_subtitle"></p>
+						<a ng-if="logo_2==1" href="javascript:void(0)" target="_self" ng-click="Checklinked('video1_link', 'video1_tab_value')" ><img src="public/assets/template/videofunnel/images/{{video1_image}}" alt="" /></a>
+					</div>
+					<div class="top_video" ng-if="text_3==1 || text_4==1 || logo_3==1">
+						<p ng-if="text_3==1" ng-bind-html="video2_title"></p>
+						<p ng-if="text_4==1" ng-bind-html="video2_subtitle"></p>
+						<a ng-if="logo_3==1" href="javascript:void(0)" target="_self" ng-click="Checklinked('video2_link', 'video2_tab_value')"><img src="public/assets/template/videofunnel/images/{{video2_image}}" alt="" /></a>
+					</div>
+					<div class="logo" ng-if="logo_1==1">
+						<img src="public/assets/template/videofunnel/images/{{header_image}}" alt="" />  
+					</div>
+					<div class="top_video" ng-if="text_5==1 || text_6==1 || logo_4==1">
+						<p ng-if="text_5==1" ng-bind-html="video3_title"></p>
+						<p ng-if="text_6==1" ng-bind-html="video3_subtitle"></p>
+						<a ng-if="logo_4==1" href="javascript:void(0)" target="_self" ng-click="Checklinked('video3_link', 'video3_tab_value')"><img src="public/assets/template/videofunnel/images/{{video3_image}}" alt="" /></a>
+					</div>
+					<div class="top_video" ng-if="text_7==1 || text_8==1 || logo_5==1">
+						<p ng-if="text_7==1" ng-bind-html="video4_title"></p>
+						<p ng-if="text_8==1" ng-bind-html="video4_subtitle"></p>
+						<a ng-if="logo_5==1" href="javascript:void(0)" target="_self" ng-click="Checklinked('video4_link', 'video4_tab_value')"><img src="public/assets/template/videofunnel/images/{{video4_image}}" alt="" /></a>
+					</div>
+			</div>
+			<div class="main_part" ng-style="{'background-color': styleArr[2]['default_value']}" set-height>
+				<div class="container">
+					<div class="center_part" ng-class="{'center-part-hide':Video == 0 && Details == 0 }" ng-style="{'background-color': styleArr[3]['default_value']}">
+						<div class="video" ng-if="Video==1">
+							<div class="elVideoSkin1">
+							<div class="fluid-width-video-wrapper" ng-bind-html="vid_url">
+							</div>
+							</div>
+							<span ng-bind-html="video_below_text"></span>
+						</div>
+						<div class="powerful" ng-if="Details==1" ng-class="{'powerful-hide':logo_6 == 0 && logo_7 == 0 && text_14 == 0 && tab_5 == 0 }">
+							<div class="powerful_text">
+								<p ng-if="text_10==1" ng-bind-html="details_title"></p>
+								<p ng-if="text_11==1" ng-bind-html="details_text1"></p>
+								<p ng-if="text_12==1" ng-bind-html="details_subtitle"></p>
+								<p ng-if="text_13==1" ng-bind-html="details_text2"></p>
+							</div>
+							<div class="powerful_img" ng-class="{'powerful-img-hide':text_10 == 0 && text_11 == 0 && text_12 == 0 && text_13 == 0}">
+								<img ng-if="logo_6==1" src="public/assets/template/videofunnel/images/{{detail_rightsidebar1_image}}" alt="" />
+								<img ng-if="logo_7==1" src="public/assets/template/videofunnel/images/{{detail_rightsidebar2_image}}" alt="" />
+								<a ng-if="text_14==1" href="javascript:void(0)" target="_self" ng-bind-html="detail_rightsidebar_title"></a>
+								<div ng-if="tab_5==1" class="button" ng-style="{'background-color' : styleArr[29]['default_value']}">
+								<a href="javascript:void(0)" target="_self" class="action-btn" ng-click ="Checklinked('details_link','details_link_value')" ng-model="details_call_to_action" ng-bind-html="details_call_to_action"> </a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="commemts" ng-class="{'center-part-hide':text_16 == 0 && text_17 == 0 && text_18 ==0 }">
+						<p ng-if="text_16==1" ng-bind-html="detail_fb_title"></p> <br/>
+						<p class="fb_like_widget" ng-if="text_16==1" ng-bind-html="fb_like_widget"></p>
+						<p ng-if="text_17==1" ng-bind-html="detail_comment_title"></p>
+						<p class="fb-comment-widget" ng-if="text_17==1" ng-bind-html="fb_comment_widget"></p>
+						<p ng-if="text_18==1" ng-bind-html="detail_comment_text"></p>
+					</div>
+					<!--- footer start ------->
+					<div class="footer" ng-if="Copyrights==1" ng-class="{'footer-hide':text_19==0 && text_20==0 && text_21==0 && text_22==0}">
+						<span class="footer-menu">
+						<a ng-if="text_19==1" href="javascript:void(0)" target="_self" ng-click="Checklinked('copyright_menu1_link', 'copyright_menu1_tab_value')" ng-bind-html="copyright_menu1"></a>  <a ng-if="text_20==1" href="javascript:void(0)" target="_self" ng-click ="Checklinked('copyright_menu2_link', 'copyright_menu2_tab_value')" ng-bind-html="copyright_menu2"></a> <br />
+						<p ng-if="text_21==1" ng-bind-html="copyright_title"></p></span>
+						<p ng-if="text_22==1" align="center" ng-bind-html="copyright_text"></p>
+					</div>  
+					<!--- footer end -------> 
+				</div>
+			</div>
+			<previewpopups></previewpopups>
+		</div>
+	</body>
+</html> 

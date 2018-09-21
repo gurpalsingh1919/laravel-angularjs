@@ -1,0 +1,176 @@
+ .settings-modal .container {
+    bottom: 0;
+    left: 0;
+    margin: 100px auto;
+    max-width: 750px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+.settings-modal .modal-bx {
+    background: #e7e7e7 none repeat scroll 0 0;
+    border-radius: 3px;
+    padding: 30px 30px 10px;
+    position: relative;
+}
+.settings-modal .modal-bx .close-btn {
+    position: absolute;
+    right: -18px;
+    top: -14px;
+    
+}
+.settings-modal .modal-bx a {
+    color: inherit;
+}
+.settings-modal .modal-bx .header img {
+    margin-bottom: 5px;
+}
+.settings-modal .modal-bx .header img, .settings-modal .modal-bx .content-body .left img {
+    width: 100%;
+}
+.settings-modal .modal-bx p {
+   /* font-size: 22px;*/
+    text-align: center;
+}
+.settings-modal .modal-bx .content-body .left img {
+    margin-top: 50px;
+}
+.settings-modal .modal-bx .content-body h2 {
+    color: #393939;
+    font-weight: 400;
+    line-height: 34px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+.settings-modal .modal-bx .content-body .form-control {
+    border: 1px solid #d7d7d7;
+    border-radius: 3px;
+    box-shadow: none;
+    height: 38px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.blue-btn {
+    background: #00c0ff none repeat scroll 0 0;
+    border: medium none;
+    color: #fff !important;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    padding: 10px 0;
+    text-align: center;
+    text-shadow: 0 1px 1px #00a3e1;
+    text-transform: uppercase;
+    width: 100%;
+}
+.blue-btn:hover {
+    background: #02abe3 none repeat scroll 0 0;
+    color: #fff;
+    text-shadow: none;
+}
+a:hover, a:focus {
+    outline: medium none;
+    text-decoration: none;
+}
+.lockImageEbook{
+	float:left;
+	margin-left: 40px;
+}
+.lockImageEbooktext{
+	text-align: center;
+	line-height: 28px;
+}
+.lockImageEbooktext > p {
+    font-size: 12px !important;
+}
+.btn.btn-default.blue-btn.getStarted.ng-binding > p {
+    font-size: 22px;
+    padding: 0px;
+    margin:0px;
+}
+.error.ng-binding {
+    color: #ff0000 !important;
+}
+ 
+ .loading
+ {
+    background: #edeff0 none repeat scroll 0 0;
+	display: table-row;
+	height: 100%;
+	position: fixed;
+	text-align: center;
+	vertical-align: middle;
+	width: 100%;
+	z-index: 2147483647;
+}
+.loading > img {
+    position: absolute;
+    top: 224px;
+}
+
+
+#linkModal .loadingModel {
+  background: ivory none repeat scroll 0 0;
+  display: table-row;
+  height: 100%;
+  opacity: 0.5;
+  position: fixed;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  z-index: 2147483647;
+}
+
+#linkModal .modal-bx .loadingModel{position: absolute; top: 0; right:0px; border-radius:6px;}
+#linkModal .modal-bx .loadingModel > img{bottom: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;}
+
+
+#linkModal .loadingModel > img {
+    position: absolute;
+    top: 300px;
+}
+    
+.loading-indicator {
+    background: #393939;
+    height: 100%;
+   position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
+
+.loading-title{text-align:center;color:#fff}
+.loading-subtitle{text-align:center;color:#fff}
+.spinner {
+    margin: 208px;
+    text-align: center;
+}
+.blue-btn-custom {
+	background: #00c0ff;
+    border: medium none;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    padding: 10px 0;
+    text-align: center;
+    text-shadow: 0 1px 1px #00a3e1;
+    text-transform: uppercase;
+    width: 100%;
+}
+.blue-btn-custom:hover {
+	background: #02abe3;
+	color: #fff;
+	text-shadow: none;
+} 
+.btn.btn-default.blue-btn-custom.getStarted.ng-binding > p {
+    font-size: 22px;
+    padding: 0px;
+    margin:0px;
+}   

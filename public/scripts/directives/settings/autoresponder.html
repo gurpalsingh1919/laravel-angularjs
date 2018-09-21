@@ -1,0 +1,69 @@
+<div class="tab-pane">
+                        <div class="clearfix">
+                        <form>
+                            <div class="tab-head">
+                                <h3>Aweber</h3>
+                                <img src="public/assets/admin/images/aweber-logo.png" alt="Aweber" />
+                            </div>
+                            
+                            <div class="form-section">
+                                <div class="user-row">
+                                    <label>Consumer key</label>
+                                    <input type="text" name="consumerKey" ng-model="consumerKey" placeholder="Enter your secret key">
+                                </div>
+                                <div class="user-row">
+                                    <label>Consumer Secret</label>
+                                    <input type="text" name="consumerSecret" ng-model="consumerSecret" placeholder="Enter your password">
+                                </div>
+                            </div>
+                            <div class="btn-group btn-toggle"> 
+                                <button class="btn btn-sm active btn-primary" ng-click="getmyaweber()" >ON</button>
+                                <button class="btn btn-sm btn-default">OFF</button>
+                            </div>
+                            </form>
+                        </div>
+                        <div class="hr">&nbsp;</div>
+                        <div class="clearfix">
+                            <div class="tab-head">
+                                <h3>MailChimp</h3>
+                                <img src="public/assets/admin/images/mailchimp-logo.png" alt="MailChimp" />
+                            </div>
+                            <div class="form-section">
+                                <div class="user-row">
+                                    <label>Secret key</label>
+                                    <input type="text" placeholder="Enter your secret key">
+                                </div>
+                                <div class="user-row">
+                                    <label>Password</label>
+                                    <input type="text" placeholder="Enter your password">
+                                </div>
+                            </div>
+                            <div class="btn-group btn-toggle"> 
+                                <button class="btn btn-sm active btn-primary">ON</button>
+                                <button class="btn btn-sm btn-default">OFF</button>
+                            </div>
+                        </div>
+                        <div class="hr">&nbsp;</div>
+                        <div class="clearfix last-tab">
+                            <div class="tab-head">
+                                <h3>GetResponse</h3>
+                                <img src="public/assets/admin/images/getresponse-logo.png" alt="Getresponse" />
+                            </div>
+                            <div class="form-section">
+                                <div class="user-row">
+                                    <label>API key</label>
+                                    <input type="text" placeholder="Enter your key">
+                                    <span class="note">Get your API key</span>
+                                </div>
+                            </div>
+                            <div class="btn-group btn-toggle"> 
+                                <button class="btn btn-sm active btn-primary">ON</button>
+                                <button class="btn btn-sm btn-default">OFF</button>
+                            </div>
+                        </div>
+                        <div class="tab-footer">
+                            <button class="btn-blue">Save</button>
+                            <button class="btn-cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div><!-- /.tab-content -->

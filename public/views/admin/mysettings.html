@@ -1,0 +1,381 @@
+<loginafterheader></loginafterheader>    
+ <adminpopups></adminpopups>
+     <div class="page-content editpage">
+     	<div class="container">
+            <div class="tabbable user-account clearfix">
+             <div ng-show="setloading" class="loading"><img src="public/assets/admin/loader-img.gif"></div>
+
+                <div class="left-tab col-">
+                    <ul class="nav nav-tabs nav-stacked span2">
+                        <li ng-class="{active: activeindex ==='My_Account'}"><a href="javascript:void(0)" target="_self" ng-click="mycheckResponder(0)"><i class="fa fa-user"></i> My Account</a></li>
+                        <li ng-class="{active: activeindex === 'Change_Password'}"><a href="javascript:void(0)" target="_self" ng-click="mycheckResponder(1)"><i class="fa fa-lock"></i> Change Password</a></li>
+                        <li ng-class="{active: activeindex === 'Integration'}"><a href="javascript:void(0)" target="_self" ng-click="mycheckResponder(2)"><i class="fa fa-cog"></i>Integration</a></li>
+                         <li ng-class="{active: activeindex === 'subscription'}"><a href="javascript:void(0)" target="_self" ng-click="mycheckResponder(3)"><i class="fa fa-paypal"></i>Subscription</a></li>
+                    </ul>
+                </div>
+                  
+                <div class="tab-content-new tab-content">
+                <div class="tab-pane" ng-show="myaccount">
+                        <h4>My Account</h4>
+                        <form id="edituserform" name="frmdomainsetting" ng-submit="personalformSubmit()" novalidate>
+                        <div class="content">
+                         <div class="alert alert-danger" ng-if="errormessage">   
+								<strong>{{errormessage}}</strong>    
+						</div>
+						  <div class="alert alert-success" ng-if="success_message"> 
+							<strong>{{success_message}}</strong>
+							</div>
+                        	<div class="user-row subdomain-error">
+                            	<label>Sub-domain</label>
+                                <input class="subdomain" type="text" name="subdomain" ng-keyup="checkDomain(subdomain)" ng-model="subdomain" ng-bind-html="subdomain" placeholder="Please enter sub domain" required><span class="launchdomain">.launchafunnel.com</span>
+                               <!-- span class="error" ng-show="subdomainerror" ng-bind-html="subdomainerror"></span> -->
+                            <span class="error" ng-show="frmdomainsetting.subdomain.$error.unique">Sub-domain Already exist.</span>
+                            <span class="error" ng-show="frmdomainsetting.subdomain.$error.required">Please enter sub domain.</span>
+                           </div>
+                        
+                            <div class="user-row">
+                            	<label>Email</label>
+                                <input type="email" ng-keyup="checkEmail(email)" name="email" ng-model="email" placeholder="Please enter your email" ng-bind-html="email" required>
+                           		   <span  class="error" ng-show="frmdomainsetting.email.$error.unique">Email already exist.</span>
+                           		     <span  class="error" ng-show="frmdomainsetting.email.$error.email">Please enter valid email.</span>
+                             <span  class="error" ng-show="frmdomainsetting.email.$error.required">Please enter your email.</span>
+                            </div>
+                            
+                            <div class="user-row">
+                            <label>First Name</label>
+                            <input type="text" value="" ng-model="first_name" placeholder="First Name" required>
+                             
+                            </div>
+                        	<div class="user-row">
+                        	<label>Last Name</label>
+                        	<input type="text" value="Last Name" ng-model="last_name" placeholder="Last Name" required>
+                             
+                            </div>
+                            <div class="user-row">
+                            <label>Phone Number</label>
+                            <input type="number" name="mobile" value="" ng-model="phone" placeholder="Phone Number" data-trigger="keyup" minlength=10 data-rangelength="[10,14]">
+                             <span  class="error" ng-show="frmdomainsetting.mobile.$invalid">Please enter valid phone number.</span>
+                             
+                            </div>
+                         
+                            <div class="tab-footer">
+                            	<button type="submit" class="btn-blue">Save</button>
+         						<button class="btn-cancel">Cancel</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                <div class="tab-pane" ng-show="changePassword">
+                    <div id="emailloader"></div>
+                        <h4>Change Password</h4>
+                        <div class="content">
+		                    <div class="alert alert-danger" ng-if="pass_error_message">							
+							<strong>{{pass_error_message}}</strong>
+							</div>
+							 <div class="alert alert-success" ng-if="pass_success_message">	
+							<strong>{{pass_success_message}}</strong>
+							</div>
+                         <form role="form" class="form password-change"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="password_change_form" ng-submit="password_change_form.$valid && updatePassword()" name="password_change_form" >
+                        	 <div class="user-row">
+                            	<label>Old Password</label>
+                                <i class="fa fa-lock"></i>
+                                <input type="password" value="" ng-model="old_password" placeholder="Old password"  required>
+                             </div> 
+                            <div class="user-row">
+                            	<label>New Password</label>
+                                <i class="fa fa-lock"></i>
+                                <input type="password" id="password" value="" ng-model="new_password" placeholder="New password" required>
+                           </div>
+                            <div class="user-row">
+                            	<label>Confirm Password</label>
+                                <i class="fa fa-lock"></i>
+                                <input type="password" id="confirm_paswd" value="" ng-model="confirm_password" data-equalto="#password" placeholder="Confirm password" required>
+                            </div>
+                             <div class="tab-footer">
+                            	<button class="btn-blue" id="change_password_btn">Save</button>
+         						<button class="btn-cancel">Cancel</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+            	<!-- ------------------------- Integration ------------------------------------->
+     			<!-- ------------------------- Aweber ------------------------------------->	
+				<div ng-show="aweber_integration"> 
+				<div id="awebloader"></div>			
+					<div class="tab-head">						
+								<!--<h4>Aweber</h4>-->
+								<h4><img src="public/assets/admin/images/aweber-logo.png" alt="Aweber" /></h4>
+							 </div>				
+							<div class="aweber_form form1" ng-if="switchStatus != true">
+							<div class="form">
+								<form role="form"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="aweber_form" name="aweber_form" ng-submit="aweber_form.$valid && getmyaweber(consumerKey,consumerSecret)">
+								
+								<!-- <div class="user-row">
+									<label>Consumer key</label>
+									 <input type="text"  ng-model="consumerKey" ng-bind-html="consumerKey" placeholder="Enter your secret key" required>
+									 <a class="integration-info" href="http://www.aweber.com/" target="_blank">What is Aweber?</a>
+								</div>-->
+								<!-- <div class="user-row">
+									<label>Consumer Secret</label>
+                                    <input type="text"  ng-model="consumerSecret" ng-bind-html="consumerSecret" placeholder="Enter your consumer secret" required>
+								</div>
+								 -->
+								<div class="tab-footer">
+									<button type="submit" id="awebserbtn" class="btn-blue">Connect</button>
+								</div>
+								</form>
+								<button class="btn-aweber-cancel bck" ng-click="backResponder('aweber_integration')">Cancel</button>
+								</div>
+								
+								
+								
+							</div>
+							 <!-----------------If List is ready -------------------->
+                            <div  class="form-section" ng-if="apiList">
+								<div class="user-row">
+                                    <label>List </label>
+                                    
+                                   <select class="form-control">
+                                     		<option  ng-repeat="list in apiList" value="{{list.id}}"> {{ list.name }} </option>
+                            		</select>
+                                </div>
+                            </div>
+                           
+                    <!-- <div class="btn-group btn-toggle"> 
+                              <toggle-switch  ng-click="changeAweberStatus('aweber')" ng-model="switchStatus"><toggle-switch>
+                                button ng-click="changeStatus(1,'aweber')" class="btn btn-sm  btn-primary" >ON</button>
+                                <button ng-click="changeStatus(0,'aweber')" class="btn btn-sm btn-default active">OFF</button>
+                            </div> -->
+                       <div class="disconnect_form" ng-if="switchStatus == true">
+								<div class="connect-row">
+									<!--<label><i class="fa fa-check-circle"></i> Aweber</label>-->
+									<button class="btn-blue pull-left discont" ng-click="responderDisconnectStatus('aweber')">Disconnect</button>
+								</div>
+							</div>
+					
+				</div>
+ 		        <div ng-show="myAutoResponder">
+					 <h4>Integration</h4>
+                       	<div class="content">
+                        	<div class="integrate_logo_outer">
+								<a href="javascript:void(0);" ng-click="showResponder('aweber_integration')" class="logo_button aweber_logo">
+									<img src="public/assets/admin/images/aweber-logo.png">
+									<img ng-if="switchStatus == true" class="top-p" src="public/assets/admin/images/check.png">
+									<!--<img ng-if="switchStatus != true" class="top-p" src="public/assets/admin/images/cross.png">-->
+								</a>
+								<a href="javascript:void(0);" ng-click="showResponder('icontact')" class="logo_button">
+									<img src="public/assets/admin/images/iContact_v1.png">
+									<img ng-if="switchStatusIcontact == true" class="top-p" src="public/assets/admin/images/check.png">
+								<!-- <img ng-if="switchStatusIcontact != true" class="top-p" src="public/assets/admin/images/cross.png">-->
+								</a>
+								<a href="javascript:void(0);" ng-click="showResponder('get_response')" class="logo_button">
+									<img src="public/assets/admin/images/getresponse-logo.png">
+									<img ng-if="switchStatusGetresponse == true" class="top-p" src="public/assets/admin/images/check.png">
+								<!-- <img ng-if="switchStatusGetresponse != true" class="top-p" src="public/assets/admin/images/cross.png">-->
+								</a>
+							</div>
+						</div>
+						</div>
+				<!-- ----------------------- icontact ------------------------ -->
+				<div ng-show="icontact">
+								<div class="tab-head">
+										<!--<h4>iContact</h4>-->
+										<h4><img src="public/assets/admin/images/iContact_v1.png" alt="MailChimp" /></h4>
+	                            </div>
+								<div class="aweber_form form2" ng-if="switchStatusIcontact != true">
+									<form role="form"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="icontact_form" name="icontact_form" ng-submit="icontact_form.$valid && getmyicontact(apiUserName,apiPassword)"  >
+									<div class="form">
+									<div class="user-row">
+									<label>Api User Name</label>
+	                                    <input type="text" name="apiUserName" ng-model="apiUserName" placeholder="Enter Api User Name" required>
+										<a class="integration-info" href="http://help.limelightcrm.com/entries/311777-Configuring-iContact-API-1-0" target="_blank">Where to get the API Key?</a>
+									</div>
+									<div class="user-row">
+	                                    <label>Api Password</label>
+	                                    <input type="text"  name="apiPassword" ng-model="apiPassword" placeholder="Enter Api Password" required>
+									</div>
+									
+									<div class="tab-footer">
+										<button type="submit" id="icontactbtn" class="btn-blue">Update</button>
+										
+										<button class="btn-cancel bck" ng-click="backResponder('icontact')">Back</button>
+									</div>
+									</div>
+									</form>
+									
+								</div>
+					<!-----------------If List is ready -------------------->
+	                            <div  class="form-section" ng-if="apiIcontactList">
+									<div class="user-row">
+	                                    <label>List </label>
+	                                    
+	                                   <select class="form-control">
+	                                     		<option  ng-repeat="list in apiIcontactList" value="{{list.id}}"> {{ list.name }} </option>
+	                            		</select>
+	                                </div>
+	                            </div>
+			   <!--	<div class="btn-group btn-toggle"> 
+	                               <toggle-switch  ng-click="changeIcontractStatus('icontact')" ng-model="switchStatusIcontact"><toggle-switch>
+	                                button ng-class="{true: 'active', false: 'btn-default'}" ng-click="changeStatus(1,'icontact')" class="btn btn-sm active btn-default">ON</button>
+	                                <button ng-class="{true: 'active', false: 'btn-default'}" ng-click="changeStatus(0,'icontact')" class="btn btn-sm btn-default">OFF</button> 
+	                      </div>-->
+								<div class="disconnect_form" ng-if="switchStatusIcontact == true">
+									<div class="connect-row">
+										<!--<label><i class="fa fa-check-circle"></i> Aweber</label>-->
+										<button class="btn-blue pull-left discont" ng-click="responderDisconnectStatus('icontact')">Disconnect</button>
+									</div>
+								</div>
+	                 </div>
+				<!-- ------------------------- Get Response ------------------------------------ -->			
+				<div ng-show="get_response">	
+						<div class="tab-head">
+                                <!--<h4>GetResponse</h4>-->
+                               <h4><img src="public/assets/admin/images/getresponse-logo.png" alt="Getresponse" /></h4>
+                         </div>	
+								 
+							<div class="aweber_form form3" ng-if="switchStatusGetresponse != true">
+								<form role="form"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="getresponse_form" name="getresponse_form" ng-submit="getresponse_form.$valid && getmygetresponse(getresponseApiKey)"  >
+								<div class="form">
+								<div class="user-row">
+                                    <label>API key</label>
+                                    <input type="text" name="getresponseApiKey" ng-model="getresponseApiKey" placeholder="Enter your key" required>
+                                    <!-- span class="note">Get your API key</span> -->
+									<a class="integration-info" href="https://support.getresponse.com/faq/where-i-find-api-key" target="_blank">Where to get the API Key?</a> 
+								</div>
+							
+								<div class="tab-footer">
+									 <button type="submit" id="getresponsebtn" class="btn-blue">Update</button>
+									<button class="btn-cancel bck" ng-click="backResponder('get_response')">Back</button>
+								</div>
+								</div>
+								</form>
+								
+							</div>
+							
+	<!-----------------If List is ready -------------------->
+                            <div  class="form-section" ng-if="apigetresponseList">
+                             <div class="user-row">
+                                    <label>List </label>
+                                    
+                                   <select class="form-control">
+                                     		<option  ng-repeat="list in apigetresponseList" value="{{list.id}}"> {{ list.name }} </option>
+                            		</select>
+                                </div>
+                               
+                            </div>
+                          
+                            <!-- <div class="btn-group btn-toggle"> 
+                            <toggle-switch  ng-click="changeGetresponseStatus('getresponse')"    ng-model="switchStatusGetresponse"><toggle-switch>
+                                 button ng-click="changeStatus(1,'getresponse')" class="btn btn-sm  btn-primary">ON</button>
+                                <button ng-click="changeStatus(0,'getresponse')" class="btn btn-sm btn-default">OFF</button> 
+                            </div>-->
+						<div class="disconnect_form" ng-if="switchStatusGetresponse == true">
+								<div class="connect-row">
+									<!--<label><i class="fa fa-check-circle"></i> Aweber</label>-->
+									<button class="btn-blue pull-left discont" ng-click="responderDisconnectStatus('getresponse')">Disconnect</button>
+								</div>
+					</div>
+                        
+					</div>
+                 
+				 <div class="tab-pane templates" ng-show="mysubscription">
+			                    <!-- ------------Current Plan ------------------------------ -->   
+			                       <div class="panel-search clearfix">
+	                                	<div class="filter">
+	                                    	<h3>Current Payment Plan</h3>
+	                                    </div>
+	                                    <div class="right userright">
+	                                    </div>
+			                        </div>  
+			                       
+             						<table class="table table-striped table-hover" >
+										<thead>
+											<tr>
+													<th class="name">Name </th>
+													<th calss="current_plan">Price</th>
+													<th class="validity">Validity</th>
+													<th class="validity">Start Date</th>
+													<th calss="current_plan">End Date</th>
+													<th class="number">Options </th>	
+											</tr>
+										</thead>
+										<tbody>
+				
+											<tr ng-if="currentPlanDetails.length >=1">
+													<td>{{currentPlanDetails.plan_name}}</td>
+													<td>{{currentPlanDetails.plan_price}}</td>
+													<td>{{currentPlanDetails.plan_time}} Months</td>
+													<td>{{currentPlanDetails.start_date}}</td>
+													<td>{{currentPlanDetails.next_recurring_date}}</td>
+													
+													<td>
+														<button id="edit-user" class="edit" ng-click="paymentOption('changepayment',currentPlanDetails.id)">
+														<i class="fa fa-exchange"></i> Change Plan</button>
+														
+													</td>  
+				
+											</tr>
+											
+											
+										</tbody>
+										
+								 	</table>
+								 	<div class="nofunnel" ng-if="currentPlanDetails.length <=0">
+													<h2>You have no active plan !</h2>
+											</div>
+								 <!-- ----------Invoice Detail -------------->
+								  <div class="panel-search clearfix">
+	                                	<div class="filter">
+	                                    	<h3>Invoices</h3>
+	                                    </div>
+	                                    <div class="right userright">
+	                                    </div>
+			                        </div>  
+								 <table class="table table-striped table-hover" >
+										<thead>
+											<tr>
+											
+													<th class="name">Name</th>
+													<th calss="current_plan">Price</th>
+													<th class="validity">validity</th>
+													<th calss="current_plan">Start Date</th>
+													<th calss="current_plan">End Date</th>
+													<th class="number">Status </th>	
+											</tr>
+										</thead>
+										<tbody>
+				
+											<tr ng-repeat="plans in AllUserPlan">
+											<td>{{plans.plan_name}}</td>
+											<td>{{plans.plan_price}}</td>
+											<td>{{plans.plan_time}} Months</td>
+											<td>{{plans.plan_start_date}}</td>
+											<td>{{plans.Next_date}}</td>
+											<td>{{plans.payment_status}}</td>
+													
+				
+											</tr>
+											
+										</tbody>
+									
+								 	</table>
+								 	 <div class="nofunnel" ng-if="AllUserPlan.length <= 0">
+							<h2>You have not purchased any payment plan yet !</h2>
+						</div>	
+											<div ng-if="currentPlanDetails.length >=1">
+														<button id="reset_pwd" class="cancel_b" ng-click="paymentOption('cancel',currentPlanDetails.id)">
+														<i class="fa fa-times"></i> Cancel</button>
+														<button id="edit-user" ng-if="currentPlanDetails.refund=='1'" class="refund_b" ng-click="paymentOption('refund',currentPlanDetails.id)">
+														<i class="fa fa-undo"></i> Refund</button>
+													</td>  
+				
+											</div>
+								
+			                    </div>	  
+			                     
+					                     <!--</div>-->
+                </div><!-- /.tab-content -->
+            </div>
+     	</div>
+     </div>
+	 

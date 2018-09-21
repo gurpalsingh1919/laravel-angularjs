@@ -1,0 +1,385 @@
+ <div>
+ <!------------------- Image Option -------------------------->
+     
+    <div class="main-modal modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel"   id="imageModal" nv-file-drop="" uploader="uploader">
+        <div class="container">
+            <div class="modal-bx">
+                <div class="modal-header">Image</div>
+                <div class="content-body" style="padding-bottom:0;">
+                	<p>Select image to display:</p>
+                    <div class="upload-image-bx clearfix">
+                    <div class="imageuploader"></div>
+                    	<ul ng-if="scopeValue !='top_background_image'">
+                        	<li ng-repeat="tempimg in templateImage" ng-if="tempimg.image_type!=='background'">
+                             <img ng-src="public/assets/template/{{template_slug}}/images/{{ tempimg.file_name }}" ng-click="changeImage(tempimg.file_name,$index)" ng-class="{sel: $index == selected}" alt="Image" />
+                                <span ng-if="tempimg.file_name != image_name && templateImage.length > 1"  class="delete">
+                                	<a href="javascript:void(0)" target="_self" >
+                                   	<img  ng-click="deleteImage(tempimg.id)"  confirm="Are you sure,?" src="public/assets/admin/images/trash.png" alt="Trash" /></a>
+                                </span>
+                          </li>
+                         </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                      
+                        <div class="upload file_upload template-upload">
+                            <span>
+                                <i class="fa fa-upload"></i> Upload New Picture
+                            </span> 
+
+                             <input type="file" name="uploadimage"   placeholder="Upload New Image" ng-file-select>
+                            <input type="file"  ng-file-select> <input type="file"  ng-file-select> 
+
+                        </div>
+                 
+                      <input type="hidden" ng-model="scopeValueImage" data-dismiss="modal" value="{{ scopeValueImage }}">
+                	<a href="javascript:void(0)" data-dismiss="modal" target="_self" class="btn btn-save"  ng-click="updateImageContent()">Save</a>
+                    <a href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+            	 </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!------------------- Background Image Option -------------------------->
+    <div ng-controller="backgroundImageController">
+    <div class="main-modal modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel"   id="backgroundImageModal" nv-file-drop="" uploader="uploader">
+        <div class="container">
+            <div class="modal-bx">
+                <div class="modal-header">Background Image</div>
+                 <div class="content-body" style="padding-bottom:0;">
+                      <div class="upload-image-bx clearfix">
+                      <div class="imageuploader"></div>
+                      <ul>
+                    	<!-- <ul ng-if="scopeValue ==='top_background_image'"> -->
+                        	<li ng-repeat="tempimg in templateImage" ng-if="tempimg.image_type==='background'">
+                           <img ng-src="public/assets/template/{{template_slug}}/images/{{ tempimg.file_name }}" ng-click="changeImage(tempimg.file_name,$index)" ng-class="{sel: $index == selected}" alt="Image" />
+                                <span ng-if="tempimg.file_name != image_name && templateImage.length > 1" class="delete">
+                                	<a href="javascript:void(0)" target="_self" >
+                                	<img ng-click="deleteImage(tempimg.id)" src="public/assets/admin/images/trash.png" alt="Trash" /></a>
+                                </span>
+                          </li>
+                         </ul>
+                    </div>
+				</div>
+                <div class="modal-footer">
+                      
+                        <div class="upload file_upload template-upload">
+                            <span>
+                                <i class="fa fa-upload"></i> Upload New Picture 
+                            </span>  
+              
+                             <input type="file" name="uploadbackgroundimage" placeholder="Upload New Image" ng-file-select>
+                            <input type="file"  ng-file-select> <input type="file"  ng-file-select> 
+
+                        </div>
+   					<div class="bk-image-dimension" >
+                      <p>Image Dimensions:1200px*1050px(Width*Height)</p>
+                	 </div>
+                      <input type="hidden" ng-model="scopeValueImage" data-dismiss="modal" value="{{ scopeValueImage }}">
+                	<a href="javascript:void(0)" data-dismiss="modal" target="_self" class="btn btn-save" ng-click="updateImageContent()" >Save</a>
+                    <a href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+            	 </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  
+   <!-------------------Editor PopUp----------------------------->
+   <div class="main-modal modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+ <form >
+        <div class="container">
+            <div class="modal-bx">
+                <div class="modal-header">Text Option</div>
+                <div class="content-body">
+               <wysiwyg-edit content="scopeValue" ng-model="scopeValue" textarea-id="question" textarea-class="form-control"  textarea-name="textareaQuestion" config="editorConfig"  ></wysiwyg-edit>
+                <!-- <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="180px" textarea-name="textareaQuestion"
+				  textarea-required 
+				  ng-model="scopeValue" 
+				  enable-bootstrap-title="true"
+				  textarea-menu="customMenu" config="editorConfig" >
+				</wysiwyg>-->
+			 <input type="hidden" ng-model="scopeKey" value="{{ scopeKey }}">
+                	
+                </div>
+                <div class="modal-footer">
+                  
+                	<a  href="javascript:void(0)" class="btn btn-save" ng-click="saveTextEditorDetail()" target="_self">Save</a></button>
+                    <a   href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+     <!-------------------Editor PopUp----------------------------->
+    
+     <!-------------------Link bar PopUp----------------------------->
+      <div class="main-modal modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="linkModalLabel">
+     
+    <div class="settings-bar">
+    	<h2>Integration Settings</h2>
+        <div class="settings-body">
+        	<div class="row-group">
+            	<label>Integrate form with: <a href="#">Reload</a></label>
+                <select class="form-control">
+                	<option>MailChimp</option>
+                </select>
+            </div>
+            <div class="row-group">
+            	<label>Using: <a href="#">Reload</a></label>
+                <select class="form-control">
+                	<option>MailChimp</option>
+                </select>
+            </div>
+            <div class="row-group">
+            	<label>Integrate with Lead Notifications </label>
+                <div class="btn-group btn-toggle"> 
+                    <button class="btn btn-sm btn-default">ON</button>
+                    <button class="btn btn-sm btn-primary active">OFF</button>
+                </div>
+            </div>
+            <div class="row-group">
+            	<label>Integrate with Webinar Host </label>
+                <div class="btn-group btn-toggle"> 
+                    <button class="btn btn-sm btn-default">ON</button>
+                    <button class="btn btn-sm btn-primary active">OFF</button>
+                </div>
+            </div>
+            <div class="row-group">
+            	<label>Use Facebook Registration </label>
+                <div class="btn-group btn-toggle"> 
+                    <button class="btn btn-sm btn-default">ON</button>
+                    <button class="btn btn-sm btn-primary active">OFF</button>
+                </div>
+            </div>
+         </div>
+         <button type="submit" class="btn-green">Customize this form</button>
+    </div>  
+    <div class="settings-modal">
+        <div class="container" style="left: 20%;">
+            <div class="modal-bx">
+                <div class="close-btn"><a href="javascript:void(0)" target="_self" data-dismiss="modal"><img src="public/assets/admin/images/close.png" alt="Close" /></a></div>
+                <div class="header">
+                    <a href="javascript:void(0)" target="_self" ><img src="public/assets/admin/images/progress-bar.png" alt="progress" /></a>
+                    <a href="javascript:void(0)" target="_self" >
+                    	<p>Almost there! Please complete this form and click the button below to gain instant access.</p>
+                    </a>
+                </div>
+                <div class="content-body row clearfix">
+                    <div class="col-md-4 left">
+                        <a href="javascript:void(0)" target="_self" ><img src="public/assets/admin/images/watch.png" alt="Watch" /></a>
+                    </div>
+                    <div class="col-md-8">
+                        <a href="form-image-text-settings-popup.html"><h2>Enter your email address and click the button below to get started.</h2></a>
+                        <form>
+                            <a href="javascript:void(0)" target="_self" ><input type="text" class="form-control" placeholder="Name"></a>
+                            <a href="javascript:void(0)" target="_self" ><input type="email" class="form-control" placeholder="Email">
+                            <a href="javascript:void(0)" target="_self" ><input type="text" class="form-control" placeholder="Phone Number">
+                            <a href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-default blue-btn">Get started here</a>
+                            <a href="javascript:void(0)" target="_self" >
+                            	<p><img src="public/assets/admin/images/lock.png" classs alt="Lock" /> We hate SPAM and promise to keep your email address safe.</p>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- ---------------------- Link option end ------------------------------------------------>
+    
+    <!-- -----------------------Video option url ---------------------------------------------- --> 
+    
+       <div class="main-modal modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel">
+		 <div class="container">
+            <div class="modal-bx">
+                <div class="modal-header">Video Options</div>
+                <div class="content-body">
+                <p>Paste the <!--video-embed--> code here, from your media provider:</p>
+               <!-- wysiwyg-edit id="videodiv" content="vid_url" ng-model="vid_url" textarea-id="question video" textarea-class="form-control video"  textarea-name="textareaQuestion" config="editorConfig"  ></wysiwyg-edit>-->
+                <textarea class="form-control" ng-bind-html="scopeValue" ng-model="scopeValue"></textarea>
+			  <input type="hidden" ng-model="scopeKey" value="{{ scopeKey }}">	
+                </div>
+                <div class="modal-footer">
+                	<a  href="javascript:void(0)" class="btn btn-save" ng-click="saveVideoEditorDetail()" target="_self">Save</a></button>
+                    <a   href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    
+     <!-------------------Link PopUp-----------------------------> 
+           <div class="main-modal modal fade" id="linkingModal" tabindex="-1" role="dialog" aria-labelledby="linkingModalLabel">
+		 <div class="container">
+            <div class="modal-bx">
+                <div class="modal-header">Link Options</div>
+                <div class="content-body">
+                <p>Enter The link:</p>
+                 <input type="text" class="form-control" ng-bind-html="scopeValue" ng-model="scopeValue"/>
+			  <input type="hidden" ng-model="scopeKey" value="{{ scopeKey }}">	
+                </div>
+                <div class="modal-footer">
+                	<a  href="javascript:void(0)" class="btn btn-save" ng-click="saveLinkingDetail()" target="_self">Save</a></button>
+                    <a   href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    
+    
+    <!-- -----------------------Video Popup With Option Of Video Open In New Tab---------------------------------------------- --> 
+       <div class="main-modal modal fade" id="windowModal" tabindex="-1" role="dialog" aria-labelledby="windowModalLabel">
+		 <div class="container">
+            <div class="modal-bx">
+                <div class="modal-header">Link Options</div>
+                <div class="content-body">
+                 <p>Enter The link:</p>
+                 <input type="text" class="form-control" ng-bind-html="scopeValue" ng-model="scopeValue"/>
+              <!--	<textarea class="form-control" ng-bind-html="scopeValue" ng-model="scopeValue"></textarea>-->
+              	<input type="hidden" ng-model="scopeKey" value="{{ scopeKey }}">
+              	
+             	<input type="checkbox" name="tabs" ng-model="scopeValueWindow" ng-true-value="1" ng-false-value="0" ng-checked="scopeValueWindow == 1"> <label> Open link in new tab.</label>
+				<input type="hidden" ng-model="scopeKeyWindow" value="{{ scopeKeyWindow }}">
+				
+				 </div>
+                <div class="modal-footer">
+                	<a href="javascript:void(0)" class="btn btn-save" ng-click="saveVideoWindowDetail()" target="_self">Save</a></button>
+                    <a href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    
+       <!-------------------SEO PopUp----------------------------->
+   <div class="main-modal modal fade" id="mySeoPopup" tabindex="-1" role="dialog" aria-labelledby="mySeoPopupLabel">
+<form >
+        <div class="container">
+            <div class="modal-bx">
+                <div class="modal-header">SEO Tags</div>
+                <div class="content-body">
+                    <label>Page Title</label>
+		            <input type="text" class="form-control" ng-model="seo_page_title" ng-value="seo_page_title"/>
+		           	<label>Page Description</label>	
+					<input type="text" class="form-control" ng-model="seo_page_description" ng-value="seo_page_description"/>
+					<label>Page Keywords</label>
+					<input type="text" class="form-control" ng-model="seo_page_keywords" ng-value="seo_page_keywords"/>
+				</div>
+                <div class="modal-footer">
+                	<a  href="javascript:void(0)" class="btn btn-save" ng-click="saveSeoDetail()" target="_self">Save</a>
+                    <a   href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div> 
+        </div>
+</form>
+    </div> 
+    <!-------------------End SEO PopUp----------------------------->
+    
+    <!-------------------Start Tracking Code----------------------------->
+	   <div class="main-modal modal fade" id="myTrackingCode" tabindex="-1" role="dialog" aria-labelledby="myTrackingCode">
+	<form >
+	        <div class="container">
+	            <div class="modal-bx">
+	                <div class="modal-header">Tracking Code</div>
+	                <div class="content-body">
+	              <label>Head-Tag Tracking Code</label><textarea  class="form-control" ng-model="head_tracking_code" ng-value="head_tracking_code"></textarea>
+	              <label>End-of-Body-Tag Tracking Code</label><textarea  class="form-control" ng-model="endofbodytag_tracking_code" ng-value="endofbodytag_tracking_code"></textarea>
+	                
+	                </div>
+	                <div class="modal-footer">
+	                  
+	                	<a  href="javascript:void(0)" class="btn btn-save" ng-click="saveTrackingDetail()" target="_self">Save</a></button>
+	                    <a   href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+	                </div>
+	            </div>
+	        </div>
+	        </form>
+	    </div> 
+    <!-------------------End Tracking Code----------------------------->
+    
+    <!-------------------Start Exit Pop Up----------------------------->
+	   <div class="main-modal modal fade" id="myExitPopup" tabindex="-1" role="dialog" aria-labelledby="myExitPopup">
+	<form >
+	        <div class="container">
+	            <div class="modal-bx">
+	                <div class="modal-header">Exit Popup</div>
+	                <div class="content-body">
+	              <label>Display popup on page close?</label>
+	              <div ng-init="initial()">
+	              	<toggle-switch  ng-click="changeExitPopupStatus()" ng-model="switchExitPopupStatus"></toggle-switch>
+			      <div ng-show="ExitPopupView">
+		             <input type="hidden" ng-model="exit_popup_mess_yes" ng-value="exit_popup_mess_yes">
+		             <label>Message</label><textarea  class="form-control" ng-model="exit_popup_mess" ng-value="exit_popup_mess"></textarea>
+		             <label>Redirect Url</label> <input type="text" class="form-control" ng-model="exit_popup_url" ng-value="exit_popup_url"/>
+	                </div>
+	              	</div>
+					<!--  <div ng-init="initial()">
+					<i class="fa fa-toggle-on active" ng-if="status==true" ng-click="changeStatus()"></i>
+					<i class="fa fa-toggle-on fa-rotate-180 inactive" ng-if="status==false" ng-click="changeStatus()"></i>
+					<div ng-if="status==false">
+					<input type="hidden" ng-model="exit_popup_mess_no" ng-value="{{ exit_popup_mess_no }}">
+					</div>
+	              <div ng-if="status==true">
+	              <input type="hidden" ng-model="exit_popup_mess_yes" ng-value="{{ exit_popup_mess_yes }}">
+	             <label>Message</label><textarea  class="form-control" ng-model="exit_popup_mess" ng-value="{{ exit_popup_mess }}"></textarea>
+	             <label>Redirect Url</label> <input type="text" class="form-control" ng-model="exit_popup_url" ng-value="{{ exit_popup_url }}"/>
+	                </div>
+	                </div>-->
+	                </div>
+	                <div class="modal-footer">
+	                  
+	                	<a  href="javascript:void(0)" class="btn btn-save" ng-click="saveExitPopupDetail()" target="_self">Save</a>
+	                    <a   href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">Cancel</a>
+	                </div>
+	            </div>
+	        </div>
+	        </form>
+	    </div> 
+    <!-------------------End Exit Pop Up----------------------------->
+    
+    <!-------------------DATE TIME popup Start-----------------------------> 
+ <div class="modal fade" id="CountdownModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" style="width:290px" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times-circle"></i></button>
+            <h4 class="modal-title" id="myModalLabel">Count Down options</h4>
+          </div>
+          <div class="modal-body imgoptions">
+			  <div class="link-entry ui-link-entry">
+				<div datetimez>
+					<div id="datetimepicker12">
+						<input type="hidden" class="form-control" id="selectedDate" data-date-format="YYYY-MM-DD HH:mm:ss" > 
+					</div>
+                </div>
+				</div>
+				</div>
+            <div class="modal-footer">
+					<input type="hidden" ng-model="FinalDate">
+					<button type="button" class="btn btn-orange btn-default" ng-click="SaveDetail('countdown')">Save</button>
+            </div>
+          </div>
+        </div>
+        </div>
+  
+
+    <!-------------------DATE TIME End-----------------------------> 
+    
+        <!-------------------Video Popup-----------------------------> 
+		<div class="main-modal modal fade iframe-video-play" id="iframeVideo" tabindex="-1" role="dialog" aria-labelledby="iframeVideo">
+			<div class="container">
+				<div class="modal-bx">
+					<div class="content-body">
+						<a href="javascript:void(0)" target="_self" data-dismiss="modal" class="btn btn-cancel">X</a>
+						<div ng-bind-html="iframe_video_play"></div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+    
+    
+

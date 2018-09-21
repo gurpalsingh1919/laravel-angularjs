@@ -1,0 +1,290 @@
+<div class="wrapper right-side">
+<div class="template-section">
+      <div class="navbar-header">
+				   <a href="javascript:void(0)" onclick="toggleDisplay();" class="nav-toggle toggledisplays"><i class="fa fa-bars"></i></a>
+				</div>
+<div class="main-wrapper" id="takescreenshot">					
+	<div ng-if="Header==1" class="top_header" ng-style="{'background-color' : styleArr[1]['default_value']}">
+    	<div class="container">
+            <div ng-if="logo_1==1" class="logo" ng-class="{'logo-hide': logo_2==0}"> 
+            <a href="javascript:void(0)" target="_self" ng-click ="checkImageData('header_logo' , 'logo_1',header_logo)" >
+                  <img src="public/assets/template/addtocart/images/{{header_logo}}" alt="logo" /> </a>
+            </div>
+            <div ng-if="logo_2==1" class="steps" ng-class="{'steps-hide': logo_1==0}">
+            <a href="javascript:void(0)" target="_self" ng-click ="checkImageData('header_image' , 'logo_1',header_image)" >
+                <img src="public/assets/template/addtocart/images/{{header_image}}" alt="" /></a>  
+            </div>
+        </div>
+	</div>
+    
+    
+	<div class="main_part" ng-style="{'background-color' : styleArr[15]['default_value']}" set-height> 
+    	
+        <div ng-if="Banner==1" class="container money_sys" style="position:relative;" ng-style="{'background-image':'url('+domain_path.name+'public/assets/template/addtocart/images/'+banner_image+')'}">
+        	<a class="cog_icon background-cog-icon"  ng-click="backgorundImage('banner_image' , 'logo_3', banner_image)"><i class="fa fa-cog"></i></a>
+        	<a ng-if="text_1==1"  href="javascript:void(0)" target="_self" ng-click ="checkData('banner_text1' , 'text_1')"
+	         ng-model ="banner_text1"  ng-bind-html="banner_text1" ></a>
+        	<a ng-if="text_2==1" href="javascript:void(0)" target="_self" ng-click ="checkData('banner_text2' , 'text_2')"
+	         ng-model ="banner_text2"  ng-bind-html="banner_text2" ></a>
+        </div>
+        
+    	<div class="container">
+        	<div ng-if="Details==1" class="center_part" ng-style="{'background-color' : styleArr[3]['default_value']}">
+        		
+            	<div ng-if="tab_1==1" class="button" ng-style="{'background-color' : styleArr[29]['default_value']}">
+            	<a  href="javascript:void(0)" target="_self" class="action-btn" ng-click ="checkWindowData('details_link' , 'tab_1', 'details_call_to_action_link_value')" ng-model="details_call_to_action" ng-bind-html="details_call_to_action"> </a>
+   				<a class="cog_icon center-part" ng-click="checkData('details_call_to_action' , 'text_4')"><i class="fa fa-cog"></i>
+				</a>
+				</div>
+                
+                <div class="module_area">
+                
+                    <div ng-if="Module1==1" class="module_part" ng-class="{'module1-part-hide': text_6==0 && logo_4==0 && text_7==0 }">
+              			<a ng-if="text_4==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module1_title' , 'text_4')"
+	         			ng-model ="module1_title"  ng-bind-html="module1_title" ></a>
+	         			<a ng-if="logo_3==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('module1_image' , 'logo_3',module1_image)" >
+                        <img src="public/assets/template/addtocart/images/{{module1_image}}" alt="" /></a>
+              			<a ng-if="text_5==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module1_text' , 'text_5')"
+	         			ng-model ="module1_text"  ng-bind-html="module1_text" ></a>
+                    </div>
+                    
+                    <div ng-if="Module2==1" class="module_part" ng-class="{'module2-part-hide':  text_4==0 && logo_3==0 && text_5==0 }">
+              			<a ng-if="text_6==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module2_title' , 'text_6')"
+	         			ng-model ="module2_title"  ng-bind-html="module2_title" ></a>
+	         			<a ng-if="logo_4==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('module2_image' , 'logo_4',module2_image)" >
+                        <img src="public/assets/template/addtocart/images/{{module2_image}}" alt="" /></a>
+              			<a ng-if="text_7==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module2_text' , 'text_7')"
+	         			ng-model ="module2_text"  ng-bind-html="module2_text" ></a>
+                    </div>
+                    
+                    <div ng-if="Module3==1" class="module_part clear" ng-class="{'module3-part-hide':  text_10==0 && logo_6==0 && text_11==0 }">
+              			<a ng-if="text_8==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module3_title' , 'text_8')"
+	         			ng-model ="module3_title"  ng-bind-html="module3_title" ></a>
+	         			<a ng-if="logo_5==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('module3_image' , 'logo_5',module3_image)" >
+                        <img src="public/assets/template/addtocart/images/{{module3_image}}" alt="" /></a>
+              			<a ng-if="text_9==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module3_text' , 'text_9')"
+	         			ng-model ="module3_text"  ng-bind-html="module3_text" ></a>
+                    </div>
+                    
+                    <div ng-if="Module4==1" class="module_part" ng-class="{'module4-part-hide':  text_8==0 && logo_5==0 && text_9==0 }">
+              			<a ng-if="text_10==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module4_title' , 'text_10')"
+	         			ng-model ="module4_title"  ng-bind-html="module4_title" ></a>
+	         			<a ng-if="logo_6==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('module4_image' , 'logo_6',module4_image)" >
+                        <img src="public/assets/template/addtocart/images/{{module4_image}}" alt="" /></a>
+              			<a ng-if="text_11==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module4_text' , 'text_11')"
+	         			ng-model ="module4_text"  ng-bind-html="module4_text" ></a>
+                    </div>
+                    
+                    <div ng-if="Module5==1" class="module_part clear" ng-class="{'module5-part-hide':  text_14==0 && logo_8==0 && text_15==0 }">
+              			<a ng-if="text_12==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module5_title' , 'text_12')"
+	         			ng-model ="module5_title"  ng-bind-html="module5_title" ></a>
+	         			<a ng-if="logo_7==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('module5_image' , 'logo_7',module5_image)" >
+                        <img src="public/assets/template/addtocart/images/{{module5_image}}" alt="" /></a>
+              			<a ng-if="text_13==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module5_text' , 'text_13')"
+	         			ng-model ="module5_text"  ng-bind-html="module5_text" ></a>
+                    </div>
+                    
+                    <div ng-if="Module6==1" class="module_part" ng-class="{'module4-part-hide':  text_12==0 && logo_7==0 && text_13==0 }">
+              			<a ng-if="text_14==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module6_title' , 'text_14')"
+	         			ng-model ="module6_title"  ng-bind-html="module6_title" ></a>
+	         			<a ng-if="logo_8==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('module6_image' , 'logo_8',module6_image)" >
+                        <img src="public/assets/template/addtocart/images/{{module6_image}}" alt="" /></a>
+              			<a ng-if="text_15==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module6_text' , 'text_15')"
+	         			ng-model ="module6_text"  ng-bind-html="module6_text" ></a>
+                    </div>
+                    
+                </div>
+  
+                <div ng-if="ModulesBlocks==1" class="risk_div" ng-class="{'risk-div-hide':  text_16==0 && logo_9==0 && text_17==0 && text_18==0 && text_19==0}">
+                	<a ng-if="logo_9==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('module_block1_image' , 'logo_10',module_block1_image)" >
+                	<img src="public/assets/template/addtocart/images/{{module_block1_image}}" alt="" /></a>
+              			<a ng-if="text_16==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module_block1_text1' , 'text_16')"
+	         			ng-model ="module_block1_text1" ng-bind-html="module_block1_text1" ></a>
+                        <a ng-if="text_17==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module_block1_title' , 'text_17')"
+	         			ng-model ="module_block1_title" ng-bind-html="module_block1_title" ></a>
+	         		    <a ng-if="text_18==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module_block1_price' , 'text_18')"
+	         			ng-model ="module_block1_price" ng-bind-html="module_block1_price" ></a>
+	         			<a ng-if="text_19==1" href="javascript:void(0)" target="_self" ng-click ="checkData('module_block1_price_text' , 'text_19')"
+	         			ng-model ="module_block1_price_text" ng-bind-html="module_block1_price_text" ></a>	
+                </div>
+                
+                <div ng-if="GuaranteeFirstBlocks==1" class="guarantee" ng-class="{'guarantee-hide': text_20==0 && logo_10==0 && text_21==0}">
+                	<span ng-if="text_20==1" ng-style="{'background-color' : styleArr[5]['default_value']}" ng-click ="checkData('guarantee1_block_title' , 'text_20')"
+	         			ng-model ="guarantee1_block_title"  ng-bind-html="guarantee1_block_title" ng-style="{'background-color' : styleArr[31]['default_value']}" ></span>
+                    <div class="days" ng-style="{'background-color' : styleArr[6]['default_value']}">
+                    	<div ng-if="logo_10==1" class="day_img" ng-class="{'day-img-hide': text_21==0}">
+                    	<a href="javascript:void(0)" target="_self" ng-click ="checkImageData('guarantee1_block_image' , 'logo_10', guarantee1_block_image)" >
+                        	<img src="public/assets/template/addtocart/images/{{guarantee1_block_image}}" alt="" />
+                        </a>
+                        </div>
+                        <div ng-if="text_21==1" class="day_text" ng-class="{'day-text-hide': logo_10==0}">
+	         			<a href="javascript:void(0)" target="_self" ng-click ="checkData('guarantee1_block_text' , 'text_21')"
+	         			ng-model ="guarantee1_block_text"  ng-bind-html="guarantee1_block_text" ></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bonus" style="position:relative" ng-style="{'background-image':'url('+domain_path.name+'public/assets/template/addtocart/images/'+top_background_image+')'}" ng-class="{'bonus-hide': text_22==0 && text_23==0 && text_25==0 && text_26==0 && text_27==0 && text_28==0 && text_30==0 && text_31==0 && text_32==0 && text_33==0 && text_34==0 && text_36==0 && logo_11==0 && logo_12==0 && logo_14==0 && logo_16==0}">
+                	<a class="cog_icon addtocart-cog-icon"  ng-click="backgorundImage('top_background_image' , 'logo_28', top_background_image)"><i class="fa fa-cog"></i></a>
+                	<div ng-if="BonusFirstBlocks==1" class="bonus_area" ng-class="{'bonus-area1-hide': logo_11==0 && text_22==0 && text_23==0}">
+                    	<div class="bonus_text" ng-class="{'bonus-title-hide': logo_11==0}" ng-style="{'background-color' : styleArr[7]['default_value']}">
+                        <a ng-if="text_22==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus1_title' , 'text_22')"
+	         			ng-model ="bonus1_title"  ng-bind-html="bonus1_title" ></a>
+                        <a ng-if="text_23==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus1_subtitle' , 'text_23')"
+	         			ng-model ="bonus1_subtitle"  ng-bind-html="bonus1_subtitle" ></a>
+	         			<div ng-if="logo_11==1" class="bouns_img" href="javascript:void(0)" target="_self">
+                         <img src="public/assets/template/addtocart/images/{{bonus1_right_image}}" alt="" />
+                         <a class="cog_icon bonus-icon" ng-click="checkImageData('bonus1_right_image' , 'logo_11',bonus1_right_image)"><i class="fa fa-cog"></i></a>
+                        <a href="javascript:void(0)" target="_self" ng-click ="checkData('bonus1_image_value' , 'text_24')"
+	         			ng-model ="bonus1_image_value"  ng-bind-html="bonus1_image_value" ></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case_study" ng-class="{'case-study-hide': logo_11==0}">
+                        <div ng-if="logo_12==1" class="case_img" ng-class="{'case-img-hide': text_25==0 && text_26==0}" ng-click ="checkImageData('bonus1_left_image' , 'logo_12',bonus1_left_image)">
+                            <img src="public/assets/template/addtocart/images/{{bonus1_left_image}}" alt="" />
+                        </div>
+                        <div class="case_text" ng-class="{'case-text-hide': logo_12==0}">
+                        <a ng-if="text_25==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus1_text_Title' , 'text_25')" ng-model ="bonus1_text_Title"  ng-bind-html="bonus1_text_Title"></a>
+	         			<a ng-if="text_26==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus1_text' , 'text_26')" ng-model ="bonus1_text"  ng-bind-html="bonus1_text"></a>
+                        </div>
+                    </div>
+                    
+                    <div ng-if="BonusSecondBlocks==1" class="bonus_area" ng-class="{'bonus-area2-hide': logo_13==0 && text_27==0 && text_28==0}">
+                    	<div class="bonus_text" ng-class="{'bonus-text2-hide': logo_13==0}" ng-style="{'background-color' : styleArr[8]['default_value']}">
+                    	 <a ng-if="text_27==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus2_title' , 'text_27')" ng-model ="bonus2_title"  ng-bind-html="bonus2_title"></a>
+                        <a ng-if="text_28==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus2_subtitle' , 'text_28')"
+	         			ng-model ="bonus2_subtitle"  ng-bind-html="bonus2_subtitle" ></a>
+	         			<div class="bouns_img" ng-if="logo_13==1">
+                        <img src="public/assets/template/addtocart/images/{{bonus2_right_image}}" alt="" />
+                        <a class="cog_icon bonus-icon" ng-click="checkImageData('bonus2_right_image' , 'logo_13',bonus2_right_image)"><i class="fa fa-cog"></i></a>
+                         <a href="javascript:void(0)" target="_self" ng-click ="checkData('bonus2_image_value' , 'text_29')"
+	         			ng-model ="bonus2_image_value"  ng-bind-html="bonus2_image_value" ></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="training_event" ng-class="{'training-event-hide': logo_13==0}">
+                    	<div class="training_text" ng-class="{'training-text-hide': logo_14==0 && text_32==0}">
+	         			<a ng-if="text_30==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus2_text_Title' , 'text_30')" ng-model ="bonus2_text_Title"  ng-bind-html="bonus2_text_Title"></a>
+	         			<a ng-if="text_31==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus2_text' , 'text_31')" ng-model ="bonus2_text"  ng-bind-html="bonus2_text"></a>
+                        </div>
+                        <div class="training_img" ng-class="{'training-img-hide': text_31==0 && text_31==0}">
+                        <a ng-if="logo_14==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('bonus2_left_image' , 'logo_14',bonus2_left_image)"><img src="public/assets/template/addtocart/images/{{bonus2_left_image}}" alt="" /></a>
+                        <a ng-if="text_32==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus2_image_below_text' , 'text_32')" ng-model ="bonus2_image_below_text"  ng-bind-html="bonus2_image_below_text" ></a>
+                        </div>
+                    </div>
+                    
+                    <div ng-if="BonusThirdBlocks==1" class="bonus_area" ng-class="{'bonus-area3-hide': logo_15==0 && text_33==0 && text_34==0}">
+                    	<div class="bonus_text" ng-class="{'bonus_text3-hide': logo_15==0}" ng-style="{'background-color' : styleArr[9]['default_value']}">
+                       <a ng-if="text_33==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus3_title' , 'text_33')"
+	         			ng-model ="bonus3_title"  ng-bind-html="bonus3_title" ></a>
+                       <a ng-if="text_34==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus3_subtitle' , 'text_34')"
+	         			ng-model ="bonus3_subtitle"  ng-bind-html="bonus3_subtitle" ></a>
+	         			<div class="bouns_img" ng-if="logo_15==1">
+                        <img src="public/assets/template/addtocart/images/{{bonus3_right_image}}" alt="" />
+                        <a class="cog_icon bonus-icon" ng-click="checkImageData('bonus3_right_image' , 'logo_15',bonus3_right_image)"><i class="fa fa-cog"></i></a>
+                         <a href="javascript:void(0)" target="_self" ng-click ="checkData('bonus3_image_value' , 'text_35')"
+	         			ng-model ="bonus3_image_value"  ng-bind-html="bonus3_image_value" ></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case_study" ng-class="{'case-study3-hide': logo_15==0 }">
+                        <div ng-if="logo_16==1" ng-class="{'case-img3-hide': text_36==0 }" class="case_img" ng-click ="checkImageData('bonus3_left_image' , 'logo_16',bonus3_left_image)">
+                            <img src="public/assets/template/addtocart/images/{{bonus3_left_image}}" alt="" />
+                        </div>
+                        <div ng-if="text_36==1" ng-class="{'case-text3-hide': logo_16==0 }" class="case_text" ng-click ="checkData('bonus3_text' , 'text_36')"
+	         			ng-model ="bonus3_text"  ng-bind-html="bonus3_text">
+                        </div>
+                    </div>
+                    
+                   </div>
+                
+                <div ng-if="BonusDetailBlocks==1" class="money_time">
+                  <a ng-if="logo_17==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('bonus_detail_image' , 'logo_17',bonus_detail_image)">
+                	<img src="public/assets/template/addtocart/images/{{bonus_detail_image}}" alt="" /></a>
+                      <a ng-if="text_37==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus_detail_title' , 'text_37')"
+	         			ng-model ="bonus_detail_title"  ng-bind-html="bonus_detail_title" ></a>
+                      <a ng-if="text_38==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus_detail_text' , 'text_38')"
+	         			ng-model ="bonus_detail_text"  ng-bind-html="bonus_detail_text" ></a>
+	         		 <a ng-if="text_39==1" href="javascript:void(0)" target="_self" ng-click ="checkData('bonus_detail_subtitle' , 'text_39')"
+	         			ng-model ="bonus_detail_subtitle"  ng-bind-html="bonus_detail_subtitle" ></a>
+	         		 <a ng-if="text_40==1" href="javascript:void(0)" class="address-box" target="_self" ng-click ="checkData('bonus_detail_address' , 'text_40')"
+	         			ng-model ="bonus_detail_address"  ng-bind-html="bonus_detail_address" ></a>
+                </div>
+                
+                
+                <div ng-if="GuaranteeSecondBlocks==1" ng-class="{'protected-hide': logo_18==0 && text_41==0 }" class="protected" ng-style="{'background-image':'url('+domain_path.name+'public/assets/template/addtocart/images/'+guarantee2_bkimage+')'}">
+                	<a class="cog_icon addtocart-cog-icon" ng-click="backgorundImage('guarantee2_bkimage' , 'logo_24', guarantee2_bkimage)"><i class="fa fa-cog"></i></a>
+                	<div ng-if="logo_18==1" ng-class="{'proc-img-hide': text_41==0 }" class="proc_img" ng-click ="checkImageData('guarantee2_image' , 'logo_18',guarantee2_image)">
+                    	<img src="public/assets/template/addtocart/images/{{guarantee2_image}}" alt="" />
+                    </div>
+                    <div ng-if="text_41==1" class="proc_text" ng-class="{'proc-text-hide': logo_18==0 }">
+                    <a href="javascript:void(0)" target="_self" ng-click ="checkData('guarantee2_block_text' , 'text_41')"
+	         			ng-model ="guarantee2_block_text"  ng-bind-html="guarantee2_block_text" ></a>
+                    </div>
+                </div>
+                
+                <div class="sign_up" ng-class="{'sign-up-hide':text_42==0 && text_43==0 && text_44==0 && text_45==0 && text_46==0 && text_48==0 && text_49==0 && text_50==0 && text_51==0 && tab_2==0 && tab_3==0 && logo_19==0 && logo_20==0}">
+                	<div class="sign_area">
+                    <span ng-if="text_42==1" class="sign-title-bk" ng-style="{'background-color' : styleArr[10]['default_value']}" ng-model ="signup_title"  ng-bind-html="signup_title" ng-click="checkData('signup_title' , 'text_42')"></span>
+                       <div ng-if="SignupLeft==1" class="one_time"  ng-class="{'one-time-hide': text_48==0 && text_49==0 && text_50==0 && text_51==0 && tab_3==0 && logo_20==0}">
+                        	<div class="one_time_area" ng-class="{'one-time-area-hide': text_43==0 && text_44==0 && text_45==0 && text_46==0}">
+                        	<div ng-if="text_43==1" class="one-time-title-bk" ng-style="{'background-color' : styleArr[11]['default_value']}" ng-click ="checkData('signup_left_panel_title' , 'text_43')"
+	         				ng-model ="signup_left_panel_title"  ng-bind-html="signup_left_panel_title" ></div>
+	         				<div class="sub_one_time" ng-class="{'sub-one-time-hide':text_44==0 && text_45==0 && text_46==0}" ng-style="{'background-color' : styleArr[12]['default_value']}">
+                            <a ng-if="text_44==1" href="javascript:void(0)" target="_self" ng-click ="checkData('signup_left_panel_top_text' , 'text_44')"
+	         				ng-model ="signup_left_panel_top_text"  ng-bind-html="signup_left_panel_top_text" ></a>
+                            <a ng-if="text_45==1" href="javascript:void(0)" target="_self" ng-click ="checkData('signup_left_panel_value' , 'text_45')"
+	         				ng-model ="signup_left_panel_value"  ng-bind-html="signup_left_panel_value" ></a>
+                            <div ng-if="text_46==1" class="signup_panel_bottom_text" ng-click ="checkData('signup_left_panel_bottom_text' , 'text_46')"
+	         				ng-model ="signup_left_panel_bottom_text"  ng-bind-html="signup_left_panel_bottom_text" ></div>
+                            </div>
+                            </div>
+                            <div ng-if="tab_2==1" class="button" ng-style="{'background-color' : styleArr[30]['default_value']}">
+                            <a  href="javascript:void(0)" target="_self" class="action-btn" ng-click ="checkWindowData('signup_left_callbutton_link' , 'tab_2','signup_left_callbutton_link_value')" ng-model="signup_left_call_to_action_title" ng-bind-html="signup_left_call_to_action_title"> </a>
+    						<a class="cog_icon sign-up-title-icon" ng-click="checkData('signup_left_call_to_action_title' , 'text_47')"><i class="fa fa-cog"></i>
+							</a></div>
+							<a ng-if="logo_19==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('signup_left_bottom_image' , 'logo_19',signup_left_bottom_image)">
+                        	<img src="public/assets/template/addtocart/images/{{signup_left_bottom_image}}" alt=""/></a>
+                        </div>
+                        
+                        <div ng-if="SignupRight==1" class="one_time"  ng-class="{'one-time2-hide': text_43==0 && text_44==0 && text_45==0 && text_46==0 && tab_2==0 && logo_19==0}">
+                        	<div class="one_time_area" ng-class="{'one-time-area2-hide': text_48==0 && text_49==0 && text_50==0 && text_51==0}">
+                          <div ng-if="text_48==1" class="one-time-title-bk" ng-style="{'background-color' : styleArr[13]['default_value']}" ng-click ="checkData('signup_right_panel_title' , 'text_45')"
+	         			     ng-model ="signup_right_panel_title"  ng-bind-html="signup_right_panel_title"></div>
+                          <div class="sub_one_time" ng-class="{'sub-one-time2-hide': text_49==0 && text_50==0 && text_51==0}" ng-style="{'background-color' : styleArr[14]['default_value']}">
+                          <a ng-if="text_49==1" href="javascript:void(0)" target="_self" ng-click ="checkData('signup_right_panel_top_text' , 'text_49')"
+	         				ng-model ="signup_right_panel_top_text"  ng-bind-html="signup_right_panel_top_text" ></a>
+                           <a ng-if="text_50==1" href="javascript:void(0)" target="_self" ng-click ="checkData('signup_right_panel_value' , 'text_50')"
+	         				ng-model ="signup_right_panel_value"  ng-bind-html="signup_right_panel_value" ></a>
+                            <div ng-if="text_51==1" class="signup_panel_bottom_text" ng-click ="checkData('signup_right_panel_bottom_text' , 'text_51')"
+	         				ng-model ="signup_right_panel_bottom_text"  ng-bind-html="signup_right_panel_bottom_text" ></div>
+                            </div>
+                            </div>
+                            <div ng-if="tab_3==1" class="button" ng-style="{'background-color' : styleArr[31]['default_value']}">
+                            <a  href="javascript:void(0)" target="_self" class="action-btn" ng-click ="checkWindowData('signup_right_callbutton_link' , 'tab_3', 'signup_right_callbutton_link_value')" ng-model="signup_right_call_to_action_title" ng-bind-html="signup_right_call_to_action_title"> </a>
+    						<a class="cog_icon sign-up-title-icon" ng-click="checkData('signup_right_call_to_action_title' , 'text_52')"><i class="fa fa-cog"></i>
+							</a></div>
+							<a ng-if="logo_20==1" href="javascript:void(0)" target="_self" ng-click ="checkImageData('signup_right_bottom_image' , 'logo_20',signup_right_bottom_image)">
+                        	<img src="public/assets/template/addtocart/images/{{signup_right_bottom_image}}" alt=""/></a>
+                        </div>
+                        
+                    </div>
+                </div>                
+            </div>
+            
+            
+            <div ng-if="Copyrights==1" class="footer-at" ng-class="{'footer-at-hide': text_53==0 && text_54==0 && text_55==0 && text_56==0}">
+            	<span class="footer-menu" ng-class="{'footer-menu-hide': text_53==0 || text_54==0 }"><a ng-if="text_53==1" ng-click ="checkWindowData('copyright_menu1_link' , 'tab_1', 'copyright_menu1_tab_value')" href="javascript:void(0)" target="_self" ng-model="copyright_menu1" ng-bind-html="copyright_menu1"></a> <a ng-if="text_54==1" ng-click ="checkWindowData('copyright_menu2_link' , 'tab_2', 'copyright_menu2_tab_value')" href="javascript:void(0)" target="_self" ng-model="copyright_menu2" ng-bind-html="copyright_menu2"></a></span>
+
+			<span ng-if="text_55==1" class="copy-right" ng-click ="checkData('copyright_title' , 'text_55')" ng-model ="copyright_title"  ng-bind-html="copyright_title"></span>
+    			<a ng-if="text_56==1" href="javascript:void(0)" target="_self" ng-click ="checkData('copyright_text' , 'text_56')" ng-model ="copyright_text"  ng-bind-html="copyright_text"></a>   
+            </div>    
+        </div>
+    </div>
+</div>
+</div>
+</div>

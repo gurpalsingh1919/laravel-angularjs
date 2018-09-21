@@ -1,0 +1,101 @@
+   <loginafterheader></loginafterheader>
+      <adminpopups></adminpopups>
+ <div class="page-content">
+     	<div class="container">
+     	<div class="templates">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <img src="public/assets/admin/images/panel-head-icon.png" alt="Panel heading" />    {{funnel_name}}    
+                                                  <ul class="heading-settings">
+                                	<li>
+                                    	<a href="javascript:void(0)" target="_self" ><i class="fa fa-plus"></i> Add Funnel url</a>
+                                    </li>
+                                    <li>
+                                    	<a href="javascript:void(0)" target="_self" ><i class="fa fa-th"></i> Contacts</a>
+                                    </li>
+                                    <li>
+                                    	<a href="javascript:void(0)" target="_self" ><i class="fa fa-cog"></i> Settings</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body" ng-controller="categorycontroller">
+                                <div class="setp-panel">
+                                    <ul ui-sortable="sortableOptions" ng-model="list" class="list">
+                                     <li ng-repeat="item in list" class="item" ng-click="checkCategory(0)">
+                                      <span class="step-name"> {{item.name}}</i></span>
+                                            <span class="step-count">10%</span>
+		       					
+		      						</li>
+		                            </ul>
+                                    <a href="javascript:void(0)" target="_self" ng-click="showFunneltype(3)"  class="add-step-btn">
+                                    <i class="fa fa-plus"></i> Add New Step</a>
+                                </div>
+                                <div class="content-panel">
+                                	<div class="header">
+                                    	<span class="title"><strong>Page Type:</strong> Webinar Thank You</span>
+                                        <span class="search">
+                                        	<input type="text" placeholder="Webinar Confirmation" />
+                                            <i class="fa fa-pencil"></i>
+                                        </span>
+                                    </div>
+                                    <div class="content-panel-body">
+                                    	<div class="tab-head">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active" ng-click="checkCategory(0)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >All Pages</a></li>
+                                                <li ng-click="checkCategory(1)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Opt-in  Pages</a></li>
+                                                <li ng-click="checkCategory(2)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Thank You Pages</a></li>
+                                                <li ng-click="checkCategory(3)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Launch Pages</a></li>
+                                                <li ng-click="checkCategory(4)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Video Pages</a></li>
+                                                <li ng-click="checkCategory(5)"><a data-toggle="tab" href="javascript:void(0)" target="_self" >Offer Pages</a></li>
+                                            </ul>
+                                            <div class="template-search">
+                                            	<input type="text" ng-model="searchtemplate" placeholder="Search Templates" /> 
+                                                <i class="fa fa-search"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tab-content">
+                                        	<div id="tabs1-pane1" class="tab-pane active">
+                                                <div class="template-container">
+                                                	<div class="row">
+                                                	<div ng-repeat="Arr in catArr | filter:searchtemplate">
+                                                    	<div class="col-md-4">
+                                                            <a href="javascript:void(0)" target="_self" >
+                                                                <div class="temp-case">
+                                                                    <div class="img-case"> 
+                                                                        <img src="public/assets/admin/images/thumbnail-images/{{Arr.image}}" alt="Template" />
+                                                                        <div class="img-case-over">
+                                                                            
+                                                                            <a target="_self"   href="javascript:void(0)" class="preview-btn" ng-click="select(Arr.temp_code , Arr.slug);"><i class="fa fa-eye"></i> Select</a>
+                                                                             <a href="javascript:void(0)" target="_self"  class="select-btn" ng-click="preview(Arr.slug);"><i class="fa fa-check"></i> Preview</a>
+                                                                            </div>
+                                                                    </div>
+                                                                    <p>{{Arr.name}}</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        </div>
+                                                   
+                                                         
+                                                        </div>
+                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                     
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                 </div>
+            </div>
+        </div>
+     </div>
+     </div>
+     

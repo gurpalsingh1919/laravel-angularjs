@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="keyword" content="{{seo_page_keywords}}">
+    <meta name="description" content="{{seo_page_description}}">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title ng-model="seo_page_title" ng-bind-html="seo_page_title"></title>
+
+<link rel="stylesheet" media="screen" href="public/assets/preview-template/optin/custom_optin_preview.css"/>
+ <link href="public/assets/preview-template/common/optin-form.css" rel="stylesheet">
+</head>
+<body>
+<div ng-controller="previewController">
+<stateloadingindicator></stateloadingindicator>
+<div class="wrapper">
+	<div class="top" ng-if="Header==1" ng-style="{'background-color' : styleArr[1]['default_value']}"></div>
+	<div class="main_part" ng-style="{'background-image':'url('+domain_path.name+'public/assets/template/optin/images/'+top_background_image+')'}" set-height>
+    	<div class="container" ng-class="{'container-left-side-hide':text_1==0 && video_1==0}">
+        	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 left_side"  ng-class="{'left-side-hide':OptinForm == 0}">
+            	<a ng-if="text_1==1" href="javascript:void(0)" target="_self" class="vid_title" ng-model ="vid_title"  ng-bind-html="vid_title" ng-click="checkData('vid_title','text_1')"></a>
+                <div class="video_image" ng-if="video_1==1">
+                <img src="public/assets/template/optin/images/{{ vid_url }}" alt="Logo" />
+                	<!--  <a ng-model="vid_url" ng-bind-html="vid_url">
+                      <img src="public/assets/template/optin/images/optinpage-img.jpg" alt="Video" /> -->
+                 </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 right_side" ng-show="OptinForm==1">
+            	<div class="center_box" ng-style="{'background-color' : styleArr[3]['default_value']}">
+                	<div ng-if="text_2==1" class="details_text" ng-model ="details_text"  ng-bind-html="details_text"></div>
+					<div ng-show="text_3==1">
+					  <form  class="access_form" name="frmRegister" ng-submit="CallToActionformSubmit()" novalidate> 
+                  		  <div class="form-group">
+                    		<label><div ng-model="detail_form_title" ng-bind-html="detail_form_title" ></div></label>
+                            <input type="email" ng-model="email" name="email" class="form-control" placeholder="{{call_to_action_input_name2}}" required />
+                            <span  class="error" ng-show="submitted && frmRegister.email.$error.email" ng-bind-html="calltoaction_field2_invalid_value_mess"></span>
+                            <span  class="error" ng-show="submitted && frmRegister.email.$error.required"  ng-bind-html="calltoaction_field2_required_mess"></span>
+						  </div>
+	                      <div class="form-group">
+	                        <button type="submit"  id="addcontact" class="button" ng-style="{'background-color' : styleArr[0]['default_value'],'color': styleArr[37]['default_value']}" ng-model="call_to_action_button_title" ng-bind-html="call_to_action_button_title" ></button>
+	                      </div>
+                     </form>
+                    </div>
+                </div>
+            </div>
+            			
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+  <!-- div class="main-modal modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="linkModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">        
+          <button type="button" class="close" data-dismiss="modal"><img src="images/closemodal.png" alt=""></button>          
+       
+        <div class="modal-body">
+          <p>***Oops! Please enter your email to access this FREE training now!</p>
+        </div>
+      
+      </div>
+    </div>
+  </div> -->
+</div>
+ 
+</body>
+</html> 

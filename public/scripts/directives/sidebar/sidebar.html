@@ -1,0 +1,158 @@
+<div id="toggleMe">
+<div class="toggle-sidebar side-nav content-scroll">
+<a href="#" class="toggle-btn"><i class="fa fa-bars"></i></a>
+<h2>General Settings</h2>
+<ul>
+   <li><a href="javascript:void(0)" target="_self" ng-click="seoSettings()">SEO Settings</a></li>
+   <li><a href="javascript:void(0)" target="_self" ng-click="trackSettings()">Tracking Code</a></li>
+   <li> <a href="javascript:void(0)" target="_self" ng-click="exitPopups()">Exit Popup</a></li>
+   <!-- <li><a href="javascript:void(0)" target="_self">Pop-up Opt-in Form</a></li> -->
+</ul>
+<h2>Page Content</h2>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div ng-repeat="Arr in leftArr track by Arr.href">
+   <div class="panel panel-default" ng-repeat="Key in notSorted(Arr)" ng-init="Val = Arr[Key]" >
+      <div class="panel-heading,{{ Key }}" role="tab" id="heading{{$index}}">
+         <h4 class="panel-title brdnone">
+            <a role="button" target="_self" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
+            <i class="fa fa-plus-square"></i>
+            <i class="fa fa-minus-square"></i>{{ Key }}
+            </a>
+
+           <!-- <span ng-repeat="eye in eyeArr"  ng-if="eye.scopval == Key" class="edit-icon glyphicon glyphicon-eye-open" ng-click="checkHideDiv(eye.default_value,Key)"
+               toggle-class="edit-icon glyphicon glyphicon-eye-close">
+            </span>
+            <span ng-repeat="eye in rightArr"  ng-if="Key == eye" class="edit-icon glyphicon glyphicon-eye-open" ng-click="checkHideDiv(eye,Key)"
+               toggle-class="edit-icon glyphicon glyphicon-eye-close"> 
+            </span>-->
+            <div ng-repeat="eye in rightArr">
+            <div ng-repeat="final in eye">
+            <span ng-repeat="(keyy,value) in final" ng-if="keyy == Key" ng-class="{ 'glyphicon-eye-open': value==1 , 'glyphicon-eye-close': value==0  }" class="edit-icon glyphicon" ng-click="checkHideDiv(value,Key)" toggle-class></span>
+            </div>
+            </div>
+         </h4>
+
+      </div>
+      <div id="collapse{{$index}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$index}}">
+         <div class="panel-body">
+            <ul class="sub">
+            <!--  <div ng-repeat="(key1,value1) in Val"><span ng-repeat="fin in notSorted(value1)"><p ng-if="chk(fin)">{{fin}}</p></span></div>  -->    
+            <li ng-repeat="menuKey in notSorted(Val)"  ng-init="menuVal = Val[menuKey]">
+               <div  ng-if="checkChild(menuVal)" class="sidebar_{{ menuKey.split('/')[1] }}" >
+                  <!--------------------If case ---------------------------->      
+                  <div class="style-clr" ng-if="menuKey.split('/')[0].indexOf('color') > -1">
+                     <div ng-repeat="style in styleArr">
+                        <a href="javascript:void(0)" ng-if="style.scopval == menuKey.split('/')[1]" >  
+                        <button colorpicker setValue="{{$index}}" ng-model="style.default_value" class="colorpicker-color-btn" ng-style="{'background-color':style.default_value}" >
+                        </button>{{menuVal}}
+                        </a>
+                        <div class="colorPicker_{{$index}} customColorPickerSection"></div>
+                     </div>
+                  </div>
+                  <!---------------------------- Else case -------------------------------->
+                  <div ng-if="menuKey.split('/')[0].indexOf('color') == -1">
+                     <div ng-if="menuKey.split('/')[0].indexOf('logo') > -1">
+                     <a href="javascript:void(0)" target="_self" ng-click ="checkImageData(menuKey.split('/')[1],menuKey.split('/')[0],menuKey.split('/')[1])">
+                     <span ng-repeat="(iKey, iVal) in logoArr" > 
+                     <i class="{{ menuKey == iKey ? iVal : ''; }} || {{ menuKey.indexOf(iKey) > -1 ? iVal : ''; }}">     
+                     </i> 
+                     </span>{{menuVal}} 
+                     </a>
+
+                     <!--<span ng-repeat="eye in eyeArr"  ng-if="eye.scopval == menuKey.split('/')[0]" class="edit-icon glyphicon glyphicon-eye-open" ng-click="checkHideDiv(eye.default_value,menuKey.split('/')[0])"
+                        toggle-class="edit-icon glyphicon glyphicon-eye-close">
+                     </span>-->
+			            <div ng-repeat="eye in rightArr">
+			            <div ng-repeat="final in eye">
+			            <span ng-repeat="(keyy,value) in final" ng-if="keyy == menuKey.split('/')[0]" class="edit-icon glyphicon" ng-class="{ 'glyphicon-eye-open': value==1 , 'glyphicon-eye-close': value==0  }" ng-click="checkHideDiv(value,menuKey.split('/')[0])" toggle-class></span>
+			            </div>
+			            </div>
+                     </div>
+                     <div ng-if="menuKey.split('/')[0].indexOf('tab') == 0">
+                     <a href="javascript:void(0)" target="_self" ng-click ="checkWindowData(menuKey.split('/')[1],menuKey.split('/')[0],menuKey.split('/')[1])">
+                     <span ng-repeat="(iKey, iVal) in logoArr" > 
+                     <i class="{{ menuKey == iKey ? iVal : ''; }} || {{ menuKey.indexOf(iKey) > -1 ? iVal : ''; }}">     
+                     </i> 
+                     </span>{{menuVal}}
+                     </a>
+                     <!--<span ng-repeat="eye in eyeArr"  ng-if="eye.scopval == menuKey.split('/')[0]" class="edit-icon glyphicon glyphicon-eye-open" ng-click="checkHideDiv(eye.default_value,menuKey.split('/')[0])"
+                        toggle-class="edit-icon glyphicon glyphicon-eye-close">
+                     </span>-->
+                     	<div ng-repeat="eye in rightArr">
+			            <div ng-repeat="final in eye">
+			            <span ng-repeat="(keyy,value) in final" ng-if="keyy == menuKey.split('/')[0]" class="edit-icon glyphicon" ng-class="{ 'glyphicon-eye-open': value==1 , 'glyphicon-eye-close': value==0  }" ng-click="checkHideDiv(value,menuKey.split('/')[0])" toggle-class></span>
+			            </div>
+			            </div>
+                     </div>
+                     <div ng-if="menuKey.split('/')[0].indexOf('tab') == -1">
+                        <div ng-if="menuKey.split('/')[0].indexOf('logo') == -1">
+                        <a href="javascript:void(0)" target="_self" ng-click ="checkData(menuKey.split('/')[1],menuKey.split('/')[0])">
+                        <span ng-repeat="(iKey, iVal) in logoArr" > 
+                        <i class="{{ menuKey == iKey ? iVal : ''; }} || {{ menuKey.indexOf(iKey) > -1 ? iVal : ''; }}">     
+                        </i> 
+                        </span>{{menuVal}}
+                        </a>
+
+                       <!-- <span ng-repeat="eye in eyeArr"  ng-if="eye.scopval == menuKey.split('/')[0]" class="edit-icon glyphicon glyphicon-eye-open" ng-click="checkHideDiv(eye.default_value,menuKey.split('/')[0])"
+                           toggle-class="edit-icon glyphicon glyphicon-eye-close">
+                        </span>-->
+	                        <div ng-repeat="eye in rightArr">
+				            <div ng-repeat="final in eye">
+				            <span ng-repeat="(keyy,value) in final" ng-if="keyy == menuKey.split('/')[0]" class="edit-icon glyphicon" ng-class="{ 'glyphicon-eye-open': value==1 , 'glyphicon-eye-close': value==0  }" ng-click="checkHideDiv(value,menuKey.split('/')[0])" toggle-class></span>
+				            </div>
+				            </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+               <!-- my code  -->	
+               <div class="panel panel-default" ng-if="!checkChild(menuVal)" ng-init="random=abc()">
+                  <!-- <div class="panel-heading" role="tab" id="heading{{ random }}">
+                     <h4 class="panel-title"> <a class="collapsed" role="button" target="_self" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ random }}" aria-expanded="false" aria-controls="collapse"+random> <i class="fa fa-minus-square"></i> <i class="fa fa-plus-square sub-menu-cat"></i> {{ menuKey }}</a></h4>
+                     </div> -->
+                  <div class="panel-body">
+                     <ul class="sub">
+                        <li class="sub-menu-cat-li"   ng-repeat="menuKey1 in notSorted(menuVal)" class="sub-menu-cat-li"  ng-init="menuVal1 = menuVal[menuKey1]">
+                           <div ng-repeat="style in styleArr">
+                              <a href="javascript:void(0)" ng-if="style.scopval == menuKey1.split('/')[1]" >
+								  <button colorpicker setValue="{{$index}}" ng-model="style.default_value" class="colorpicker-color-btn" ng-style="{'background-color':style.default_value}" >
+                              </button>
+                              </a>
+                              <div class="colorPicker_{{$index}} customColorPickerSection"></div>
+                           </div>
+                           <div class="sidebar_{{ menuKey1.split('/')[1] }}">
+
+                              <a href="javascript:void(0)" target="_self" ng-click ="checkData(menuKey1.split('/')[1],menuKey1.split('/')[0])" > 
+                              <span ng-repeat="(iKey, iVal) in logoArr"> <i class="{{ menuKey1 == iKey ? iVal : ''; }} || {{ menuKey1.indexOf(iKey) > -1 ? iVal : ''; }}"> </i> 
+                              </span> {{ menuVal1 }}
+                              </a>
+                             <!-- <span ng-repeat="eye in eyeArr"  ng-if="eye.scopval == menuVal" class="edit-icon glyphicon glyphicon-eye-open" ng-click="checkHideDiv(style.default_value,Key)"
+                                 toggle-class="edit-icon glyphicon glyphicon-eye-close">
+                              </span>-->
+		                        <div ng-repeat="eye in rightArr">
+					            <div ng-repeat="final in eye">
+					            <span ng-repeat="(keyy,value) in final" ng-if="keyy == menuKey1.split('/')[0]" class="edit-icon glyphicon" ng-class="{ 'glyphicon-eye-open': value==1 , 'glyphicon-eye-close': value==0  }" ng-click="checkHideDiv(value,menuKey1.split('/')[0])" toggle-class></span>
+					            </div>
+					            </div>
+                            <!-- <a href="javascript:void(0)" ng-click ="checkData(menuKey1.split('/')[1],menuKey1.split('/')[0])" > 
+                              <span ng-repeat="(iKey, iVal) in logoArr"> <i class="{{ menuKey1 == iKey ? iVal : ''; }} || {{ menuKey1.indexOf(iKey) > -1 ? iVal : ''; }}"> </i> 
+                              </span> {{ menuVal1 }} brij
+                              </a>-->
+
+                           </div>
+                           <!-- end of my code -->		                        
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+         </div>
+      </div>
+   </div>
+
+</div>
+
+</div>
+</div>
+</div>
+

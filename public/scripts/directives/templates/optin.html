@@ -1,0 +1,50 @@
+<div class="wrapper right-side">
+<div class="template-section">
+      <div class="navbar-header">
+				   <a href="javascript:void(0)" onclick="toggleDisplay();" class="nav-toggle toggledisplays"><i class="fa fa-bars"></i></a>
+				</div>
+
+ <div class="main-wrapper" id="takescreenshot">				
+
+   <div class="top" ng-if="Header==1"  ng-style="{'background-color' : styleArr[1]['default_value']}">	</div>
+
+   <div class="main_part" ng-style="{'background-image':'url('+domain_path.name+'public/assets/template/optin/images/'+top_background_image+')'}" set-height>
+   <a class="cog_icon background-cog-icon"  ng-click="backgorundImage('top_background_image' , 'logo_1', top_background_image)"><i class="fa fa-cog"></i></a>
+     <div class="container" ng-class="{'container-left-side-hide':text_1==0 && video_1==0}">
+         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 left_side"  ng-class="{'left-side-hide':OptinForm == 0}">
+            <a ng-if="text_1==1" href="javascript:void(0)" target="_self" class="vid_title" ng-model ="vid_title"  ng-bind-html="vid_title" ng-click="checkData('vid_title','text_1')"></a>
+            <div class="video_image video-iframe" ng-if="video_1==1">
+            	<a class="banner_img" href="javascript:void(0)" target="_self"  ng-click ="checkImageData('vid_url' , 'logo_1', vid_url)" >
+                   <img src="public/assets/template/optin/images/{{ vid_url }}" alt="Logo" />
+                </a>
+             <!-- <a href="javascript:void(0)" ng-model="vid_url" ng-bind-html="vid_url" ng-click ="checkData('vid_url' , 'video_1')" target="_self">
+          		  <img src="public/assets/template/optin/images/video.png" alt="Video"/> 
+                  </a>
+                  <a class="cog_icon video-icon" ng-click ="checkData('vid_url' , 'video_1')"><i class="fa fa-cog"></i></a> -->
+            </div>
+         </div>
+         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 right_side" ng-if="OptinForm==1" ng-class="{'right-side-hide':text_1 == 0 && video_1 == 0}">
+            <div class="center_box" ng-style="{'background-color' : styleArr[3]['default_value']}">
+              <a ng-if="text_2==1" href="javascript:void(0)" target="_self" class="details_text" ng-model ="details_text"  ng-bind-html="details_text" ng-click="checkData('details_text','text_1')"></a>
+               <form class="access_form" ng-if="text_3==1">
+                    	<div class="form-group">
+                    		<label class="detail-form-title"><a href="javascript:void(0)" target="_self" ng-model="detail_form_title" ng-bind-html="detail_form_title" ng-click="checkData('detail_form_title','text_2')"></a></label>
+                            <input type="text" class="form-control"  ng-click ="customSettingPopUp(2)" id="usr" placeholder="{{call_to_action_input_name2}}">
+                        </div>
+                        <div class="form-group">
+                        	<div class="button get_access_btn" ng-style="{'background-color' : styleArr[0]['default_value'], 'color': styleArr[37]['default_value']}" ng-click ="customSettingPopUp(2)">
+                        	<span ng-model="call_to_action_button_title" ng-bind-html="call_to_action_button_title"></span>
+                          
+				</a></div>
+                        </div>
+                    </form>
+            </div> 
+         </div>
+      </div>
+   </div>
+   
+</div>
+
+</div>
+</div>
+

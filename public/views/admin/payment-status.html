@@ -1,0 +1,84 @@
+      <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a ui-sref="dashboard" class="navbar-brand"><img src="public/assets/admin/images/launchafunnel_logo.png" alt="logo" /></a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right" id="navbar">
+           <ul class="user-info pull-left pull-none-xsm"> 
+              <li ng-class="{active:isActive('/logout')}" ng-click="logout()"><a href="javascript:void(0)" target="_self"><i class="fa fa-power-off"></i> Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="page-content" ng-controller="AuthController">
+     	<div class="container">
+     	<div class="create-funnel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <img src="public/assets/admin/images/panel-head-icon.png" alt="Panel heading" />Please Select Plan
+                            </div>
+                            <!-- /.panel-heading -->
+                            
+                            <div class="panel-body">
+                           
+                               <div class="col-md-12">
+                               
+                                <div class="col-md-4" ng-repeat="plan in planArr" ng-if="plan.status==1">
+                                	<a href="javascript:void(0)" ng-click="makePayment(plan.name,plan.price,plan.validity,plan.id)" >
+                                        <div class="thumbnail">
+                                          <div class="img-container">
+                                            <img src="public/assets/admin/images/create-funnel-scratch-icon.png" alt="Scratch funnel">
+                                          </div>
+                                          <div class="caption">
+                                            <h3>{{plan.name}}</h3>
+                                            <p>{{plan.validity}} months : {{plan.price}} USD</p>
+                                          </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- div class="col-md-4">
+                                	<a  ui-sref="myfunnels">
+                                        <div class="thumbnail">
+                                          <div class="img-container">
+                                            <img src="public/assets/admin/images/myfunnel-icon.png" alt="My funnel">
+                                          </div>
+                                          <div class="caption">
+                                            <h3>Quaterly</h3>
+                                            <p>3 month : $250.00 USD</p>
+                                          </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                   <div class="col-md-4">
+                                	<a  ui-sref="myfunnels">
+                                        <div class="thumbnail">
+                                          <div class="img-container">
+                                            <img src="public/assets/admin/images/myfunnel-icon.png" alt="My funnel">
+                                          </div>
+                                          <div class="caption">
+                                            <h3>Yearly</h3>
+                                            <p>12 month : $1000.00 USD</p>
+                                          </div>
+                                        </div>
+                                    </a>
+                                </div> -->
+                                </div>
+                                
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                </div>
+            </div>
+        </div>
+     </div>
+     </div>
+    
+	

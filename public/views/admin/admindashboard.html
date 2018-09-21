@@ -1,0 +1,706 @@
+
+ <superadminheader></superadminheader>    
+ <adminpopups></adminpopups>
+     <div class="page-content editpage" ng-controller="AdminController">
+     	<div class="container-fluid">
+            <div class="tabbable user-account clearfix">
+             <div ng-show="setloading" class="loading"><img src="public/assets/admin/loader-img.gif"></div>
+				
+				<div class="panel-heading col-md-12">
+					<div class="col-md-8">
+						<img src="public/assets/admin/images/panel-head-icon.png" alt="Panel heading" /> Admin Dashboard
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+				<div class="left-tab col-">
+                    <ul class="nav nav-tabs nav-stacked span2">
+                     <li ng-class="{active: activeindex ==='admindashboard'}"><a href="javascript:void(0)" target="_self" ng-click="checkUser(2)"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                        <li ng-class="{active: activeindex ==='userlist'}"><a href="javascript:void(0)" target="_self" ng-click="checkUser(1)"><i class="fa fa-users"></i>Users</a></li>
+                        
+                       <li ng-class="{active: activeindex === 'payment'}"><a href="javascript:void(0)" target="_self" ng-click="checkUser(3)"><i class="fa fa-paypal"></i>Payment Plans</a></li>
+                        <li ng-class="{active: activeindex === 'refund'}"><a href="javascript:void(0)" target="_self" ng-click="checkUser(9)"><i class="fa fa-undo"></i>Refund Requests</a></li>
+                       <li ng-class="{active: activeindex === 'cancellation'}"><a href="javascript:void(0)" target="_self" ng-click="checkUser(8)"><i class="fa fa-times"></i>Cancellation Requests</a></li>
+                        <li ng-class="{active: activeindex === 'my_profile'}"><a href="javascript:void(0)" target="_self" ng-click="checkUser(7)"><i class="fa fa-user-secret"></i>My Profile</a></li>
+                         <li ng-class="{active: activeindex === 'pwd_change'}"><a href="javascript:void(0)" target="_self" ng-click="checkUser(6)"><i class="fa fa-lock"></i>Change Password</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content-new tab-content tab-size">
+			            <!-- ---------------------- Admin dashboard --------------------------- -->
+			                   <div class="col-md-12 tab-pane templates" ng-show="dashboard" style="margin-top: 75px;">
+                               
+                                <div class="col-md-4 adminicon">
+                                	<a href="javascript:void(0)" ng-click="checkUser(1)" >
+                                        <div class="thumbnail">
+                                          <div class="img-container">
+                                           <i class="fa fa-users fa-6 dashboard-icon"></i>
+                                          </div>
+                                          <div class="caption icon-title">
+                                            <h3>Users</h3>
+                                            
+                                          </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 adminicon">
+                                	<a href="javascript:void(0)" ng-click="checkUser(3)" >
+                                        <div class="thumbnail">
+                                          <div class="img-container">
+                                             <i class="fa fa-paypal fa-6 dashboard-icon"></i>
+                                          </div>
+                                          <div class="caption icon-title">
+                                            <h3>Payment Plans</h3>
+                                            
+                                          </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                 <div class="col-md-4 adminicon">
+                                	<a href="javascript:void(0)" ng-click="checkUser(9)" >
+                                        <div class="thumbnail">
+                                          <div class="img-container">
+                                             <i class="fa fa-undo dashboard-icon"></i>
+                                          </div>
+                                          <div class="caption icon-title">
+                                            <h3>Refund</h3>
+                                            
+                                          </div>
+                                        </div>
+                                    </a>
+                                </div> <span class="margin-tp"></span>
+                                 <div class="col-md-4 adminicon">
+                                	<a href="javascript:void(0)" ng-click="checkUser(8)" >
+                                        <div class="thumbnail">
+                                          <div class="img-container">
+                                             <i class="fa fa-times dashboard-icon"></i>
+                                          </div>
+                                          <div class="caption icon-title">
+                                            <h3>Cancellation</h3>
+                                            
+                                          </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                
+			            
+			            </div>
+			            
+			             <!------------------------ List of all User --------------------------------------->     
+			             <div class="tab-pane templates" ng-show="userlist">
+			                       
+			                       <div class="panel-search clearfix">
+			                                	<div class="filter">
+			                                    	
+			                                    </div>
+			                                    <div class="right userright">
+			                                    	<!--  <input type="text" ng-model="searchText" placeholder="Search Funnels...">-->
+			                                         <form class="form-inline">
+													 <input type="text" ng-model="search" placeholder="Search User..">
+												     </form>
+			                                        <button class="green-btn" ng-click="checkUser(4)"><i class="fa fa-plus-circle"></i> Add New User</button>
+			                                    </div>
+			                                </div>  
+			                       
+			                       
+			                       
+			                       
+			                       
+			                    <!-- button id="add-user" class='green-btn green-btn2n' ng-click="checkUser(4)"><i class="fa fa-user"></i> Add New User</button>
+			                    <form class="form-inline">
+								   <input type="text" ng-model="search" class="form-control" placeholder="Search Contacts..">
+								</form> -->
+			                 	<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+												<th class="name">Name </th>
+												<th class="email">Email </th>
+												
+												<!-- th class="number">Contact Number </th> -->	
+												<th calss="current_plan">Payment Plan</th>
+												<th calss="current_plan">Next Payment</th>
+												<th class="number">Status</th>	
+												<th class="number">Options </th>	
+										</tr>
+									</thead>
+									<tbody>
+			
+										<tr dir-paginate="item in user|orderBy:sortKey:reverse|filter:search|itemsPerPage:8">
+												<td>{{item.fullname}}</td>
+												<td>{{item.email}}</td>
+												<!-- td>{{item.contact_no}}</td> -->
+												<td>{{item.payment_plan}}</td>
+												<td>{{item.Next_date}}</td>
+												
+												<td>{{item.statusUser}}</td>
+												<td>
+												<button id="edit-user" class="edit" ng-click="chkeditUser(item.id)">
+												<i class="fa fa-pencil-square-o"></i> Edit</button>
+												<button id="reset_pwd_{{item.id}}" class="delete_b" ng-click="resetPasswordEmail(item.id)">
+												<i class="fa fa-envelope"></i> Reset Password</button>
+												<button id="edit-user" class="btn-cancel" ng-click="userBillingHistory(item.id)">
+												<i class="fa fa-paypal"></i> Payment</button>
+												</td>  
+			
+										</tr>
+									</tbody>
+								 </table>
+								 <div class="pull-right">
+									<dir-pagination-controls
+									max-size="3"
+									direction-links="true"
+									boundary-links="true" >
+									</dir-pagination-controls>
+								</div> 
+			                    </div>
+						 <!------------------------ User status and billing history --------------------------------------->
+			            <div class="tab-pane" ng-show="userstatus">
+			                    <div id="emailloader"></div>
+			                        <h4>Change Password</h4>
+			                        <div class="content">
+					                    <div class="alert alert-danger" ng-if="pass_error_message">							
+										<strong>{{pass_error_message}}</strong>
+										</div>
+										 <div class="alert alert-success" ng-if="pass_success_message">	
+										<strong>{{pass_success_message}}</strong>
+										</div>
+			                         <form role="form" class="form password-change"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="password_change_form" ng-submit="password_change_form.$valid && updateAdminPassword()" name="password_change_form" >
+			                        	 <div class="user-row">
+			                            	<label>Old Password</label>
+			                                <i class="fa fa-lock"></i>
+			                                <input type="password" value="" ng-model="old_password" placeholder="Old password"  required>
+			                             </div> 
+			                            <div class="user-row">
+			                            	<label>New Password</label>
+			                                <i class="fa fa-lock"></i>
+			                                <input type="password" id="password" value="" ng-model="new_password" placeholder="New password" required>
+			                           </div>
+			                            <div class="user-row">
+			                            	<label>Confirm Password</label>
+			                                <i class="fa fa-lock"></i>
+			                                <input type="password" id="confirm_paswd" value="" ng-model="confirm_password" data-equalto="#password" placeholder="Confirm password" required>
+			                            </div>
+			                             <div class="tab-footer">
+			                            	<button class="btn-blue" id="change_password_btn">Save</button>
+			         						
+			                            </div>
+			                        </form>
+			                      
+			                        </div>
+			                    </div>
+			            <!------------------------ Add New User -------------------------------------------->          
+			           	<div class="tab-pane" ng-show="adduser">
+			           		
+							
+								<div>
+										<button class="back-btn btn-cancel btn-right" ng-click="checkUser(1)">
+										<i class="fa fa-backward"></i> Back</button>
+									</div>
+								<h4>Add User</h4>
+									
+								
+								
+							
+						    <div class="alert alert-danger" ng-if="usererrormessage">							
+							<strong>{{usererrormessage}}</strong>
+							</div>
+							 <div class="alert alert-success" ng-if="usermessage">	
+							<strong>{{usermessage}}</strong>
+							</div>
+							
+								<form role="form"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="adduser_form" ng-submit="adduser_form.$valid && userregister()" name="adduser_form" >
+									<div class="content">
+									<div class="user-row clearfix">
+									<label>First Name</label>
+										<input type="text" value="" ng-model="first_name" placeholder="First Name" class="form-control" required>
+									</div>
+									<div class="user-row clearfix">
+									<label>Last Name</label>
+										<input type="text" value="Last Name" ng-model="last_name" placeholder="Last Name" class="form-control" required>
+									</div>
+									<div class="user-row clearfix">
+									<label>Email</label>
+										<input type="email" value="" ng-model="email" placeholder="Email" class="form-control" required>
+									</div>
+									<div class="user-row clearfix">
+									<label>Password</label>
+										<input type="password" id="user_password"   value="" ng-model="password" placeholder="Password" class="form-control" required>
+									</div>
+									<div class="user-row clearfix">
+									<label>Confirm Password</label>
+										<input type="password"  id="confirm_paswd" value="" data-equalto="#user_password" ng-model="confirm_paswd" placeholder="Confirm Password" class="form-control" required>
+									</div>
+									<div class="user-row clearfix">
+									<label>Contact Number</label>
+										<input type="number" value="" name="mobile" ng-model="phone_no" placeholder="Phone Number"data-trigger="keyup" minlength=10 data-rangelength="[10,14]" class="form-control">
+										<span  class="signup-error" ng-show="register_form.mobile.$invalid">Please enter valid phone number.</span>
+									</div>
+									<div class="tab-footer">
+										<button type="submit" id="adduser_btn"  class="btn-blue">Add User</button>
+										
+									</div>	
+									</div>					
+								</form>
+							
+					     </div>
+					    <!------------------------------ Edit User ----------------------------------------->
+					    <div class="tab-pane" ng-show="edituser">
+					     <div>
+										<button class="back-btn btn-cancel btn-right" ng-click="checkUser(1)">
+										<i class="fa fa-backward"></i> Back</button>
+									</div>
+								<h4>Edit User</h4>
+									
+					      <div class="content">
+					       <div class="alert alert-danger" ng-if="errormessage">   
+								<strong>{{errormessage}}</strong>    
+							</div>
+							<div class="alert alert-success" ng-if="success_message"> 
+								<strong>{{success_message}}</strong>
+							</div>
+					      <!-- form role="form" name="edit_form"  data-validate="parsley" validate-form="" novalidate="novalidate"  id="edit_form" ng-submit="edit_form.$valid && updateUserIndo()"  > -->
+						    <form id="edituserdetailform" name="frmusersetting" ng-submit="frmusersetting.$valid &&updateUserInfo()" novalidate>
+						   
+						    <div class="user-body">
+						   
+			                	<div class="user-row clearfix">
+			                	<label>First Name</label>
+			                        <input type="text" value="" ng-model="first_name" placeholder="First Name" ng-bind-html="first_name" class="form-control" required>
+							          
+			                    </div>
+			                    <div class="user-row clearfix">
+			                    <label>Last Name</label>
+			                        <input type="text" value="Last Name" ng-model="last_name" placeholder="Last Name" ng-bind-html="last_name" class="form-control" required>
+			                    </div>
+			                     <div class="user-row clearfix">
+			                     <label>Email</label>
+			                        <input type="email" name="email" value="" ng-keyup="checkUniqueEmail(email)" ng-model="email" placeholder="Email" ng-bind-html="email" class="form-control" required>
+			                      <span  class="error" ng-show="frmusersetting.email.$error.unique">Email already exist.</span>
+			                           		     <span  class="usererrormsg" ng-show="frmusersetting.email.$error.email">Please enter valid email.</span>
+			                             <span  class="usererrormsg" ng-show="frmusersetting.email.$error.required">Please enter your email.</span>
+			                      
+			                      </div>
+			                    
+			                     <div class="user-row clearfix">
+			                     <label>Contact Number</label>
+			                        <input type="text" value="" name="contact_no" ng-model="contact_no" placeholder="Phone Number" ng-bind-html="contact_no"  data-trigger="keyup" minlength=10 data-rangelength="[10,14]" class="form-control">
+			                        <span  class="usererrormsg" ng-show="frmusersetting.contact_no.$invalid">Please enter valid phone number.</span>
+			                   </div>                   
+			               
+			                      <div class="user-row clearfix">
+			                     <label>User Status</label>
+					              <select data-required="true" data-trigger="change" ng-model="user_status" required>
+					                     <option value="">Select User Status</option>
+					                     <option value="1">Active</option>
+					                     <option value="2">Suspend</option>
+					                     <option value="3">Cancel</option> 
+					               </select>
+					               </div>
+					               </div>
+									<div class="tab-footer">
+										<button type="submit" id="adduser_btn"  class="btn-blue">Update</button>
+										
+									</div>	
+						         </form>
+						        
+						         </div>
+						         </div>
+			        	<!------------------------ List of all Payment Plans ------------------------------->  
+			          	<div class="tab-pane templates" ng-show="paymentstatus">
+			                       
+			                       <div class="panel-search clearfix">
+			                                	<div class="filter">
+			                                    	
+			                                    </div>
+			                                    <div class="right userright">
+			                                    	<!--  <input type="text" ng-model="searchText" placeholder="Search Funnels...">-->
+			                                         <form class="form-inline">
+													 <input type="text" ng-model="searchplan" placeholder="Search Plan...">
+												     </form>
+			                                        <button class="green-btn" ng-click="checkUser(5)"><i class="fa fa-plus-circle"></i> Add New Plan</button>
+			                                    </div>
+			                                </div>  
+			                       
+			                       
+			                       
+			                       
+			                       
+			                    <!-- button id="add-user" class='green-btn green-btn2n' ng-click="checkUser(4)"><i class="fa fa-user"></i> Add New User</button>
+			                    <form class="form-inline">
+								   <input type="text" ng-model="search" class="form-control" placeholder="Search Contacts..">
+								</form> -->
+			                 	<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+										
+												<th class="name">Name </th>
+												<th class="email">Price </th>
+												<th class="number">Validity </th>	
+												<th class="number">Status </th>	
+												<th class="number">Options </th>	
+										</tr>
+									</thead>
+									<tbody>
+			
+										<tr dir-paginate="item in planArr|orderBy:sortKey:reverse|filter:searchplan|itemsPerPage:5">
+												<td>{{item.name}}</td>
+												<td>{{item.price}}</td>
+												<td>{{item.validity}} Months</td>
+												<td>{{item.plan_status}}</td>
+												<td>
+												<button id="edit-user" class="edit" ng-click="editPaymentPlan(item.id)">
+												<i class="fa fa-pencil-square-o"></i> Edit</button>
+												<button ng-click="deletePaymentPlan(item.id)"class="delete_b">
+												<i class="fa fa-trash"></i> Delete</button>
+												
+												</td>  
+			
+										</tr>
+									</tbody>
+								 </table>
+								 <div class="pull-right">
+									<dir-pagination-controls
+									max-size="3"
+									direction-links="true"
+									boundary-links="true" >
+									</dir-pagination-controls>
+								</div> 
+			                    </div>
+			         	<!--------------------------- Add New plan ----------------------------------------->          
+			           	<div class="tab-pane" ng-show="addnewpaymentplans">
+							
+							<div>
+								<button class="back-btn btn-cancel btn-right" ng-click="checkUser(3)">
+								<i class="fa fa-backward"></i> Back</button>
+								</div>
+								<h4>Add New Payment Plan</h4>
+						    <div class="alert alert-danger" ng-if="usererrormessage">							
+							<strong>{{usererrormessage}}</strong>
+							</div>
+							 <div class="alert alert-success" ng-if="usermessage">	
+							<strong>{{usermessage}}</strong>
+							</div>
+						
+								<form role="form"   data-validate="parsley" validate-form="" novalidate="novalidate"  id="addplans_form" ng-submit="addplans_form.$valid && addNewPaymentPlan()" name="addplans_form" >
+									<div class="content">
+									<div class="user-row clearfix">
+									<label>Name</label>
+										<input type="text" value="" ng-model="name" placeholder="Plan Name" class="form-control" required>
+									</div>
+									<div class="user-row clearfix">
+									<label>Price</label>
+										<input type="text" value="" ng-model="price" placeholder="Plan Price" class="form-control" required>
+									</div>
+									<div class="user-row clearfix">
+									<label>Validity</label>
+										<!-- input type="text" value="" ng-model="validity" placeholder="Validity of plan in months" class="form-control" required> -->
+									<select ng-model="validity" required>
+										<option value="">Select period of plan in months</option>
+										<option ng-repeat="x in validityrange">{{x}}</option>
+									</select>
+									
+									</div>
+									
+									<div class="tab-footer">
+										<button type="submit" id="adduser_btn"  class="btn-blue">Save</button>
+										
+									</div>	
+									</div>					
+								</form>
+							
+					     </div>
+					   	<!-- ------------------------ Edit Payment Plan ------------------------------------>
+					   	<div class="tab-pane" ng-show="editPaymentPlans">
+					   	<div>
+								<button class="back-btn btn-cancel btn-right" ng-click="checkUser(3)">
+								<i class="fa fa-backward"></i> Back</button>
+								</div>
+								
+					      <h4>Edit Plan</h4>
+					      <div class="content">
+					       <div class="alert alert-danger" ng-if="errormessage">   
+								<strong>{{errormessage}}</strong>    
+							</div>
+							<div class="alert alert-success" ng-if="success_message"> 
+								<strong>{{success_message}}</strong>
+							</div>
+					      <!-- form role="form" name="edit_form"  data-validate="parsley" validate-form="" novalidate="novalidate"  id="edit_form" ng-submit="edit_form.$valid && updateUserIndo()"  > -->
+						    <form id="editpaymentplansform" name="editpaymentplan" ng-submit="editpaymentplan.$valid && updatePaymentPlan()" novalidate>
+						   
+						    <div class="user-body">
+						   
+			                	<div class="user-row clearfix">
+			                	<label>Plan Name</label>
+			                        <input type="text" value="" ng-model="name" placeholder="Plan Name" ng-bind-html="name" class="form-control" required>
+							          
+			                    </div>
+			                    <div class="user-row clearfix">
+			                    <label>Plan Price</label>
+			                        <input type="text" value="" ng-model="price" placeholder="Plan Name" ng-bind-html="price" class="form-control" required>
+			                    </div>
+			                          
+			                     <div class="user-row clearfix">
+			                     <label>Validity</label>
+			                        <!-- input type="text" value="" name="validity" ng-model="validity" placeholder="Plan validity in months" ng-bind-html="validity"  class="form-control" required> -->
+			                      	<select ng-model="validity" required>
+										<option value="">Select period of plan in months</option>
+										<option ng-repeat="x in validityrange">{{x}}</option>
+									</select>
+			                   		</div>  
+			                   		 <div class="user-row clearfix">
+			                     <label>Status</label>
+			                       <select name="status" id="SelectStatus" ng-model="status">
+								      <option value="">---Please select---</option> <!-- not selected / blank option -->
+								      <option value="1">Enable</option> <!-- interpolation -->
+								      <option value="0">Disable</option>
+								    </select>
+			                   		</div>                   
+			                
+					               </div>
+									<div class="tab-footer">
+										<button type="submit" id="adduser_btn"  class="btn-blue">Update</button>
+										
+									</div>	
+						         </form>
+						       
+						         </div>
+						         </div>
+			          	 <!------------------------ User Billing History --------------------------------------->     
+			             <div class="tab-pane templates" ng-show="userBillinghostory">
+			                  						
+					    
+					      
+					       <div class="panel-search clearfix">
+					      
+                            	<div class="filter">
+                                	 <h3>Billing History</h3> 
+                                	  
+                                </div>
+                                 <div class="alert alert-danger" ng-if="errormessage">   
+								<strong>{{errormessage}}</strong>    
+						</div>
+						  <div class="alert alert-success" ng-if="success_message"> 
+							<strong>{{success_message}}</strong>
+							</div>
+                                <div class="right userright">
+                                	 <button class="green-btn btn-right" ng-click="checkUser(1)">
+                                	<i class="fa fa-backward"></i> Back</button>
+                                </div>
+                            </div>  
+					      
+					      
+					      
+			                 	<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+												<th class="name">Plan Name </th>
+												<th class="email">Cost </th>
+												<th class="email">Validity </th>
+												<th class="number">Start Date </th>	
+												<th class="number">End Date </th>
+												<th class="number">Status </th>	
+										</tr>
+									</thead>
+									<tbody>
+			
+										<tr dir-paginate="item in PaymentHistory|itemsPerPage:8">
+												<td>{{item.plan_name}} </td>
+												<td>{{item.plan_price}}</td>
+												<td>{{item.plan_time}} Months</td>
+												<td>{{item.plan_start_date}}</td>
+												<td>{{item.Next_date}}</td>
+												<td>{{item.payment_status}}</td>
+												 
+			
+										</tr>
+									</tbody>
+								 </table>
+								
+			                    </div>      
+			                
+                		<!-- ------------------------My account settings -------------------------------- -->
+        				 <div class="tab-pane" ng-show="myprofile">
+                        <h4>My Account</h4>
+                        <form id="editadmindetailform" name="frmadminsetting" ng-submit="frmadminsetting.$valid && myaccountSubmit()" novalidate>
+                        <div class="content">
+                         <div class="alert alert-danger" ng-if="errormessage">   
+								<strong>{{errormessage}}</strong>    
+						</div>
+						  <div class="alert alert-success" ng-if="success_message"> 
+							<strong>{{success_message}}</strong>
+							</div>
+                        	<div class="user-row subdomain-error">
+                            	<label>Sub-domain</label>
+                                <input class="subdomain" type="text" name="subdomain" ng-keyup="checkDomain(subdomain)" ng-model="subdomain" ng-bind-html="subdomain" placeholder="Please enter sub domain" required><span class="launchdomain">.launchafunnel.com</span>
+                               <!-- span class="error" ng-show="subdomainerror" ng-bind-html="subdomainerror"></span> -->
+                            <span class="error" ng-show="frmadminsetting.subdomain.$error.unique">Sub-domain Already exist.</span>
+                            <span class="error" ng-show="frmadminsetting.subdomain.$error.required">Please enter sub domain.</span>
+                           </div>
+                        
+                            <div class="user-row">
+                            	<label>Email</label>
+                                <input type="email" ng-keyup="checkEmail(email)" name="email" ng-model="email" placeholder="Please enter your email" ng-bind-html="email" required>
+                           		   <span  class="error" ng-show="frmadminsetting.email.$error.unique">Email already exist.</span>
+                           		     <span  class="error" ng-show="frmadminsetting.email.$error.email">Please enter valid email.</span>
+                             <span  class="error" ng-show="frmadminsetting.email.$error.required">Please enter your email.</span>
+                            </div>
+                            
+                            <div class="user-row">
+                            <label>First Name</label>
+                            <input type="text" value="" ng-model="first_name" placeholder="First Name" required>
+                             
+                            </div>
+                        	<div class="user-row">
+                        	<label>Last Name</label>
+                        	<input type="text" value="Last Name" ng-model="last_name" placeholder="Last Name" required>
+                             
+                            </div>
+                            <div class="user-row">
+                            <label>Phone Number</label>
+                            <input type="number" name="mobile" value="" ng-model="phone" placeholder="Phone Number" data-trigger="keyup" minlength=10 data-rangelength="[10,14]">
+                             <span  class="error" ng-show="frmadminsetting.mobile.$invalid">Please enter valid phone number.</span>
+                             
+                            </div>
+                         
+                            <div class="tab-footer">
+                            	<button type="submit" class="btn-blue">Update</button>
+         						
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+        				  <!------------------------ Cancellation Request --------------------------------------->     
+			             <div class="tab-pane templates" ng-show="cancellationlist">
+			                       
+			                       <div class="panel-search clearfix">
+			                                	<div class="filter">
+			                                    	<h3>Recurring payment cancellation list</h3>
+			                                    </div>
+			                                    <!-- div class="right userright">
+			                                    	
+			                                         <form class="form-inline">
+													 <input type="text" ng-model="search" placeholder="Search User..">
+												     </form>
+			                                        <button class="green-btn" ng-click="checkUser(4)"><i class="fa fa-plus-circle"></i> Add New User</button>
+			                                    </div> -->
+			                                </div>  
+			                       
+			                       
+			                       
+			                       
+			                       
+			                    <!-- button id="add-user" class='green-btn green-btn2n' ng-click="checkUser(4)"><i class="fa fa-user"></i> Add New User</button>
+			                    <form class="form-inline">
+								   <input type="text" ng-model="search" class="form-control" placeholder="Search Contacts..">
+								</form> -->
+			                 	<table class="table table-striped table-hover" >
+									<thead>
+										<tr>
+												<th class="name">Name </th>
+												<th class="email">Email </th>
+												<th class="email">Reason </th>
+												<th calss="current_plan">Subscription Id</th>
+												<th calss="current_plan">Payment Plan</th>
+													
+												<!--  th class="number">Options </th>-->	
+										</tr>
+									</thead>
+									<tbody>
+			
+										<tr dir-paginate="item in cancelList|itemsPerPage:8" ng-click="chkeditUser(item.user_id)">
+												<td>{{item.user_name}}</td>
+												<td>{{item.email}}</td>
+												<td>{{item.description}}</td>
+												<td>{{item.txn_id}}</td>
+												<td>{{item.name}}</td>
+												<!-- td>
+											<button id="edit-user" ng-if="item.status=='1'" class="canceled_p_btn" >
+												<i class="fa fa-times"></i> Cancel</button>
+												
+													<button id="edit-user" ng-if="item.status=='0'" class="canceled_btn">
+												<i class="fa fa-times"></i> Cancel</button>
+												</td> -->  
+										</tr>
+									</tbody>
+								 </table>
+								 <div class="pull-right">
+									<dir-pagination-controls
+									max-size="3"
+									direction-links="true"
+									boundary-links="true" >
+									</dir-pagination-controls>
+								</div> 
+			                    </div>
+        		
+        				  <!------------------------ List of all User --------------------------------------->     
+			             <div class="tab-pane templates" ng-show="refundlist">
+			                       
+			                       <div class="panel-search clearfix">
+			                                	<div class="filter">
+			                                    	<h3>Refund List</h3>
+			                                    </div>
+			                                    <!-- div class="right userright">
+			                                    	
+			                                         <form class="form-inline">
+													 <input type="text" ng-model="search" placeholder="Search User..">
+												     </form>
+			                                        <button class="green-btn" ng-click="checkUser(4)"><i class="fa fa-plus-circle"></i> Add New User</button>
+			                                    </div> -->
+			                                </div>  
+			                       
+			                       
+			                       
+			                       
+			                       
+			                    <!-- button id="add-user" class='green-btn green-btn2n' ng-click="checkUser(4)"><i class="fa fa-user"></i> Add New User</button>
+			                    <form class="form-inline">
+								   <input type="text" ng-model="search" class="form-control" placeholder="Search Contacts..">
+								</form> -->
+			                 	<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+												<th class="name">Name </th>
+												<th class="email">Email </th>
+												<th class="email">Reason </th>
+												<th calss="current_plan">Subscription Id</th>
+												<th calss="current_plan">Payment Plan</th>
+													
+												<th class="number">Options </th>	
+										</tr>
+									</thead>
+									<tbody>
+			
+										<tr dir-paginate="item in refunds|itemsPerPage:8">
+												<td>{{item.user_name}}</td>
+												<td>{{item.email}}</td>
+												<td>{{item.description}}</td>
+												<td>{{item.txn_id}}</td>
+												<td>{{item.name}}</td>
+											
+													<td>
+											<button id="edit-user" class="canceled_p_btn" ng-click="chkeditUser(item.user_id)" >
+												<i class="fa fa-undo"></i> Refund</button>
+												
+													<!-- button id="edit-user" ng-if="item.status=='0'" class="canceled_btn">
+												<i class="fa fa-undo"></i> Refund Success</button> -->
+												</td>  
+			
+										</tr>
+									</tbody>
+								 </table>
+								 <div class="pull-right">
+									<dir-pagination-controls
+									max-size="3"
+									direction-links="true"
+									boundary-links="true" >
+									</dir-pagination-controls>
+								</div> 
+			                    </div>
+        		
+        		
+        		</div><!-- /.tab-content -->
+           
+           	
+            </div>
+     	</div>
+     </div>
+	 
